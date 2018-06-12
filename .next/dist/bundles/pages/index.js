@@ -67,272 +67,55 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
-/******/ ({
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
 
-/***/ "./pages/index.tsx":
+module.exports = require("react");
+
+/***/ }),
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(9);
+
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_components_user__ = __webpack_require__("./src/components/user/index.tsx");
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/index.tsx";
 
+// EXTERNAL MODULE: external "react"
+var external__react_ = __webpack_require__(0);
+var external__react__default = /*#__PURE__*/__webpack_require__.n(external__react_);
 
+// EXTERNAL MODULE: external "next/link"
+var link_ = __webpack_require__(10);
+var link__default = /*#__PURE__*/__webpack_require__.n(link_);
 
+// CONCATENATED MODULE: ./src/components/loading/index.tsx
 
-/* harmony default export */ __webpack_exports__["default"] = (function () {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    }
-  }, "Hello World.", ' ', __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
-    href: "/about",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 10
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 11
-    }
-  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__["a" /* Fetcher */], {
-    endPoint: "users",
-    renderComponent: function renderComponent(path, data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_components_user__["a" /* User */], {
-        path: path,
-        data: data,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 15
-        }
-      });
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    }
-  }));
-});
-
-/***/ }),
-
-/***/ "./src/components/error/index.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Error; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/error/index.tsx";
-
-var Error = function Error() {
-  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 4
-    }
-  }, "Error :-(");
+var loading_Loading = function Loading() {
+  return external__react_["createElement"]("div", null, "Loading...");
 };
+// CONCATENATED MODULE: ./src/components/error/index.tsx
 
-/***/ }),
-
-/***/ "./src/components/loading/index.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Loading; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/loading/index.tsx";
-
-var Loading = function Loading() {
-  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 4
-    }
-  }, "Loading...");
+var error_Error = function Error() {
+  return external__react_["createElement"]("div", null, "Error :-(");
 };
-
-/***/ }),
-
-/***/ "./src/components/user/index.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/user/index.tsx";
-
-var User = function User(_ref) {
-  var path = _ref.path,
-      data = _ref.data;
-  var _data$ = data[0],
-      bio = _data$.bio,
-      cover_image = _data$.cover_image,
-      name = _data$.name,
-      profile_image = _data$.profile_image;
-  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 33
-    }
-  }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
-    style: {
-      width: 100
-    },
-    src: "".concat(path).concat(cover_image),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 34
-    }
-  }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 35
-    }
-  }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
-    style: {
-      width: 50
-    },
-    src: "".concat(path).concat(profile_image),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36
-    }
-  }));
-};
-
-/***/ }),
-
-/***/ "./src/containers/fetcher/index.tsx":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Fetcher; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_loading__ = __webpack_require__("./src/components/loading/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_error__ = __webpack_require__("./src/components/error/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_fetch__ = __webpack_require__("./src/utils/fetch.ts");
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/fetcher/index.tsx";
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-
-
-var Fetcher =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Fetcher, _React$Component);
-
-  function Fetcher(props) {
-    var _this;
-
-    _classCallCheck(this, Fetcher);
-
-    _this = _possibleConstructorReturn(this, (Fetcher.__proto__ || Object.getPrototypeOf(Fetcher)).call(this, props));
-    _this.state = {
-      isLoading: true,
-      data: null,
-      hasErrored: false,
-      path: ''
-    };
-    return _this;
-  }
-
-  _createClass(Fetcher, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      var userFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* goFetch */][this.props.endPoint]();
-      userFetch.then(function (res) {
-        _this2.setState({
-          isLoading: res.isLoading,
-          data: res.data ? res.data[_this2.props.endPoint] : null,
-          hasErrored: res.hasErrored
-        }, function () {
-          _this2.setPath(res.url);
-        });
-      });
-    }
-  }, {
-    key: "setPath",
-    value: function setPath(url) {
-      var pathname = url.split('/');
-      this.setState({
-        path: "http://".concat(pathname[2])
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _state = this.state,
-          isLoading = _state.isLoading,
-          data = _state.data,
-          hasErrored = _state.hasErrored,
-          path = _state.path;
-      var renderComponent = this.props.renderComponent;
-
-      if (isLoading) {
-        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__components_loading__["a" /* Loading */], {
-          __source: {
-            fileName: _jsxFileName,
-            lineNumber: 53
-          }
-        });
-      }
-
-      return hasErrored ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_error__["a" /* Error */], {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 56
-        }
-      }) : renderComponent(path, data);
-    }
-  }]);
-
-  return Fetcher;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
-
-/***/ }),
-
-/***/ "./src/utils/fetch.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return goFetch; });
+// CONCATENATED MODULE: ./src/utils/fetch.ts
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -392,30 +175,135 @@ var triggerFetch = function triggerFetch(_ref) {
     };
   });
 };
+// CONCATENATED MODULE: ./src/containers/fetcher/index.tsx
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+var fetcher_Fetcher =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Fetcher, _React$Component);
+
+  function Fetcher(props) {
+    var _this;
+
+    _classCallCheck(this, Fetcher);
+
+    _this = _possibleConstructorReturn(this, (Fetcher.__proto__ || Object.getPrototypeOf(Fetcher)).call(this, props));
+    _this.state = {
+      isLoading: true,
+      data: null,
+      hasErrored: false,
+      path: ''
+    };
+    return _this;
+  }
+
+  _createClass(Fetcher, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var userFetch = goFetch[this.props.endPoint]();
+      userFetch.then(function (res) {
+        _this2.setState({
+          isLoading: res.isLoading,
+          data: res.data ? res.data[_this2.props.endPoint] : null,
+          hasErrored: res.hasErrored
+        }, function () {
+          _this2.setPath(res.url);
+        });
+      });
+    }
+  }, {
+    key: "setPath",
+    value: function setPath(url) {
+      var pathname = url.split('/');
+      this.setState({
+        path: "http://".concat(pathname[2])
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _state = this.state,
+          isLoading = _state.isLoading,
+          data = _state.data,
+          hasErrored = _state.hasErrored,
+          path = _state.path;
+      var renderComponent = this.props.renderComponent;
+
+      if (isLoading) {
+        return external__react_["createElement"](loading_Loading, null);
+      }
+
+      return hasErrored ? external__react_["createElement"](error_Error, null) : renderComponent(path, data);
+    }
+  }]);
+
+  return Fetcher;
+}(external__react_["Component"]);
+// CONCATENATED MODULE: ./src/components/user/index.tsx
+
+var user_User = function User(_ref) {
+  var path = _ref.path,
+      data = _ref.data;
+  var _data$ = data[0],
+      bio = _data$.bio,
+      cover_image = _data$.cover_image,
+      name = _data$.name,
+      profile_image = _data$.profile_image;
+  return external__react_["createElement"]("div", null, external__react_["createElement"]("p", null, bio), external__react_["createElement"]("img", {
+    style: {
+      width: 100
+    },
+    src: "".concat(path).concat(cover_image)
+  }), external__react_["createElement"]("p", null, name), external__react_["createElement"]("img", {
+    style: {
+      width: 50
+    },
+    src: "".concat(path).concat(profile_image)
+  }));
+};
+// CONCATENATED MODULE: ./pages/index.tsx
+
+
+
+
+/* harmony default export */ var pages = __webpack_exports__["default"] = (function () {
+  return external__react__default.a.createElement("div", null, "Hello World.", ' ', external__react__default.a.createElement(link__default.a, {
+    href: "/about"
+  }, external__react__default.a.createElement("a", null, "About")), external__react__default.a.createElement(fetcher_Fetcher, {
+    endPoint: "users",
+    renderComponent: function renderComponent(path, data) {
+      return external__react__default.a.createElement(user_User, {
+        path: path,
+        data: data
+      });
+    }
+  }));
+});
 
 /***/ }),
-
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__("./pages/index.tsx");
-
-
-/***/ }),
-
-/***/ "next/link":
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("next/link");
 
-/***/ }),
-
-/***/ "react":
-/***/ (function(module, exports) {
-
-module.exports = require("react");
-
 /***/ })
-
-/******/ });
-//# sourceMappingURL=index.js.map
+/******/ ]);
