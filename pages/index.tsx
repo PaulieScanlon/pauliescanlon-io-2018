@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { User } from '../src/containers/user';
+import { Users } from '../src/containers/users';
+import { Sections } from '../src/containers/sections';
 
 export default () => (
   <div>
@@ -8,6 +9,7 @@ export default () => (
     <Link href="/about">
       <a>About</a>
     </Link>
-    <User />
+    <Users />
+    <Sections />
   </div>
 );

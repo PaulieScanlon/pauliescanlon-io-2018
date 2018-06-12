@@ -10,12 +10,12 @@ interface IState {
   thing?: any;
 }
 
-export class User extends React.Component<IProps, IState> {
+export class Sections extends React.Component<IProps, IState> {
   componentDidMount() {
-    goFetch.users();
+    goFetch.sections();
   }
 
   render() {
-    return <div>User</div>;
+    return <div>Sections</div>;
   }
 }

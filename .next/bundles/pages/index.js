@@ -931,7 +931,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("./node_modules/next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_containers_user__ = __webpack_require__("./src/containers/user/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_containers_users__ = __webpack_require__("./src/containers/users/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_containers_sections__ = __webpack_require__("./src/containers/sections/index.tsx");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/index.tsx";
 
 
@@ -944,27 +945,33 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
 
 
 
+
 var _default = function _default() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 6
+      lineNumber: 7
     }
   }, "Hello World.", ' ', __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 9
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 10
     }
-  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__src_containers_user__["a" /* User */], {
+  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__src_containers_users__["a" /* Users */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 12
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_containers_sections__["a" /* Sections */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 13
     }
   }));
 };
@@ -1008,15 +1015,15 @@ var _default = function _default() {
 
 /***/ }),
 
-/***/ "./src/containers/user/index.tsx":
+/***/ "./src/containers/sections/index.tsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sections; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_fetch__ = __webpack_require__("./src/utils/fetch.ts");
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/user/index.tsx";
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/sections/index.tsx";
 
 (function () {
   var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
@@ -1040,21 +1047,21 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var User =
+var Sections =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(User, _React$Component);
+  _inherits(Sections, _React$Component);
 
-  function User() {
-    _classCallCheck(this, User);
+  function Sections() {
+    _classCallCheck(this, Sections);
 
-    return _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Sections.__proto__ || Object.getPrototypeOf(Sections)).apply(this, arguments));
   }
 
-  _createClass(User, [{
+  _createClass(Sections, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      __WEBPACK_IMPORTED_MODULE_1__utils_fetch__["a" /* goFetch */].users();
+      __WEBPACK_IMPORTED_MODULE_1__utils_fetch__["a" /* goFetch */].sections();
     }
   }, {
     key: "render",
@@ -1064,7 +1071,7 @@ function (_React$Component) {
           fileName: _jsxFileName,
           lineNumber: 19
         }
-      }, "User");
+      }, "Sections");
     }
   }, {
     key: "__reactstandin__regenerateByEval",
@@ -1075,7 +1082,7 @@ function (_React$Component) {
     }
   }]);
 
-  return User;
+  return Sections;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 ;
 
@@ -1088,7 +1095,131 @@ function (_React$Component) {
     return;
   }
 
-  reactHotLoader.register(User, "User", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/user/index.tsx");
+  reactHotLoader.register(Sections, "Sections", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/sections/index.tsx");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/containers/users/index.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Users; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_fetch__ = __webpack_require__("./src/utils/fetch.ts");
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/users/index.tsx";
+
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var Users =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Users, _React$Component);
+
+  function Users(props) {
+    var _this;
+
+    _classCallCheck(this, Users);
+
+    _this = _possibleConstructorReturn(this, (Users.__proto__ || Object.getPrototypeOf(Users)).call(this, props));
+    _this.state = {
+      data: {}
+    };
+    return _this;
+  }
+
+  _createClass(Users, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      var userData = __WEBPACK_IMPORTED_MODULE_1__utils_fetch__["a" /* goFetch */].users();
+      userData.then(function (data) {
+        _this2.setState({
+          data: data.users[0]
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var data = this.state.data;
+      console.log('UserData', data);
+      return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        }
+      }, data.name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        }
+      }, data.bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37
+        }
+      }, data.twitter), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 38
+        }
+      }, data.website));
+    }
+  }, {
+    key: "__reactstandin__regenerateByEval",
+    // @ts-ignore
+    value: function __reactstandin__regenerateByEval(key, code) {
+      // @ts-ignore
+      this[key] = eval(code);
+    }
+  }]);
+
+  return Users;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(Users, "Users", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/users/index.tsx");
   leaveModule(module);
 })();
 
@@ -1138,24 +1269,24 @@ var config = {
 };
 var goFetch = {
   users: function users() {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.users.endPoint
     });
   },
   posts: function posts() {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.posts.endPoint,
       params: config.posts.params
     });
   },
   tags: function tags() {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.tags.endPoint,
       params: config.tags.params
     });
   },
   sections: function sections() {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.sections.endPoint,
       params: config.sections.params
     });
@@ -1165,10 +1296,11 @@ var goFetch = {
 var triggerFetch = function triggerFetch(_ref) {
   var endPoint = _ref.endPoint,
       params = _ref.params;
-  fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
+  return fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
     return res.json();
   }).then(function (data) {
-    console.log("".concat(endPoint), data);
+    // console.log(`data: ${endPoint}`, data);
+    return data;
   }).catch(function () {
     console.log('error');
   });

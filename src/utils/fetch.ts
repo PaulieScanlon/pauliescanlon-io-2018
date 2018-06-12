@@ -34,27 +34,27 @@ interface IProps {
 
 export const goFetch = {
   users: () => {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.users.endPoint
     });
   },
 
   posts: () => {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.posts.endPoint,
       params: config.posts.params
     });
   },
 
   tags: () => {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.tags.endPoint,
       params: config.tags.params
     });
   },
 
   sections: () => {
-    triggerFetch({
+    return triggerFetch({
       endPoint: config.sections.endPoint,
       params: config.sections.params
     });
@@ -62,14 +62,15 @@ export const goFetch = {
 };
 
 const triggerFetch = ({ endPoint, params }: IProps) => {
-  fetch(
+  return fetch(
     window['ghost'].url.api(`${endPoint}`, {
       ...params
     })
   )
     .then(res => res.json())
     .then(data => {
-      console.log(`${endPoint}`, data);
+      // console.log(`data: ${endPoint}`, data);
+      return data;
     })
     .catch(() => {
       console.log('error');
