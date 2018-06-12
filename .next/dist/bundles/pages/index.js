@@ -81,8 +81,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_containers_users__ = __webpack_require__("./src/containers/users/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_containers_sections__ = __webpack_require__("./src/containers/sections/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_components_user__ = __webpack_require__("./src/components/user/index.tsx");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/index.tsx";
 
 
@@ -92,25 +92,31 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 7
+      lineNumber: 8
     }
   }, "Hello World.", ' ', __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 10
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 11
     }
-  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__src_containers_users__["a" /* Users */], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    }
-  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_containers_sections__["a" /* Sections */], {
+  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__["a" /* Fetcher */], {
+    endPoint: "users",
+    renderComponent: function renderComponent(path, data) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_components_user__["a" /* User */], {
+        path: path,
+        data: data,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        }
+      });
+    },
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13
@@ -120,74 +126,112 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
 
 /***/ }),
 
-/***/ "./src/containers/sections/index.tsx":
+/***/ "./src/components/error/index.tsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Sections; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Error; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_fetch__ = __webpack_require__("./src/utils/fetch.ts");
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/sections/index.tsx";
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/error/index.tsx";
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-
-
-var Sections =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Sections, _React$Component);
-
-  function Sections() {
-    _classCallCheck(this, Sections);
-
-    return _possibleConstructorReturn(this, (Sections.__proto__ || Object.getPrototypeOf(Sections)).apply(this, arguments));
-  }
-
-  _createClass(Sections, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      __WEBPACK_IMPORTED_MODULE_1__utils_fetch__["a" /* goFetch */].sections();
+var Error = function Error() {
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19
-        }
-      }, "Sections");
-    }
-  }]);
-
-  return Sections;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+  }, "Error :-(");
+};
 
 /***/ }),
 
-/***/ "./src/containers/users/index.tsx":
+/***/ "./src/components/loading/index.tsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Users; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Loading; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils_fetch__ = __webpack_require__("./src/utils/fetch.ts");
-var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/users/index.tsx";
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/loading/index.tsx";
+
+var Loading = function Loading() {
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 4
+    }
+  }, "Loading...");
+};
+
+/***/ }),
+
+/***/ "./src/components/user/index.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/user/index.tsx";
+
+var User = function User(_ref) {
+  var path = _ref.path,
+      data = _ref.data;
+  var _data$ = data[0],
+      bio = _data$.bio,
+      cover_image = _data$.cover_image,
+      name = _data$.name,
+      profile_image = _data$.profile_image;
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 32
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    }
+  }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
+    style: {
+      width: 100
+    },
+    src: "".concat(path).concat(cover_image),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 35
+    }
+  }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
+    style: {
+      width: 50
+    },
+    src: "".concat(path).concat(profile_image),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    }
+  }));
+};
+
+/***/ }),
+
+/***/ "./src/containers/fetcher/index.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Fetcher; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_loading__ = __webpack_require__("./src/components/loading/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_error__ = __webpack_require__("./src/components/error/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utils_fetch__ = __webpack_require__("./src/utils/fetch.ts");
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/fetcher/index.tsx";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -205,70 +249,81 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-var Users =
+
+
+var Fetcher =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(Users, _React$Component);
+  _inherits(Fetcher, _React$Component);
 
-  function Users(props) {
+  function Fetcher(props) {
     var _this;
 
-    _classCallCheck(this, Users);
+    _classCallCheck(this, Fetcher);
 
-    _this = _possibleConstructorReturn(this, (Users.__proto__ || Object.getPrototypeOf(Users)).call(this, props));
+    _this = _possibleConstructorReturn(this, (Fetcher.__proto__ || Object.getPrototypeOf(Fetcher)).call(this, props));
     _this.state = {
-      data: {}
+      isLoading: true,
+      data: null,
+      hasErrored: false,
+      path: ''
     };
     return _this;
   }
 
-  _createClass(Users, [{
+  _createClass(Fetcher, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      var userData = __WEBPACK_IMPORTED_MODULE_1__utils_fetch__["a" /* goFetch */].users();
-      userData.then(function (data) {
+      var userFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* goFetch */][this.props.endPoint]();
+      userFetch.then(function (res) {
         _this2.setState({
-          data: data.users[0]
+          isLoading: res.isLoading,
+          data: res.data ? res.data[_this2.props.endPoint] : null,
+          hasErrored: res.hasErrored
+        }, function () {
+          _this2.setPath(res.url);
         });
+      });
+    }
+  }, {
+    key: "setPath",
+    value: function setPath(url) {
+      var pathname = url.split('/');
+      this.setState({
+        path: "http://".concat(pathname[2])
       });
     }
   }, {
     key: "render",
     value: function render() {
-      var data = this.state.data;
-      console.log('UserData', data);
-      return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
+      var _state = this.state,
+          isLoading = _state.isLoading,
+          data = _state.data,
+          hasErrored = _state.hasErrored,
+          path = _state.path;
+      var renderComponent = this.props.renderComponent;
+
+      if (isLoading) {
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__components_loading__["a" /* Loading */], {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 53
+          }
+        });
+      }
+
+      return hasErrored ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_error__["a" /* Error */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34
+          lineNumber: 56
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 35
-        }
-      }, data.name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 36
-        }
-      }, data.bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 37
-        }
-      }, data.twitter), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 38
-        }
-      }, data.website));
+      }) : renderComponent(path, data);
     }
   }]);
 
-  return Users;
+  return Fetcher;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /***/ }),
@@ -282,52 +337,35 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var config = {
-  users: {
-    endPoint: 'users/1'
-  },
-  posts: {
-    endPoint: 'posts',
-    params: {
-      include: 'tags'
-    }
-  },
-  tags: {
-    endPoint: 'tags',
-    params: {
-      include: 'count.posts'
-    }
-  },
-  sections: {
-    endPoint: 'posts',
-    params: {
-      filter: 'page:true',
-      order: 'title dsc'
-    }
-  }
-};
 var goFetch = {
   users: function users() {
     return triggerFetch({
-      endPoint: config.users.endPoint
+      endPoint: 'users/1'
     });
   },
   posts: function posts() {
     return triggerFetch({
-      endPoint: config.posts.endPoint,
-      params: config.posts.params
+      endPoint: 'posts',
+      params: {
+        include: 'tags'
+      }
     });
   },
   tags: function tags() {
     return triggerFetch({
-      endPoint: config.tags.endPoint,
-      params: config.tags.params
+      endPoint: 'tags',
+      params: {
+        include: 'count.posts'
+      }
     });
   },
   sections: function sections() {
     return triggerFetch({
-      endPoint: config.sections.endPoint,
-      params: config.sections.params
+      endPoint: 'posts',
+      params: {
+        filter: 'page:true',
+        order: 'title dsc'
+      }
     });
   }
 };
@@ -338,10 +376,20 @@ var triggerFetch = function triggerFetch(_ref) {
   return fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
     return res.json();
   }).then(function (data) {
-    // console.log(`data: ${endPoint}`, data);
-    return data;
+    // console.log('data: ', data);
+    return {
+      isLoading: false,
+      data: data,
+      hasErrored: false,
+      url: window['ghost'].url.api()
+    };
   }).catch(function () {
-    console.log('error');
+    // console.log('error: ', error);
+    return {
+      isLoading: false,
+      data: null,
+      hasErrored: true
+    };
   });
 };
 

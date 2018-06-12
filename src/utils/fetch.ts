@@ -1,28 +1,3 @@
-const config = {
-  users: {
-    endPoint: 'users/1'
-  },
-  posts: {
-    endPoint: 'posts',
-    params: {
-      include: 'tags'
-    }
-  },
-  tags: {
-    endPoint: 'tags',
-    params: {
-      include: 'count.posts'
-    }
-  },
-  sections: {
-    endPoint: 'posts',
-    params: {
-      filter: 'page:true',
-      order: 'title dsc'
-    }
-  }
-};
-
 interface IProps {
   endPoint: string;
   params?: {
@@ -35,28 +10,31 @@ interface IProps {
 export const goFetch = {
   users: () => {
     return triggerFetch({
-      endPoint: config.users.endPoint
+      endPoint: 'users/1'
     });
   },
 
   posts: () => {
     return triggerFetch({
-      endPoint: config.posts.endPoint,
-      params: config.posts.params
+      endPoint: 'posts',
+      params: { include: 'tags' }
     });
   },
 
   tags: () => {
     return triggerFetch({
-      endPoint: config.tags.endPoint,
-      params: config.tags.params
+      endPoint: 'tags',
+      params: { include: 'count.posts' }
     });
   },
 
   sections: () => {
     return triggerFetch({
-      endPoint: config.sections.endPoint,
-      params: config.sections.params
+      endPoint: 'posts',
+      params: {
+        filter: 'page:true',
+        order: 'title dsc'
+      }
     });
   }
 };
@@ -69,10 +47,20 @@ const triggerFetch = ({ endPoint, params }: IProps) => {
   )
     .then(res => res.json())
     .then(data => {
-      // console.log(`data: ${endPoint}`, data);
-      return data;
+      // console.log('data: ', data);
+      return {
+        isLoading: false,
+        data,
+        hasErrored: false,
+        url: window['ghost'].url.api()
+      };
     })
     .catch(() => {
-      console.log('error');
+      // console.log('error: ', error);
+      return {
+        isLoading: false,
+        data: null,
+        hasErrored: true
+      };
     });
 };

@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import { Users } from '../src/containers/users';
-import { Sections } from '../src/containers/sections';
+import { Fetcher } from '../src/containers/fetcher';
+
+import { User } from '../src/components/user';
 
 export default () => (
   <div>
@@ -9,7 +10,9 @@ export default () => (
     <Link href="/about">
       <a>About</a>
     </Link>
-    <Users />
-    <Sections />
+    <Fetcher
+      endPoint="users"
+      renderComponent={(path, data) => <User path={path} data={data} />}
+    />
   </div>
 );
