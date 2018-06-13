@@ -89,6 +89,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/index.tsx";
 
 
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
 
 
 
@@ -113,15 +116,13 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
     }
   }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_containers_fetcher__["a" /* Fetcher */], {
     endPoint: "users",
-    renderComponent: function renderComponent(path, data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__src_components_user__["a" /* User */], {
-        path: path,
-        data: data,
+    renderComponent: function renderComponent(data) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__src_components_user__["a" /* User */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 14
         }
-      });
+      }));
     },
     __source: {
       fileName: _jsxFileName,
@@ -180,49 +181,49 @@ var Loading = function Loading() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/user/styles.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_api__ = __webpack_require__("./src/utils/api.ts");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/user/index.tsx";
 
 
-var User = function User(_ref) {
-  var path = _ref.path,
-      data = _ref.data;
-  var _data$ = data[0],
-      bio = _data$.bio,
-      cover_image = _data$.cover_image,
-      name = _data$.name,
-      profile_image = _data$.profile_image;
+
+var User = function User(props) {
+  var _props$ = props[0],
+      bio = _props$.bio,
+      cover_image = _props$.cover_image,
+      name = _props$.name,
+      profile_image = _props$.profile_image;
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserWrapper */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 14
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 15
     }
   }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
       width: 100
     },
-    src: "".concat(path).concat(cover_image),
+    src: "".concat(__WEBPACK_IMPORTED_MODULE_2__utils_api__["a" /* GHOST_CMS */]).concat(cover_image),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 16
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 17
     }
   }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
       width: 50
     },
-    src: "".concat(path).concat(profile_image),
+    src: "".concat(__WEBPACK_IMPORTED_MODULE_2__utils_api__["a" /* GHOST_CMS */]).concat(profile_image),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 18
     }
   }));
 };
@@ -287,8 +288,7 @@ function (_React$Component) {
     _this.state = {
       isLoading: true,
       data: null,
-      hasErrored: false,
-      path: ''
+      hasErrored: false
     };
     return _this;
   }
@@ -304,17 +304,7 @@ function (_React$Component) {
           isLoading: res.isLoading,
           data: res.data ? res.data[_this2.props.endPoint] : null,
           hasErrored: res.hasErrored
-        }, function () {
-          _this2.setPath(res.url);
         });
-      });
-    }
-  }, {
-    key: "setPath",
-    value: function setPath(url) {
-      var pathname = url.split('/');
-      this.setState({
-        path: "http://".concat(pathname[2])
       });
     }
   }, {
@@ -323,15 +313,14 @@ function (_React$Component) {
       var _state = this.state,
           isLoading = _state.isLoading,
           data = _state.data,
-          hasErrored = _state.hasErrored,
-          path = _state.path;
+          hasErrored = _state.hasErrored;
       var renderComponent = this.props.renderComponent;
 
       if (isLoading) {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__components_loading__["a" /* Loading */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 53
+            lineNumber: 40
           }
         });
       }
@@ -339,9 +328,9 @@ function (_React$Component) {
       return hasErrored ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_error__["a" /* Error */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56
+          lineNumber: 43
         }
-      }) : renderComponent(path, data);
+      }) : renderComponent(data);
     }
   }]);
 
@@ -383,6 +372,15 @@ var theme = Object(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__["creat
     }
   }
 });
+
+/***/ }),
+
+/***/ "./src/utils/api.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GHOST_CMS; });
+var GHOST_CMS = 'http://138.68.162.135';
 
 /***/ }),
 
@@ -438,11 +436,9 @@ var triggerFetch = function triggerFetch(_ref) {
     return {
       isLoading: false,
       data: data,
-      hasErrored: false,
-      url: window['ghost'].url.api()
+      hasErrored: false
     };
   }).catch(function () {
-    // console.log('error: ', error);
     return {
       isLoading: false,
       data: null,

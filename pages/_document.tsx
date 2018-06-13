@@ -1,6 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import { renderStatic } from 'glamor/server';
 
+import { GHOST_CMS } from '../src/utils/api';
+
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }) {
     const page = renderPage();
@@ -20,15 +22,15 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <title>With Glamorous</title>
+          <title>Paul Scanlon</title>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
-          <script src="http://138.68.162.135/public/ghost-sdk.min.js?v=d1b11a97e4" />
+          <script src={`${GHOST_CMS}/public/ghost-sdk.min.js?v=d1b11a97e4`} />
           <script
             dangerouslySetInnerHTML={{
-              __html: `            ghost.init({
-              clientId: "ghost-frontend",
-              clientSecret: "7e66121d4050"
-            });`
+              __html: `ghost.init({
+                  clientId: "ghost-frontend",
+                  clientSecret: "7e66121d4050"
+              });`
             }}
           />
         </Head>

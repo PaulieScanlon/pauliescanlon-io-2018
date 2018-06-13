@@ -1,41 +1,21 @@
 import * as React from 'react';
 
-import { IPath } from '../../types/component-types';
-
+import { IUser } from '../../types/api-types';
 import { UserWrapper } from './styles';
 
-interface IUsers {
-  // accessibility: any;
-  bio: string;
-  cover_image: string;
-  // facebook: string;
-  // id: string;
-  // locale: any;
-  // location: string;
-  // meta_description: any;
-  // meta_title: any;
-  name: string;
-  profile_image: string;
-  // slug: string;
-  // tour: string;
-  // twitter: string;
-  // visibility: string;
-  // website: string;
-}
+import { GHOST_CMS } from '../../utils/api';
 
-interface IProps extends IPath {
-  data: IUsers[];
-}
+interface IProps extends IUser {}
 
-export const User: React.SFC<IProps> = ({ path, data }) => {
-  const { bio, cover_image, name, profile_image } = data[0];
+export const User: React.SFC<IProps> = props => {
+  const { bio, cover_image, name, profile_image } = props[0];
 
   return (
     <UserWrapper>
       <p>{bio}</p>
-      <img style={{ width: 100 }} src={`${path}${cover_image}`} />
+      <img style={{ width: 100 }} src={`${GHOST_CMS}${cover_image}`} />
       <p>{name}</p>
-      <img style={{ width: 50 }} src={`${path}${profile_image}`} />
+      <img style={{ width: 50 }} src={`${GHOST_CMS}${profile_image}`} />
     </UserWrapper>
   );
 };

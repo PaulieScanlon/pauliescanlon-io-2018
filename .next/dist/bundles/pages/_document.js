@@ -86,6 +86,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_document___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_document__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_glamor_server__ = __webpack_require__("glamor/server");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_glamor_server___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_glamor_server__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_utils_api__ = __webpack_require__("./src/utils/api.ts");
 
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/_document.tsx";
 
@@ -109,6 +110,7 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -172,54 +174,54 @@ function (_Document) {
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("html", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 23
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["Head"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 24
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 25
         }
-      }, "With Glamorous"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
+      }, "Paul Scanlon"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
         dangerouslySetInnerHTML: {
           __html: this.props.css
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 26
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("script", {
-        src: "http://138.68.162.135/public/ghost-sdk.min.js?v=d1b11a97e4",
+        src: "".concat(__WEBPACK_IMPORTED_MODULE_4__src_utils_api__["a" /* GHOST_CMS */], "/public/ghost-sdk.min.js?v=d1b11a97e4"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 27
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("script", {
         dangerouslySetInnerHTML: {
-          __html: "            ghost.init({\n              clientId: \"ghost-frontend\",\n              clientSecret: \"7e66121d4050\"\n            });"
+          __html: "ghost.init({\n                  clientId: \"ghost-frontend\",\n                  clientSecret: \"7e66121d4050\"\n              });"
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 28
         }
       })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35
+          lineNumber: 37
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36
+          lineNumber: 38
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 39
         }
       })));
     }
@@ -229,6 +231,15 @@ function (_Document) {
 }(__WEBPACK_IMPORTED_MODULE_2_next_document___default.a);
 
 
+
+/***/ }),
+
+/***/ "./src/utils/api.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GHOST_CMS; });
+var GHOST_CMS = 'http://138.68.162.135';
 
 /***/ }),
 

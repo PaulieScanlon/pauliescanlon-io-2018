@@ -11,9 +11,6 @@ export default () => (
     <Link href="/about">
       <a>About</a>
     </Link>
-    <Fetcher
-      endPoint="users"
-      renderComponent={(path, data) => <User path={path} data={data} />}
-    />
+    <Fetcher endPoint="users" renderComponent={data => <User {...data} />} />
   </MuiThemeProvider>
 );

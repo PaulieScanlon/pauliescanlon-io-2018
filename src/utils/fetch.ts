@@ -51,12 +51,10 @@ const triggerFetch = ({ endPoint, params }: IProps) => {
       return {
         isLoading: false,
         data,
-        hasErrored: false,
-        url: window['ghost'].url.api()
+        hasErrored: false
       };
     })
     .catch(() => {
-      // console.log('error: ', error);
       return {
         isLoading: false,
         data: null,
