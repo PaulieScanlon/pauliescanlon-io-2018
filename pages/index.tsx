@@ -1,11 +1,12 @@
 import Link from 'next/link';
-
+import { theme } from '../src/styles/';
 import { Fetcher } from '../src/containers/fetcher';
-
 import { User } from '../src/components/user';
 
+import { MuiThemeProvider } from '@material-ui/core/styles';
+
 export default () => (
-  <div>
+  <MuiThemeProvider theme={theme}>
     Hello World.{' '}
     <Link href="/about">
       <a>About</a>
@@ -14,5 +15,5 @@ export default () => (
       endPoint="users"
       renderComponent={(path, data) => <User path={path} data={data} />}
     />
-  </div>
+  </MuiThemeProvider>
 );

@@ -81,45 +81,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_components_user__ = __webpack_require__("./src/components/user/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_styles___ = __webpack_require__("./src/styles/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_components_user__ = __webpack_require__("./src/components/user/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__);
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/index.tsx";
 
 
 
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__["MuiThemeProvider"], {
+    theme: __WEBPACK_IMPORTED_MODULE_2__src_styles___["a" /* theme */],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 9
     }
   }, "Hello World.", ' ', __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 11
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 12
     }
-  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__["a" /* Fetcher */], {
+  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_containers_fetcher__["a" /* Fetcher */], {
     endPoint: "users",
     renderComponent: function renderComponent(path, data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_components_user__["a" /* User */], {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__src_components_user__["a" /* User */], {
         path: path,
         data: data,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15
+          lineNumber: 16
         }
       });
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 14
     }
   }));
 });
@@ -173,7 +179,9 @@ var Loading = function Loading() {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/user/styles.ts");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/user/index.tsx";
+
 
 var User = function User(_ref) {
   var path = _ref.path,
@@ -183,15 +191,15 @@ var User = function User(_ref) {
       cover_image = _data$.cover_image,
       name = _data$.name,
       profile_image = _data$.profile_image;
-  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("div", {
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserWrapper */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 34
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 35
     }
   }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
@@ -200,12 +208,12 @@ var User = function User(_ref) {
     src: "".concat(path).concat(cover_image),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 36
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 37
     }
   }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
@@ -214,10 +222,24 @@ var User = function User(_ref) {
     src: "".concat(path).concat(profile_image),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 38
     }
   }));
 };
+
+/***/ }),
+
+/***/ "./src/components/user/styles.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserWrapper; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamorous__ = __webpack_require__("glamorous");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamorous___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_glamorous__);
+
+var UserWrapper = __WEBPACK_IMPORTED_MODULE_0_glamorous___default.a.div({
+  label: 'user-wrapper'
+});
 
 /***/ }),
 
@@ -328,6 +350,42 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./src/styles/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return theme; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamor__ = __webpack_require__("glamor");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_glamor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__);
+
+
+__WEBPACK_IMPORTED_MODULE_0_glamor__["css"].global('html, body, #root', {
+  margin: 0,
+  padding: 0,
+  fontFamily: 'sans-serif'
+});
+var theme = Object(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__["createMuiTheme"])({
+  palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#fb2e69' // dark: will be calculated from palette.primary.main,
+      // contrastText: will be calculated to contast with palette.primary.main
+
+    },
+    secondary: {
+      // light: will be calculated from palette.secondary.main,
+      main: '#00b5fe' // dark: will be calculated from palette.secondary.main,
+      // contrastText: will be calculated to contast with palette.secondary.main
+      // error: will use the default color
+
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./src/utils/fetch.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -400,6 +458,27 @@ var triggerFetch = function triggerFetch(_ref) {
 
 module.exports = __webpack_require__("./pages/index.tsx");
 
+
+/***/ }),
+
+/***/ "@material-ui/core/styles":
+/***/ (function(module, exports) {
+
+module.exports = require("@material-ui/core/styles");
+
+/***/ }),
+
+/***/ "glamor":
+/***/ (function(module, exports) {
+
+module.exports = require("glamor");
+
+/***/ }),
+
+/***/ "glamorous":
+/***/ (function(module, exports) {
+
+module.exports = require("glamorous");
 
 /***/ }),
 

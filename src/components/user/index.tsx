@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { IPath } from '../../types/component-types';
 
+import { UserWrapper } from './styles';
+
 interface IUsers {
   // accessibility: any;
   bio: string;
@@ -29,11 +31,11 @@ export const User: React.SFC<IProps> = ({ path, data }) => {
   const { bio, cover_image, name, profile_image } = data[0];
 
   return (
-    <div>
+    <UserWrapper>
       <p>{bio}</p>
       <img style={{ width: 100 }} src={`${path}${cover_image}`} />
       <p>{name}</p>
       <img style={{ width: 50 }} src={`${path}${profile_image}`} />
-    </div>
+    </UserWrapper>
   );
 };
