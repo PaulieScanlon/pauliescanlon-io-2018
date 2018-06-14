@@ -1,5 +1,5 @@
 module.exports =
-webpackJsonp([0],{
+webpackJsonp([1],{
 
 /***/ "./node_modules/@babel/runtime/core-js/array/from.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -36715,7 +36715,7 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./node_modules/next/dist/client/webpack-hot-middleware-client.js");
@@ -36725,5 +36725,5 @@ module.exports = __webpack_require__("./node_modules/next/dist/client/next-dev.j
 
 /***/ })
 
-},[0]);
+},[1]);
 //# sourceMappingURL=main.js.map

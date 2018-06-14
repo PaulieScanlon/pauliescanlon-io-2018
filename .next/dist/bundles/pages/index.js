@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -81,11 +81,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_styles___ = __webpack_require__("./src/styles/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__src_components_user__ = __webpack_require__("./src/components/user/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__src_components_user__ = __webpack_require__("./src/components/user/index.tsx");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/index.tsx";
 
 
@@ -94,39 +91,36 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-
-
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__material_ui_core_styles__["MuiThemeProvider"], {
-    theme: __WEBPACK_IMPORTED_MODULE_2__src_styles___["a" /* theme */],
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 7
     }
-  }, "Hello World.", ' ', __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 8
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 9
     }
-  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_containers_fetcher__["a" /* Fetcher */], {
+  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__src_containers_fetcher__["a" /* Fetcher */], {
     endPoint: "users",
     renderComponent: function renderComponent(data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__src_components_user__["a" /* User */], _extends({}, data, {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__src_components_user__["a" /* User */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14
+          lineNumber: 11
         }
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 11
     }
   }));
 });
@@ -181,9 +175,7 @@ var Loading = function Loading() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/user/styles.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_api__ = __webpack_require__("./src/utils/api.ts");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/user/index.tsx";
-
 
 
 var User = function User(props) {
@@ -195,18 +187,23 @@ var User = function User(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserWrapper */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 12
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
+      lineNumber: 13
+    }
+  }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+    __source: {
+      fileName: _jsxFileName,
       lineNumber: 15
     }
-  }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
+  }, "Test"), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
       width: 100
     },
-    src: "".concat(__WEBPACK_IMPORTED_MODULE_2__utils_api__["a" /* GHOST_CMS */]).concat(cover_image),
+    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(cover_image),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
@@ -214,16 +211,16 @@ var User = function User(props) {
   }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 20
     }
   }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
       width: 50
     },
-    src: "".concat(__WEBPACK_IMPORTED_MODULE_2__utils_api__["a" /* GHOST_CMS */]).concat(profile_image),
+    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(profile_image),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 21
     }
   }));
 };
@@ -339,51 +336,6 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./src/styles/index.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return theme; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamor__ = __webpack_require__("glamor");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_glamor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__);
-
-
-__WEBPACK_IMPORTED_MODULE_0_glamor__["css"].global('html, body, #root', {
-  margin: 0,
-  padding: 0,
-  fontFamily: 'sans-serif'
-});
-var theme = Object(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__["createMuiTheme"])({
-  palette: {
-    primary: {
-      // light: will be calculated from palette.primary.main,
-      main: '#fb2e69' // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contast with palette.primary.main
-
-    },
-    secondary: {
-      // light: will be calculated from palette.secondary.main,
-      main: '#00b5fe' // dark: will be calculated from palette.secondary.main,
-      // contrastText: will be calculated to contast with palette.secondary.main
-      // error: will use the default color
-
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./src/utils/api.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GHOST_CMS; });
-var GHOST_CMS = 'http://138.68.162.135';
-
-/***/ }),
-
 /***/ "./src/utils/fetch.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -432,7 +384,7 @@ var triggerFetch = function triggerFetch(_ref) {
   return fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
     return res.json();
   }).then(function (data) {
-    // console.log('data: ', data);
+    console.log('data: ', data);
     return {
       isLoading: false,
       data: data,
@@ -449,25 +401,11 @@ var triggerFetch = function triggerFetch(_ref) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.tsx");
 
-
-/***/ }),
-
-/***/ "@material-ui/core/styles":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/styles");
-
-/***/ }),
-
-/***/ "glamor":
-/***/ (function(module, exports) {
-
-module.exports = require("glamor");
 
 /***/ }),
 

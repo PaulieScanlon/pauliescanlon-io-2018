@@ -47,7 +47,7 @@ const triggerFetch = ({ endPoint, params }: IProps) => {
   )
     .then(res => res.json())
     .then(data => {
-      // console.log('data: ', data);
+      console.log('data: ', data);
       return {
         isLoading: false,
         data,

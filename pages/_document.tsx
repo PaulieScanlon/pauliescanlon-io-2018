@@ -1,7 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import { renderStatic } from 'glamor/server';
 
-import { GHOST_CMS } from '../src/utils/api';
+import { theme } from '../src/styles/';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }) {
@@ -24,7 +25,11 @@ export default class MyDocument extends Document {
         <Head>
           <title>Paul Scanlon</title>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
-          <script src={`${GHOST_CMS}/public/ghost-sdk.min.js?v=d1b11a97e4`} />
+          <script
+            src={`${
+              process.env.GHOST_CMS
+            }/public/ghost-sdk.min.js?v=d1b11a97e4`}
+          />
           <script
             dangerouslySetInnerHTML={{
               __html: `ghost.init({
@@ -35,8 +40,10 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+          <MuiThemeProvider theme={theme}>
+            <Main />
+            <NextScript />
+          </MuiThemeProvider>
         </body>
       </html>
     );
