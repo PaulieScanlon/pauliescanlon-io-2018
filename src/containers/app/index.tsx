@@ -3,10 +3,6 @@ import Link from 'next/link';
 import { Fetcher } from '../fetcher';
 import { User } from '../../components/user';
 
-// const users = ():string => {
-//   return "test"
-// }
-
 export const App: React.SFC = () => {
   return (
     <div>
@@ -17,5 +13,3 @@ export const App: React.SFC = () => {
     </div>
   );
 };
-
-// dataHandler={(data) => users<String>(data) }
