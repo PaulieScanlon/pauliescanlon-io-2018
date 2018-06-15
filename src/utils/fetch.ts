@@ -8,6 +8,7 @@ interface IProps {
 }
 
 export const goFetch = {
+  //these are the endPoint 'props' for Fetcher
   users: () => {
     return triggerFetch({
       endPoint: 'users/1'
@@ -47,7 +48,7 @@ const triggerFetch = ({ endPoint, params }: IProps) => {
   )
     .then(res => res.json())
     .then(data => {
-      console.log('data: ', data);
+      // console.log('data: ', data);
       // logic
       return {
         isLoading: false,

@@ -5722,6 +5722,96 @@ var Loading = function Loading() {
 
 /***/ }),
 
+/***/ "./src/components/post/index.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Post; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/post/styles.ts");
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/post/index.tsx";
+
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+
+ // import { IPostData } from '../../types/api-types';
+
+var Post = function Post(props) {
+  // export const User: React.SFC<IUserData> = props => {
+  console.log('Post: ', props);
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* PostWrapper */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 12
+    }
+  }, "Post"));
+};
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(Post, "Post", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/post/index.tsx");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/components/post/styles.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostWrapper; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamorous__ = __webpack_require__("./node_modules/glamorous/dist/glamorous.esm.js");
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+
+var PostWrapper = __WEBPACK_IMPORTED_MODULE_0_glamorous__["a" /* default */].div({
+  label: 'post-wrapper'
+});
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(PostWrapper, "PostWrapper", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/post/styles.ts");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
 /***/ "./src/components/user/index.tsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5741,11 +5831,11 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
 
 
 var User = function User(props) {
-  var _props$ = props[0],
-      bio = _props$.bio,
-      cover_image = _props$.cover_image,
-      name = _props$.name,
-      profile_image = _props$.profile_image;
+  // export const User: React.SFC<IUserData> = props => {
+  var bio = props.bio,
+      coverImage = props.coverImage,
+      name = props.name,
+      profileImage = props.profileImage;
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserWrapper */], {
     __source: {
       fileName: _jsxFileName,
@@ -5759,30 +5849,30 @@ var User = function User(props) {
   }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 14
     }
   }, "Test"), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
       width: 100
     },
-    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(cover_image),
+    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(coverImage),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 15
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 19
     }
   }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
     style: {
       width: 50
     },
-    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(profile_image),
+    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(profileImage),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 20
     }
   }));
 };
@@ -5853,6 +5943,8 @@ var UserWrapper = __WEBPACK_IMPORTED_MODULE_0_glamorous__["a" /* default */].div
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_user__ = __webpack_require__("./src/components/user/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_post__ = __webpack_require__("./src/components/post/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_api_handlers__ = __webpack_require__("./src/utils/api-handlers.ts");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/app/index.tsx";
 
 
@@ -5867,36 +5959,54 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
+
 var App = function App() {
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 11
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 9
+      lineNumber: 12
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 13
     }
   }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fetcher__["a" /* Fetcher */], {
     endPoint: "users",
+    dataHandler: __WEBPACK_IMPORTED_MODULE_5__utils_api_handlers__["b" /* usersHandler */],
     renderComponent: function renderComponent(data) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_user__["a" /* User */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 18
         }
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 15
+    }
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__fetcher__["a" /* Fetcher */], {
+    endPoint: "posts",
+    dataHandler: __WEBPACK_IMPORTED_MODULE_5__utils_api_handlers__["a" /* postsHandler */],
+    renderComponent: function renderComponent(data) {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_post__["a" /* Post */], _extends({}, data, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        }
+      }));
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
     }
   }));
 };
@@ -5982,10 +6092,9 @@ function (_React$Component) {
 
       var userFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* goFetch */][this.props.endPoint]();
       userFetch.then(function (res) {
-        // call the dataHandler before returning the data
         _this2.setState({
           isLoading: res.isLoading,
-          data: res.data ? res.data[_this2.props.endPoint] : null,
+          data: res.data ? _this2.props.dataHandler(res.data[_this2.props.endPoint]) : null,
           hasErrored: res.hasErrored
         });
       });
@@ -6003,7 +6112,7 @@ function (_React$Component) {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__components_loading__["a" /* Loading */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 42
+            lineNumber: 43
           }
         });
       }
@@ -6011,7 +6120,7 @@ function (_React$Component) {
       return hasErrored ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_error__["a" /* Error */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 46
         }
       }) : renderComponent(data);
     }
@@ -6046,6 +6155,51 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./src/utils/api-handlers.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return usersHandler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return postsHandler; });
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var usersHandler = function usersHandler(data) {
+  var userData = {
+    bio: data[0].bio,
+    coverImage: data[0].cover_image,
+    name: data[0].name,
+    profileImage: data[0].profile_image
+  };
+  return userData;
+};
+var postsHandler = function postsHandler(data) {
+  return data;
+};
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(usersHandler, "usersHandler", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/utils/api-handlers.ts");
+  reactHotLoader.register(postsHandler, "postsHandler", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/utils/api-handlers.ts");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
 /***/ "./src/utils/fetch.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6062,6 +6216,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var goFetch = {
+  //these are the endPoint 'props' for Fetcher
   users: function users() {
     return triggerFetch({
       endPoint: 'users/1'
@@ -6100,8 +6255,8 @@ var triggerFetch = function triggerFetch(_ref) {
   return fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
     return res.json();
   }).then(function (data) {
-    console.log('data: ', data); // logic
-
+    // console.log('data: ', data);
+    // logic
     return {
       isLoading: false,
       data: data,

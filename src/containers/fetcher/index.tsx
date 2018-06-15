@@ -8,7 +8,7 @@ import { goFetch } from '../../utils/fetch';
 
 interface IProps {
   endPoint: string;
-  // dataHandler(data: any); // should be a function
+  dataHandler(data: any);
   renderComponent(data: any): React.ReactNode;
 }
 
@@ -25,10 +25,11 @@ export class Fetcher extends React.Component<IProps, IFetchState> {
   componentDidMount() {
     const userFetch = goFetch[this.props.endPoint]();
     userFetch.then(res => {
-      // call the dataHandler before returning the data
       this.setState({
         isLoading: res.isLoading,
-        data: res.data ? res.data[this.props.endPoint] : null,
+        data: res.data
+          ? this.props.dataHandler(res.data[this.props.endPoint])
+          : null,
         hasErrored: res.hasErrored
       });
     });
