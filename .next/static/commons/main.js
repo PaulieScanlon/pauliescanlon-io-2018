@@ -36715,7 +36715,7 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./node_modules/next/dist/client/webpack-hot-middleware-client.js");
@@ -36725,5 +36725,5 @@ module.exports = __webpack_require__("./node_modules/next/dist/client/next-dev.j
 
 /***/ })
 
-},[1]);
+},[0]);
 //# sourceMappingURL=main.js.map

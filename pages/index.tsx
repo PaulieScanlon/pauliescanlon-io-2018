@@ -1,13 +1,3 @@
-import Link from 'next/link';
+import { App } from '../src/containers/app';
 
-import { Fetcher } from '../src/containers/fetcher';
-import { User } from '../src/components/user';
-
-export default () => (
-  <div>
-    <Link href="/about">
-      <a>About</a>
-    </Link>
-    <Fetcher endPoint="users" renderComponent={data => <User {...data} />} />
-  </div>
-);
+export default () => <App />;
