@@ -5982,6 +5982,7 @@ function (_React$Component) {
 
       var userFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* goFetch */][this.props.endPoint]();
       userFetch.then(function (res) {
+        // call the dataHandler before returning the data
         _this2.setState({
           isLoading: res.isLoading,
           data: res.data ? res.data[_this2.props.endPoint] : null,
@@ -6002,7 +6003,7 @@ function (_React$Component) {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__components_loading__["a" /* Loading */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 40
+            lineNumber: 42
           }
         });
       }
@@ -6010,7 +6011,7 @@ function (_React$Component) {
       return hasErrored ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_error__["a" /* Error */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43
+          lineNumber: 45
         }
       }) : renderComponent(data);
     }
@@ -6099,7 +6100,8 @@ var triggerFetch = function triggerFetch(_ref) {
   return fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
     return res.json();
   }).then(function (data) {
-    console.log('data: ', data);
+    console.log('data: ', data); // logic
+
     return {
       isLoading: false,
       data: data,
