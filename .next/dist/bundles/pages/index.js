@@ -142,24 +142,31 @@ var Loading = function Loading() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/post/styles.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ui_post_card__ = __webpack_require__("./src/components/ui/post-card/index.tsx");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/post/index.tsx";
 
- // import { IPostData } from '../../types/api-types';
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
 
 var Post = function Post(props) {
-  // export const User: React.SFC<IUserData> = props => {
-  console.log('Post: ', props);
+  var posts = Object.values(props).map(function (post, i) {
+    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__ui_post_card__["a" /* PostCard */], _extends({
+      key: i
+    }, post, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      }
+    }));
+  });
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* PostWrapper */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 14
     }
-  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    }
-  }, "Post"));
+  }, posts);
 };
 
 /***/ }),
@@ -174,6 +181,48 @@ var Post = function Post(props) {
 
 var PostWrapper = __WEBPACK_IMPORTED_MODULE_0_glamorous___default.a.div({
   label: 'post-wrapper'
+});
+
+/***/ }),
+
+/***/ "./src/components/ui/post-card/index.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostCard; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/ui/post-card/styles.ts");
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/ui/post-card/index.tsx";
+
+
+var PostCard = function PostCard(postData) {
+  var title = postData.title;
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* CardWrapper */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 10
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("p", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 11
+    }
+  }, title));
+};
+
+/***/ }),
+
+/***/ "./src/components/ui/post-card/styles.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CardWrapper; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamorous__ = __webpack_require__("glamorous");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamorous___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_glamorous__);
+
+var CardWrapper = __WEBPACK_IMPORTED_MODULE_0_glamorous___default.a.div({
+  label: 'card-wrapper'
 });
 
 /***/ }),
@@ -381,8 +430,8 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var userFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* goFetch */][this.props.endPoint]();
-      userFetch.then(function (res) {
+      var dataFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* fetchType */][this.props.endPoint]();
+      dataFetch.then(function (res) {
         _this2.setState({
           isLoading: res.isLoading,
           data: res.data ? _this2.props.dataHandler(res.data[_this2.props.endPoint]) : null,
@@ -428,17 +477,42 @@ function (_React$Component) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return usersHandler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return postsHandler; });
+var mapTags = function mapTags(tags) {
+  var tagNames = tags.map(function (tag) {
+    return tag.name;
+  });
+  return tagNames;
+};
+
 var usersHandler = function usersHandler(data) {
   var userData = {
     bio: data[0].bio,
     coverImage: data[0].cover_image,
+    //TODO return with process.env.GHOST_CMS
     name: data[0].name,
-    profileImage: data[0].profile_image
+    profileImage: data[0].profile_image //TODO return with process.env.GHOST_CMS
+
   };
   return userData;
 };
 var postsHandler = function postsHandler(data) {
-  return data;
+  var posts = data.map(function (data) {
+    return {
+      customExcerpt: data.custom_excerpt,
+      featureImage: data.feature_image,
+      //TODO return with process.env.GHOST_CMS
+      featured: data.featured,
+      html: data.html,
+      id: data.id,
+      publishedAt: data.published_at,
+      slug: data.slug,
+      tags: mapTags(data.tags),
+      title: data.title,
+      url: data.url //TODO return with process.env.GHOST_CMS ?
+
+    };
+  });
+  return posts;
 };
 
 /***/ }),
@@ -447,20 +521,20 @@ var postsHandler = function postsHandler(data) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return goFetch; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return fetchType; });
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var goFetch = {
+var fetchType = {
   //these are the endPoint 'props' for Fetcher
   users: function users() {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'users/1'
     });
   },
   posts: function posts() {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'posts',
       params: {
         include: 'tags'
@@ -468,7 +542,7 @@ var goFetch = {
     });
   },
   tags: function tags() {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'tags',
       params: {
         include: 'count.posts'
@@ -476,7 +550,7 @@ var goFetch = {
     });
   },
   sections: function sections() {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'posts',
       params: {
         filter: 'page:true',
@@ -486,14 +560,13 @@ var goFetch = {
   }
 };
 
-var triggerFetch = function triggerFetch(_ref) {
+var goFetch = function goFetch(_ref) {
   var endPoint = _ref.endPoint,
       params = _ref.params;
   return fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
     return res.json();
   }).then(function (data) {
     // console.log('data: ', data);
-    // logic
     return {
       isLoading: false,
       data: data,

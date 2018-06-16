@@ -4,7 +4,7 @@ import { Loading } from '../../components/loading';
 import { Error } from '../../components/error';
 
 import { IFetchState } from '../../types/container-types';
-import { goFetch } from '../../utils/fetch';
+import { fetchType } from '../../utils/fetch';
 
 interface IProps {
   endPoint: string;
@@ -23,8 +23,8 @@ export class Fetcher extends React.Component<IProps, IFetchState> {
   }
 
   componentDidMount() {
-    const userFetch = goFetch[this.props.endPoint]();
-    userFetch.then(res => {
+    const dataFetch = fetchType[this.props.endPoint]();
+    dataFetch.then(res => {
       this.setState({
         isLoading: res.isLoading,
         data: res.data

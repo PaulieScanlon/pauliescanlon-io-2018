@@ -13,7 +13,7 @@ export interface IPostData {
   id: string;
   publishedAt: string;
   slug: string;
-  tags: any; // TODO type to ITags
+  tags: string[];
   title: string;
   url: string;
 }
