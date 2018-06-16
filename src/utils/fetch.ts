@@ -7,29 +7,30 @@ interface IProps {
   };
 }
 
-export const goFetch = {
+export const fetchType = {
+  //these are the endPoint 'props' for Fetcher
   users: () => {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'users/1'
     });
   },
 
   posts: () => {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'posts',
       params: { include: 'tags' }
     });
   },
 
   tags: () => {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'tags',
       params: { include: 'count.posts' }
     });
   },
 
   sections: () => {
-    return triggerFetch({
+    return goFetch({
       endPoint: 'posts',
       params: {
         filter: 'page:true',
@@ -39,7 +40,7 @@ export const goFetch = {
   }
 };
 
-const triggerFetch = ({ endPoint, params }: IProps) => {
+const goFetch = ({ endPoint, params }: IProps) => {
   return fetch(
     window['ghost'].url.api(`${endPoint}`, {
       ...params
@@ -47,8 +48,7 @@ const triggerFetch = ({ endPoint, params }: IProps) => {
   )
     .then(res => res.json())
     .then(data => {
-      console.log('data: ', data);
-      // logic
+      // console.log('data: ', data);
       return {
         isLoading: false,
         data,

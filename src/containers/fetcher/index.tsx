@@ -4,10 +4,14 @@ import { Loading } from '../../components/loading';
 import { Error } from '../../components/error';
 
 import { IFetchState } from '../../types/container-types';
-import { goFetch } from '../../utils/fetch';
+import { fetchType } from '../../utils/fetch';
 
 interface IProps {
   endPoint: string;
+<<<<<<< HEAD
+=======
+  dataHandler(data: any);
+>>>>>>> data/generic-type
   renderComponent(data: any): React.ReactNode;
 }
 
@@ -22,11 +26,18 @@ export class Fetcher extends React.Component<IProps, IFetchState> {
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     const userFetch = goFetch[this.props.endPoint]();
     userFetch.then(res => {
+=======
+    const dataFetch = fetchType[this.props.endPoint]();
+    dataFetch.then(res => {
+>>>>>>> data/generic-type
       this.setState({
         isLoading: res.isLoading,
-        data: res.data ? res.data[this.props.endPoint] : null,
+        data: res.data
+          ? this.props.dataHandler(res.data[this.props.endPoint])
+          : null,
         hasErrored: res.hasErrored
       });
     });
