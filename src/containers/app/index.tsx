@@ -4,11 +4,8 @@ import { Fetcher } from '../fetcher';
 import { User } from '../../components/user';
 import { Post } from '../../components/post';
 
-<<<<<<< HEAD
-=======
 import { usersHandler, postsHandler } from '../../utils/api-handlers';
 
->>>>>>> data/generic-type
 export const App: React.SFC = () => {
   return (
     <div>

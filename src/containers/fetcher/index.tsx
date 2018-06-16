@@ -8,10 +8,7 @@ import { fetchType } from '../../utils/fetch';
 
 interface IProps {
   endPoint: string;
-<<<<<<< HEAD
-=======
   dataHandler(data: any);
->>>>>>> data/generic-type
   renderComponent(data: any): React.ReactNode;
 }
 
@@ -26,13 +23,8 @@ export class Fetcher extends React.Component<IProps, IFetchState> {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    const userFetch = goFetch[this.props.endPoint]();
-    userFetch.then(res => {
-=======
     const dataFetch = fetchType[this.props.endPoint]();
     dataFetch.then(res => {
->>>>>>> data/generic-type
       this.setState({
         isLoading: res.isLoading,
         data: res.data
