@@ -405,13 +405,10 @@ function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles__ = __webpack_require__("./src/styles/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__material_ui_core_styles__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_user__ = __webpack_require__("./src/components/user/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_post__ = __webpack_require__("./src/components/post/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils_api_handlers__ = __webpack_require__("./src/utils/api-handlers.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_user__ = __webpack_require__("./src/components/user/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_post__ = __webpack_require__("./src/components/post/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_api_handlers__ = __webpack_require__("./src/utils/api-handlers.ts");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/index.tsx";
 
 
@@ -422,94 +419,55 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
-
-
 var App = function App() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__material_ui_core_styles__["MuiThemeProvider"], {
-    theme: __WEBPACK_IMPORTED_MODULE_2__styles__["a" /* theme */],
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 11
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 12
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 13
     }
-  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__containers_fetcher__["a" /* Fetcher */], {
+  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__containers_fetcher__["a" /* Fetcher */], {
     endPoint: "users",
-    dataHandler: __WEBPACK_IMPORTED_MODULE_7__utils_api_handlers__["b" /* usersHandler */],
+    dataHandler: __WEBPACK_IMPORTED_MODULE_5__utils_api_handlers__["b" /* usersHandler */],
     renderComponent: function renderComponent(data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__components_user__["a" /* User */], _extends({}, data, {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__components_user__["a" /* User */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 18
         }
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 15
     }
-  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__containers_fetcher__["a" /* Fetcher */], {
+  }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__containers_fetcher__["a" /* Fetcher */], {
     endPoint: "posts",
-    dataHandler: __WEBPACK_IMPORTED_MODULE_7__utils_api_handlers__["a" /* postsHandler */],
+    dataHandler: __WEBPACK_IMPORTED_MODULE_5__utils_api_handlers__["a" /* postsHandler */],
     renderComponent: function renderComponent(data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__components_post__["a" /* Post */], _extends({}, data, {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__components_post__["a" /* Post */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 23
         }
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 20
     }
   }));
 };
-
-/***/ }),
-
-/***/ "./src/styles/index.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return theme; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamor__ = __webpack_require__("glamor");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_glamor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_glamor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__ = __webpack_require__("@material-ui/core/styles");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__);
-
-
-__WEBPACK_IMPORTED_MODULE_0_glamor__["css"].global('html, body, #root', {
-  margin: 0,
-  padding: 0,
-  fontFamily: 'sans-serif'
-});
-var theme = Object(__WEBPACK_IMPORTED_MODULE_1__material_ui_core_styles__["createMuiTheme"])({
-  palette: {
-    primary: {
-      // light: will be calculated from palette.primary.main,
-      main: '#fb2e69' // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contast with palette.primary.main
-
-    },
-    secondary: {
-      // light: will be calculated from palette.secondary.main,
-      main: '#00b5fe' // dark: will be calculated from palette.secondary.main,
-      // contrastText: will be calculated to contast with palette.secondary.main
-      // error: will use the default color
-
-    }
-  }
-});
 
 /***/ }),
 
@@ -630,20 +588,6 @@ var goFetch = function goFetch(_ref) {
 
 module.exports = __webpack_require__("./pages/index.tsx");
 
-
-/***/ }),
-
-/***/ "@material-ui/core/styles":
-/***/ (function(module, exports) {
-
-module.exports = require("@material-ui/core/styles");
-
-/***/ }),
-
-/***/ "glamor":
-/***/ (function(module, exports) {
-
-module.exports = require("glamor");
 
 /***/ }),
 
