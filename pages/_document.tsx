@@ -1,9 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import { renderStatic } from 'glamor/server';
 
-import { theme } from '../src/styles/';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }) {
     const page = renderPage();
@@ -40,10 +37,8 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
-          <MuiThemeProvider theme={theme}>
-            <Main />
-            <NextScript />
-          </MuiThemeProvider>
+          <Main />
+          <NextScript />
         </body>
       </html>
     );

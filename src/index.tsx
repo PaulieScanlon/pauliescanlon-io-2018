@@ -1,14 +1,17 @@
 import Link from 'next/link';
 
-import { Fetcher } from '../fetcher';
-import { User } from '../../components/user';
-import { Post } from '../../components/post';
+import { theme } from './styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
-import { usersHandler, postsHandler } from '../../utils/api-handlers';
+import { Fetcher } from './containers/fetcher';
+import { User } from './components/user';
+import { Post } from './components/post';
+
+import { usersHandler, postsHandler } from './utils/api-handlers';
 
 export const App: React.SFC = () => {
   return (
-    <div>
+    <MuiThemeProvider theme={theme}>
       <Link href="/about">
         <a>About</a>
       </Link>
@@ -22,6 +25,6 @@ export const App: React.SFC = () => {
         dataHandler={postsHandler}
         renderComponent={data => <Post {...data} />}
       />
-    </div>
+    </MuiThemeProvider>
   );
 };

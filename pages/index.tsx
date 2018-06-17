@@ -1,3 +1,3 @@
-import { App } from '../src/containers/app';
+import { App } from '../src/index';
 
 export default () => <App />;
