@@ -1,3 +1,3 @@
-import { App } from '../src/index';
+import { App } from '../src/app';
 
 export default () => <App />;

@@ -159,7 +159,7 @@ var _inherits2 = _interopRequireDefault(__webpack_require__("./node_modules/@bab
 
 var _react = _interopRequireDefault(__webpack_require__("./node_modules/react/cjs/react.development.js"));
 
-var _propTypes = _interopRequireDefault(__webpack_require__("./node_modules/next/node_modules/prop-types/index.js"));
+var _propTypes = _interopRequireDefault(__webpack_require__("./node_modules/prop-types/index.js"));
 
 var _httpStatus = _interopRequireDefault(__webpack_require__("./node_modules/http-status/lib/index.js"));
 
@@ -276,7 +276,7 @@ module.exports = __webpack_require__("./node_modules/next/dist/lib/error.js")
 
 /***/ }),
 
-/***/ 3:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./node_modules/next/dist/pages/_error.js");
@@ -284,7 +284,7 @@ module.exports = __webpack_require__("./node_modules/next/dist/pages/_error.js")
 
 /***/ })
 
-},[3])
+},[7])
           return { page: comp.default }
         })
       ;

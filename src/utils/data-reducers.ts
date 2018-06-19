@@ -1,4 +1,4 @@
-import { IUserData, IPostData } from '../types/api-types';
+import { IUserData, IPostData } from '../types/data-types';
 
 const mapTags = (tags: any): string[] => {
   const tagNames = tags.map(tag => {

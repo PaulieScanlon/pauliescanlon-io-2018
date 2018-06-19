@@ -10,18 +10,21 @@
   },
   "dependencies": {
     "@zeit/next-typescript": "1.0.1",
-    "babel-plugin-inline-dotenv": "^1.1.2",
-    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
-    "glamor": "^2.20.40",
-    "glamorous": "^4.13.1",
+    "emotion": "^9.2.3",
+    "emotion-server": "^9.2.3",
+    "emotion-theming": "^9.2.3",
     "next": "^6.0.3",
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0"
+    "react": "^16.4.1",
+    "react-dom": "^16.4.0",
+    "react-emotion": "^9.2.3"
   },
   "devDependencies": {
     "@types/jest": "^23.0.0",
     "@types/next": "^2.4.7",
     "@types/react": "^16.0.36",
+    "babel-plugin-emotion": "^9.2.0",
+    "babel-plugin-inline-dotenv": "^1.1.2",
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "jest": "^23.1.0",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.4.0",

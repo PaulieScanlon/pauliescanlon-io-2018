@@ -1,10 +1,13 @@
 import Document, { Head, Main, NextScript } from 'next/document';
-import { renderStatic } from 'glamor/server';
+import { extractCritical } from 'emotion-server';
+
+// switch to emotion:
+// https://github.com/zeit/next.js/blob/master/examples/with-emotion/pages/_document.js
 
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }) {
     const page = renderPage();
-    const styles = renderStatic(() => page.html || page.errorHtml);
+    const styles = extractCritical(page.html);
     return { ...page, ...styles };
   }
 
@@ -22,6 +25,10 @@ export default class MyDocument extends Document {
         <Head>
           <title>Paul Scanlon</title>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
+          <link
+            href="https://fonts.googleapis.com/css?family=Nunito|Roboto"
+            rel="stylesheet"
+          />
           <script
             src={`${
               process.env.GHOST_CMS

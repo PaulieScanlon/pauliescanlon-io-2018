@@ -2,10 +2,10 @@
   "presets": ["next/babel", "@zeit/next-typescript/babel"],
   "env": {
     "development": {
-      "plugins": ["inline-dotenv"]
+      "plugins": ["inline-dotenv", "emotion"]
     },
     "production": {
-      "plugins": ["transform-inline-environment-variables"]
+      "plugins": ["transform-inline-environment-variables", "emotion"]
     }
   }
 }

@@ -3,16 +3,21 @@ import * as React from 'react';
 import { Loading } from '../../components/loading';
 import { Error } from '../../components/error';
 
-import { IFetchState } from '../../types/container-types';
 import { fetchType } from '../../utils/fetch';
 
 interface IProps {
   endPoint: string;
-  dataHandler(data: any);
+  dataReducer(data: any);
   renderComponent(data: any): React.ReactNode;
 }
 
-export class Fetcher extends React.Component<IProps, IFetchState> {
+export interface IState {
+  isLoading: boolean;
+  data: any;
+  hasErrored: boolean;
+}
+
+export class Fetcher extends React.Component<IProps, IState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +33,7 @@ export class Fetcher extends React.Component<IProps, IFetchState> {
       this.setState({
         isLoading: res.isLoading,
         data: res.data
-          ? this.props.dataHandler(res.data[this.props.endPoint])
+          ? this.props.dataReducer(res.data[this.props.endPoint])
           : null,
         hasErrored: res.hasErrored
       });

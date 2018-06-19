@@ -84,8 +84,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_document__ = __webpack_require__("next/document");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_document___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_document__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_glamor_server__ = __webpack_require__("glamor/server");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_glamor_server___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_glamor_server__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_emotion_server__ = __webpack_require__("emotion-server");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_emotion_server___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_emotion_server__);
 
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/pages/_document.tsx";
 
@@ -111,7 +111,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-
+ // switch to emotion:
+// https://github.com/zeit/next.js/blob/master/examples/with-emotion/pages/_document.js
 
 var MyDocument =
 /*#__PURE__*/
@@ -131,9 +132,7 @@ function (_Document) {
               case 0:
                 renderPage = _ref.renderPage;
                 page = renderPage();
-                styles = Object(__WEBPACK_IMPORTED_MODULE_3_glamor_server__["renderStatic"])(function () {
-                  return page.html || page.errorHtml;
-                });
+                styles = Object(__WEBPACK_IMPORTED_MODULE_3_emotion_server__["extractCritical"])(page.html);
                 return _context.abrupt("return", _objectSpread({}, page, styles));
 
               case 4:
@@ -172,17 +171,17 @@ function (_Document) {
       return __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("html", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 24
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["Head"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22
+          lineNumber: 25
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("title", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 26
         }
       }, "Paul Scanlon"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
         dangerouslySetInnerHTML: {
@@ -190,13 +189,20 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24
+          lineNumber: 27
+        }
+      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("link", {
+        href: "https://fonts.googleapis.com/css?family=Nunito|Roboto",
+        rel: "stylesheet",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("script", {
         src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135", "/public/ghost-sdk.min.js?v=d1b11a97e4"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 32
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -204,22 +210,22 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 37
         }
       })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 46
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 47
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41
+          lineNumber: 48
         }
       })));
     }
@@ -247,10 +253,10 @@ module.exports = require("@babel/runtime/regenerator");
 
 /***/ }),
 
-/***/ "glamor/server":
+/***/ "emotion-server":
 /***/ (function(module, exports) {
 
-module.exports = require("glamor/server");
+module.exports = require("emotion-server");
 
 /***/ }),
 
