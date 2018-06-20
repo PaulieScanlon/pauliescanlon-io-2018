@@ -3,6 +3,7 @@ import * as React from 'react';
 import { PostWrapper } from './styles';
 
 import { IPostData } from '../../types/data-types';
+import { FlexGrid } from '../../components/flex-grid';
 
 import { Card } from '../../components/card';
 
@@ -11,5 +12,16 @@ export const Post = (props: IPostData[]) => {
     return <Card key={i} {...post} />;
   });
 
-  return <PostWrapper>{posts}</PostWrapper>;
+  return (
+    <PostWrapper>
+      <FlexGrid
+        data={props}
+        cols={{
+          xs: 1,
+          sm: 2
+        }}
+        renderContent={() => posts}
+      />
+    </PostWrapper>
+  );
 };

@@ -260,6 +260,117 @@ var Error = function Error() {
 
 /***/ }),
 
+/***/ "./src/components/flex-grid/index.tsx":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FlexGrid; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/flex-grid/styles.ts");
+var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/flex-grid/index.tsx";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+var FlexGrid =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(FlexGrid, _React$Component);
+
+  function FlexGrid() {
+    _classCallCheck(this, FlexGrid);
+
+    return _possibleConstructorReturn(this, (FlexGrid.__proto__ || Object.getPrototypeOf(FlexGrid)).apply(this, arguments));
+  }
+
+  _createClass(FlexGrid, [{
+    key: "render",
+    value: function render() {
+      var _props = this.props,
+          cols = _props.cols,
+          renderContent = _props.renderContent;
+      return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* FlexContainer */], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["b" /* FlexItem */], {
+        xs: cols.xs,
+        sm: cols.sm,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 18
+        }
+      }, renderContent()));
+    }
+  }]);
+
+  return FlexGrid;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
+
+/***/ }),
+
+/***/ "./src/components/flex-grid/styles.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FlexContainer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return FlexItem; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_emotion__ = __webpack_require__("react-emotion");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_emotion___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_emotion__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_breakpoints__ = __webpack_require__("./src/styles/breakpoints/index.ts");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+ // import { IPx } from '../../styles/breakpoints';
+
+
+var FlexContainer =
+/*#__PURE__*/
+__WEBPACK_IMPORTED_MODULE_0_react_emotion___default()("div", {
+  target: "e1cw9dem0"
+})({
+  label: 'flex-container',
+  display: 'flex',
+  flexWrap: 'wrap'
+});
+var FlexItem =
+/*#__PURE__*/
+__WEBPACK_IMPORTED_MODULE_0_react_emotion___default()("div", {
+  target: "e1cw9dem1"
+})({
+  label: 'flex-item',
+  position: 'relative',
+  boxSizing: 'border-box'
+}, function (_ref) {
+  var _ref2;
+
+  var xs = _ref.xs,
+      sm = _ref.sm;
+  return _ref2 = {}, _defineProperty(_ref2, __WEBPACK_IMPORTED_MODULE_1__styles_breakpoints__["a" /* mq */][0], {
+    border: '1px solid red',
+    width: "calc(".concat(100 / xs, "% - ", 0, "px)")
+  }), _defineProperty(_ref2, __WEBPACK_IMPORTED_MODULE_1__styles_breakpoints__["a" /* mq */][1], {
+    border: '1px solid blue',
+    width: "calc(".concat(100 / sm, "% - ", 0, "px)")
+  }), _ref2;
+});
+
+/***/ }),
+
 /***/ "./src/components/loading/index.tsx":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -383,7 +494,8 @@ function (_React$Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/containers/post/styles.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_card__ = __webpack_require__("./src/components/card/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_flex_grid__ = __webpack_require__("./src/components/flex-grid/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_card__ = __webpack_require__("./src/components/card/index.tsx");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/post/index.tsx";
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -391,23 +503,37 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
 var Post = function Post(props) {
   var posts = Object.values(props).map(function (post, i) {
-    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_card__["a" /* Card */], _extends({
+    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__components_card__["a" /* Card */], _extends({
       key: i
     }, post, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 11
+        lineNumber: 12
       }
     }));
   });
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* PostWrapper */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 16
     }
-  }, posts);
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_flex_grid__["a" /* FlexGrid */], {
+    data: props,
+    cols: {
+      xs: 1,
+      sm: 2
+    },
+    renderContent: function renderContent() {
+      return posts;
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    }
+  }));
 };
 
 /***/ }),
@@ -503,6 +629,39 @@ __WEBPACK_IMPORTED_MODULE_0_react_emotion___default()("div", {
 })({
   label: 'user-wrapper'
 });
+
+/***/ }),
+
+/***/ "./src/styles/breakpoints/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mq; });
+//Bootstrap:
+// xs < 576
+// sm > 576 < md 768
+// md > 768 < 992
+// lg > 992 < 1200
+// xl > 1200
+var px = {
+  xs: 576,
+  sm: 768,
+  md: 992,
+  lg: 1200
+};
+var breakpoints = [px.xs, px.sm, px.md, px.lg];
+var mq = breakpoints.map(function (bp) {
+  return "@media (min-width: ".concat(bp, "px)");
+}); // useage
+// const aDiv = styled.div({
+//   color: 'green',
+//   [mq[0]]: {
+//     color: 'gray'
+//   },
+//   [mq[1]]: {
+//     color: 'hotpink'
+//   }
+// })
 
 /***/ }),
 
