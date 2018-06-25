@@ -24,6 +24,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>Paul Scanlon</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
           <link
             href="https://fonts.googleapis.com/css?family=Nunito|Roboto"

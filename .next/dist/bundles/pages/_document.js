@@ -183,26 +183,33 @@ function (_Document) {
           fileName: _jsxFileName,
           lineNumber: 26
         }
-      }, "Paul Scanlon"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
+      }, "Paul Scanlon"), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("meta", {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 27
+        }
+      }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("style", {
         dangerouslySetInnerHTML: {
           __html: this.props.css
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 28
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("link", {
         href: "https://fonts.googleapis.com/css?family=Nunito|Roboto",
         rel: "stylesheet",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 29
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("script", {
         src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135", "/public/ghost-sdk.min.js?v=d1b11a97e4"),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32
+          lineNumber: 33
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("script", {
         dangerouslySetInnerHTML: {
@@ -210,22 +217,22 @@ function (_Document) {
         },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 38
         }
       })), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement("body", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46
+          lineNumber: 47
         }
       }, __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47
+          lineNumber: 48
         }
       }), __WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_document__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48
+          lineNumber: 49
         }
       })));
     }

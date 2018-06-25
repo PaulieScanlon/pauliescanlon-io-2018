@@ -2794,6 +2794,3140 @@ module.exports = function shimAssign() {
 
 /***/ }),
 
+/***/ "./node_modules/polished/dist/polished.es.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export adjustHue */
+/* unused harmony export animation */
+/* unused harmony export backgroundImages */
+/* unused harmony export backgrounds */
+/* unused harmony export borderColor */
+/* unused harmony export borderRadius */
+/* unused harmony export borderStyle */
+/* unused harmony export borderWidth */
+/* unused harmony export buttons */
+/* unused harmony export clearFix */
+/* unused harmony export complement */
+/* unused harmony export darken */
+/* unused harmony export desaturate */
+/* unused harmony export directionalProperty */
+/* unused harmony export ellipsis */
+/* unused harmony export em */
+/* unused harmony export fontFace */
+/* unused harmony export getLuminance */
+/* unused harmony export grayscale */
+/* unused harmony export invert */
+/* unused harmony export hideText */
+/* unused harmony export hideVisually */
+/* unused harmony export hiDPI */
+/* unused harmony export hsl */
+/* unused harmony export hsla */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return curriedLighten; });
+/* unused harmony export margin */
+/* unused harmony export mix */
+/* unused harmony export modularScale */
+/* unused harmony export normalize */
+/* unused harmony export opacify */
+/* unused harmony export padding */
+/* unused harmony export parseToHsl */
+/* unused harmony export parseToRgb */
+/* unused harmony export placeholder */
+/* unused harmony export position */
+/* unused harmony export radialGradient */
+/* unused harmony export readableColor */
+/* unused harmony export rem */
+/* unused harmony export retinaImage */
+/* unused harmony export rgb */
+/* unused harmony export rgba */
+/* unused harmony export saturate */
+/* unused harmony export selection */
+/* unused harmony export setHue */
+/* unused harmony export setLightness */
+/* unused harmony export setSaturation */
+/* unused harmony export shade */
+/* unused harmony export size */
+/* unused harmony export stripUnit */
+/* unused harmony export textInputs */
+/* unused harmony export timingFunctions */
+/* unused harmony export tint */
+/* unused harmony export toColorString */
+/* unused harmony export transitions */
+/* unused harmony export transparentize */
+/* unused harmony export triangle */
+/* unused harmony export wordWrap */
+//      
+
+// @private
+function capitalizeString(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+//      
+var positionMap = ['Top', 'Right', 'Bottom', 'Left'];
+
+function generateProperty(property, position) {
+  if (!property) return position.toLowerCase();
+  var splitProperty = property.split('-');
+  if (splitProperty.length > 1) {
+    splitProperty.splice(1, 0, position);
+    return splitProperty.reduce(function (acc, val) {
+      return '' + acc + capitalizeString(val);
+    });
+  }
+  var joinedProperty = property.replace(/([a-z])([A-Z])/g, '$1' + position + '$2');
+  return property === joinedProperty ? '' + property + position : joinedProperty;
+}
+
+function generateStyles(property, valuesWithDefaults) {
+  var styles = {};
+  for (var i = 0; i < valuesWithDefaults.length; i += 1) {
+    if (valuesWithDefaults[i] || valuesWithDefaults[i] === 0) {
+      styles[generateProperty(property, positionMap[i])] = valuesWithDefaults[i];
+    }
+  }
+  return styles;
+}
+
+/**
+ * A helper that enables shorthand for direction based properties. It accepts a property (hyphenated or camelCased) and up to four values that map to top, right, bottom, and left, respectively. You can optionally pass an empty string to get only the directional values as properties. You can also optionally pass a null argument for a directional value to ignore it.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...directionalProperty('padding', '12px', '24px', '36px', '48px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${directionalProperty('padding', '12px', '24px', '36px', '48px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'paddingTop': '12px',
+ *   'paddingRight': '24px',
+ *   'paddingBottom': '36px',
+ *   'paddingLeft': '48px'
+ * }
+ */
+
+function directionalProperty(property) {
+  for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    values[_key - 1] = arguments[_key];
+  }
+
+  //  prettier-ignore
+  var firstValue = values[0],
+      _values$ = values[1],
+      secondValue = _values$ === undefined ? firstValue : _values$,
+      _values$2 = values[2],
+      thirdValue = _values$2 === undefined ? firstValue : _values$2,
+      _values$3 = values[3],
+      fourthValue = _values$3 === undefined ? secondValue : _values$3;
+
+  var valuesWithDefaults = [firstValue, secondValue, thirdValue, fourthValue];
+  return generateStyles(property, valuesWithDefaults);
+}
+
+//      
+
+function endsWith (string, suffix) {
+  return string.substr(-suffix.length) === suffix;
+}
+
+//      
+
+/**
+ * Strip the unit from a given CSS value, returning just the number. (or the original value if an invalid string was passed)
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   '--dimension': stripUnit('100px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   --dimension: ${stripUnit('100px')}
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   '--dimension': 100
+ * }
+ */
+
+function stripUnit(value) {
+  var unitlessValue = parseFloat(value);
+  if (isNaN(unitlessValue)) return value;
+  return unitlessValue;
+}
+
+//      
+
+/**
+ * Factory function that creates pixel-to-x converters
+ * @private
+ */
+var pxtoFactory = function pxtoFactory(to) {
+  return function (pxval) {
+    var base = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '16px';
+
+    var newPxval = pxval;
+    var newBase = base;
+    if (typeof pxval === 'string') {
+      if (!endsWith(pxval, 'px')) {
+        throw new Error('Expected a string ending in "px" or a number passed as the first argument to ' + to + '(), got "' + pxval + '" instead.');
+      }
+      newPxval = stripUnit(pxval);
+    }
+
+    if (typeof base === 'string') {
+      if (!endsWith(base, 'px')) {
+        throw new Error('Expected a string ending in "px" or a number passed as the second argument to ' + to + '(), got "' + base + '" instead.');
+      }
+      newBase = stripUnit(base);
+    }
+
+    if (typeof newPxval === 'string') {
+      throw new Error('Passed invalid pixel value ("' + pxval + '") to ' + to + '(), please pass a value like "12px" or 12.');
+    }
+
+    if (typeof newBase === 'string') {
+      throw new Error('Passed invalid base value ("' + base + '") to ' + to + '(), please pass a value like "12px" or 12.');
+    }
+
+    return '' + newPxval / newBase + to;
+  };
+};
+
+//      
+/**
+ * Convert pixel value to ems. The default base value is 16px, but can be changed by passing a
+ * second argument to the function.
+ * @function
+ * @param {string|number} pxval
+ * @param {string|number} [base='16px']
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   'height': em('16px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   height: ${em('16px')}
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   'height': '1em'
+ * }
+ */
+
+var em = /*#__PURE__*/pxtoFactory('em');
+
+//      
+
+var ratioNames = {
+  minorSecond: 1.067,
+  majorSecond: 1.125,
+  minorThird: 1.2,
+  majorThird: 1.25,
+  perfectFourth: 1.333,
+  augFourth: 1.414,
+  perfectFifth: 1.5,
+  minorSixth: 1.6,
+  goldenSection: 1.618,
+  majorSixth: 1.667,
+  minorSeventh: 1.778,
+  majorSeventh: 1.875,
+  octave: 2,
+  majorTenth: 2.5,
+  majorEleventh: 2.667,
+  majorTwelfth: 3,
+  doubleOctave: 4
+
+  /** */
+
+  /**
+   * Establish consistent measurements and spacial relationships throughout your projects by incrementing up or down a defined scale. We provide a list of commonly used scales as pre-defined variables, see below.
+   * @example
+   * // Styles as object usage
+   * const styles = {
+   *    // Increment two steps up the default scale
+   *   'fontSize': modularScale(2)
+   * }
+   *
+   * // styled-components usage
+   * const div = styled.div`
+   *    // Increment two steps up the default scale
+   *   fontSize: ${modularScale(2)}
+   * `
+   *
+   * // CSS in JS Output
+   *
+   * element {
+   *   'fontSize': '1.77689em'
+   * }
+   */
+};function modularScale(steps) {
+  var base = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '1em';
+  var ratio = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'perfectFourth';
+
+  if (typeof steps !== 'number') {
+    throw new Error('Please provide a number of steps to the modularScale helper.');
+  }
+  if (typeof ratio === 'string' && !ratioNames[ratio]) {
+    throw new Error('Please pass a number or one of the predefined scales to the modularScale helper as the ratio.');
+  }
+
+  var realBase = typeof base === 'string' ? stripUnit(base) : base;
+  var realRatio = typeof ratio === 'string' ? ratioNames[ratio] : ratio;
+
+  if (typeof realBase === 'string') {
+    throw new Error('Invalid value passed as base to modularScale, expected number or em string but got "' + base + '"');
+  }
+
+  return realBase * Math.pow(realRatio, steps) + 'em';
+}
+
+//      
+
+/**
+ * Convert pixel value to rems. The default base value is 16px, but can be changed by passing a
+ * second argument to the function.
+ * @function
+ * @param {string|number} pxval
+ * @param {string|number} [base='16px']
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   'height': rem('16px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   height: ${rem('16px')}
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   'height': '1rem'
+ * }
+ */
+
+var rem = /*#__PURE__*/pxtoFactory('rem');
+
+//      
+
+/**
+ * CSS to contain a float (credit to CSSMojo).
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *    ...clearFix(),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${clearFix()}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * '&::after': {
+ *   'clear': 'both',
+ *   'content': '""',
+ *   'display': 'table'
+ * }
+ */
+
+function clearFix() {
+  var _ref;
+
+  var parent = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '&';
+
+  var pseudoSelector = parent + '::after';
+  return _ref = {}, _ref[pseudoSelector] = {
+    clear: 'both',
+    content: '""',
+    display: 'table'
+  }, _ref;
+}
+
+//      
+
+/**
+ * CSS to represent truncated text with an ellipsis.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...ellipsis('250px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${ellipsis('250px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div: {
+ *   'display': 'inline-block',
+ *   'maxWidth': '250px',
+ *   'overflow': 'hidden',
+ *   'textOverflow': 'ellipsis',
+ *   'whiteSpace': 'nowrap',
+ *   'wordWrap': 'normal'
+ * }
+ */
+
+function ellipsis() {
+  var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '100%';
+
+  return {
+    display: 'inline-block',
+    maxWidth: width,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    wordWrap: 'normal'
+  };
+}
+
+//      
+
+/** */
+
+function generateFileReferences(fontFilePath, fileFormats) {
+  var fileFontReferences = fileFormats.map(function (format) {
+    return 'url("' + fontFilePath + '.' + format + '")';
+  });
+  return fileFontReferences.join(', ');
+}
+
+function generateLocalReferences(localFonts) {
+  var localFontReferences = localFonts.map(function (font) {
+    return 'local("' + font + '")';
+  });
+  return localFontReferences.join(', ');
+}
+
+function generateSources(fontFilePath, localFonts, fileFormats) {
+  var fontReferences = [];
+  if (localFonts) fontReferences.push(generateLocalReferences(localFonts));
+  if (fontFilePath) {
+    fontReferences.push(generateFileReferences(fontFilePath, fileFormats));
+  }
+  return fontReferences.join(', ');
+}
+
+/**
+ * CSS for a @font-face declaration.
+ *
+ * @example
+ * // Styles as object basic usage
+ * const styles = {
+ *    ...fontFace({
+ *      'fontFamily': 'Sans-Pro'
+ *      'fontFilePath': 'path/to/file'
+ *    })
+ * }
+ *
+ * // styled-components basic usage
+ * injectGlobal`${
+ *   fontFace({
+ *     'fontFamily': 'Sans-Pro'
+ *     'fontFilePath': 'path/to/file'
+ *   }
+ * )}`
+ *
+ * // CSS as JS Output
+ *
+ * '@font-face': {
+ *   'fontFamily': 'Sans-Pro',
+ *   'src': 'url("path/to/file.eot"), url("path/to/file.woff2"), url("path/to/file.woff"), url("path/to/file.ttf"), url("path/to/file.svg")',
+ * }
+ */
+
+function fontFace(_ref) {
+  var fontFamily = _ref.fontFamily,
+      fontFilePath = _ref.fontFilePath,
+      fontStretch = _ref.fontStretch,
+      fontStyle = _ref.fontStyle,
+      fontVariant = _ref.fontVariant,
+      fontWeight = _ref.fontWeight,
+      _ref$fileFormats = _ref.fileFormats,
+      fileFormats = _ref$fileFormats === undefined ? ['eot', 'woff2', 'woff', 'ttf', 'svg'] : _ref$fileFormats,
+      localFonts = _ref.localFonts,
+      unicodeRange = _ref.unicodeRange;
+
+  // Error Handling
+  if (!fontFamily) throw new Error('fontFace expects a name of a font-family.');
+  if (!fontFilePath && !localFonts) {
+    throw new Error('fontFace expects either the path to the font file(s) or a name of a local copy.');
+  }
+  if (localFonts && !Array.isArray(localFonts)) {
+    throw new Error('fontFace expects localFonts to be an array.');
+  }
+  if (!Array.isArray(fileFormats)) {
+    throw new Error('fontFace expects fileFormats to be an array.');
+  }
+
+  var fontFaceDeclaration = {
+    '@font-face': {
+      fontFamily: fontFamily,
+      src: generateSources(fontFilePath, localFonts, fileFormats),
+      unicodeRange: unicodeRange,
+      fontStretch: fontStretch,
+      fontStyle: fontStyle,
+      fontVariant: fontVariant,
+      fontWeight: fontWeight
+    }
+
+    // Removes undefined fields for cleaner css object.
+  };return JSON.parse(JSON.stringify(fontFaceDeclaration));
+}
+
+//      
+
+/**
+ * CSS to hide text to show a background image in a SEO-friendly way.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   'backgroundImage': 'url(logo.png)',
+ *   ...hideText(),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   backgroundImage: url(logo.png);
+ *   ${hideText()};
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * 'div': {
+ *   'backgroundImage': 'url(logo.png)',
+ *   'textIndent': '101%',
+ *   'overflow': 'hidden',
+ *   'whiteSpace': 'nowrap',
+ * }
+ */
+
+function hideText() {
+  return {
+    textIndent: '101%',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap'
+  };
+}
+
+//      
+
+/**
+ * CSS to hide content visually but remain accessible to screen readers.
+ * from [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/9a176f57af1cfe8ec70300da4621fb9b07e5fa31/src/css/main.css#L121)
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...hideVisually(),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${hideVisually()};
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * 'div': {
+ *   'border': '0',
+ *   'clip': 'rect(0 0 0 0)',
+ *   'clipPath': 'inset(50%)',
+ *   'height': '1px',
+ *   'margin': '-1px',
+ *   'overflow': 'hidden',
+ *   'padding': '0',
+ *   'position': 'absolute',
+ *   'whiteSpace': 'nowrap',
+ *   'width': '1px',
+ * }
+ */
+
+function hideVisually() {
+  return {
+    border: '0',
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: '1px',
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0',
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px'
+  };
+}
+
+//      
+
+/**
+ * Generates a media query to target HiDPI devices.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *  [hiDPI(1.5)]: {
+ *    width: 200px;
+ *  }
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${hiDPI(1.5)} {
+ *     width: 200px;
+ *   }
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * '@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+ *  only screen and (min--moz-device-pixel-ratio: 1.5),
+ *  only screen and (-o-min-device-pixel-ratio: 1.5/1),
+ *  only screen and (min-resolution: 144dpi),
+ *  only screen and (min-resolution: 1.5dppx)': {
+ *   'width': '200px',
+ * }
+ */
+
+function hiDPI() {
+  var ratio = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1.3;
+
+  return "\n    @media only screen and (-webkit-min-device-pixel-ratio: " + ratio + "),\n    only screen and (min--moz-device-pixel-ratio: " + ratio + "),\n    only screen and (-o-min-device-pixel-ratio: " + ratio + "/1),\n    only screen and (min-resolution: " + Math.round(ratio * 96) + "dpi),\n    only screen and (min-resolution: " + ratio + "dppx)\n  ";
+}
+
+var _extends = Object.assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var taggedTemplateLiteralLoose = function (strings, raw) {
+  strings.raw = raw;
+  return strings;
+};
+
+var _opinionatedRules;
+var _abbrTitle;
+var _unopinionatedRules;
+
+//      
+var opinionatedRules = (_opinionatedRules = {
+  html: {
+    fontFamily: 'sans-serif'
+  },
+
+  body: {
+    margin: '0'
+  }
+
+}, _opinionatedRules['a:active,\n  a:hover'] = {
+  outlineWidth: '0'
+}, _opinionatedRules['button,\n  input,\n  optgroup,\n  select,\n  textarea'] = {
+  fontFamily: 'sans-serif',
+  fontSize: '100%',
+  lineHeight: '1.15'
+}, _opinionatedRules);
+
+var unopinionatedRules = (_unopinionatedRules = {
+  html: {
+    lineHeight: '1.15',
+    textSizeAdjust: '100%'
+  }
+
+}, _unopinionatedRules['article,\n  aside,\n  footer,\n  header,\n  nav,\n  section'] = {
+  display: 'block'
+}, _unopinionatedRules.h1 = {
+  fontSize: '2em',
+  margin: '0.67em 0'
+}, _unopinionatedRules['figcaption,\n  figure,\n  main'] = {
+  display: 'block'
+}, _unopinionatedRules.figure = {
+  margin: '1em 40px'
+}, _unopinionatedRules.hr = {
+  boxSizing: 'content-box',
+  height: '0',
+  overflow: 'visible'
+}, _unopinionatedRules.pre = {
+  fontFamily: 'monospace, monospace',
+  fontSize: '1em'
+}, _unopinionatedRules.a = {
+  'background-color': 'transparent',
+  '-webkit-text-decoration-skip': 'objects'
+}, _unopinionatedRules['abbr[title]'] = (_abbrTitle = {
+  borderBottom: 'none',
+  textDecoration: 'underline'
+}, _abbrTitle['textDecoration'] = 'underline dotted', _abbrTitle), _unopinionatedRules['b,\n  strong'] = {
+  fontWeight: 'inherit'
+}, _unopinionatedRules['code,\n  kbd,\n  samp'] = {
+  fontFamily: 'monospace, monospace',
+  fontSize: '1em'
+}, _unopinionatedRules.dfn = {
+  fontStyle: 'italic'
+}, _unopinionatedRules.mark = {
+  backgroundColor: '#ff0',
+  color: '#000'
+}, _unopinionatedRules.small = {
+  fontSize: '80%'
+}, _unopinionatedRules['sub,\n  sup'] = {
+  fontSize: '75%',
+  lineHeight: '0',
+  position: 'relative',
+  verticalAlign: 'baseline'
+}, _unopinionatedRules.sub = {
+  bottom: '-0.25em'
+}, _unopinionatedRules.sup = {
+  top: '-0.5em'
+}, _unopinionatedRules['audio,\n  video'] = {
+  display: 'inline-block'
+}, _unopinionatedRules['audio:not([controls])'] = {
+  display: 'none',
+  height: '0'
+}, _unopinionatedRules.img = {
+  borderStyle: 'none'
+}, _unopinionatedRules['svg:not(:root)'] = {
+  overflow: 'hidden'
+}, _unopinionatedRules['button,\n  input,\n  optgroup,\n  select,\n  textarea'] = {
+  margin: '0'
+}, _unopinionatedRules['button,\n  input'] = {
+  overflow: 'visible'
+}, _unopinionatedRules['button,\n  select'] = {
+  textTransform: 'none'
+}, _unopinionatedRules['button,\n  html [type="button"],\n  [type="reset"],\n  [type="submit"]'] = {
+  '-webkit-appearance': 'button'
+}, _unopinionatedRules['button::-moz-focus-inner,\n  [type="button"]::-moz-focus-inner,\n  [type="reset"]::-moz-focus-inner,\n  [type="submit"]::-moz-focus-inner'] = {
+  borderStyle: 'none',
+  padding: '0'
+}, _unopinionatedRules['button:-moz-focusring,\n  [type="button"]:-moz-focusring,\n  [type="reset"]:-moz-focusring,\n  [type="submit"]:-moz-focusring'] = {
+  outline: '1px dotted ButtonText'
+}, _unopinionatedRules.fieldset = {
+  border: '1px solid #c0c0c0',
+  margin: '0 2px',
+  padding: '0.35em 0.625em 0.75em'
+}, _unopinionatedRules.legend = {
+  boxSizing: 'border-box',
+  color: 'inherit',
+  display: 'table',
+  maxWidth: '100%',
+  padding: '0',
+  whiteSpace: 'normal'
+}, _unopinionatedRules.progress = {
+  display: 'inline-block',
+  verticalAlign: 'baseline'
+}, _unopinionatedRules.textarea = {
+  overflow: 'auto'
+}, _unopinionatedRules['[type="checkbox"],\n  [type="radio"]'] = {
+  boxSizing: 'border-box',
+  padding: '0'
+}, _unopinionatedRules['[type="number"]::-webkit-inner-spin-button,\n  [type="number"]::-webkit-outer-spin-button'] = {
+  height: 'auto'
+}, _unopinionatedRules['[type="search"]'] = {
+  '-webkit-appearance': 'textfield',
+  outlineOffset: '-2px'
+}, _unopinionatedRules['[type="search"]::-webkit-search-cancel-button,\n  [type="search"]::-webkit-search-decoration'] = {
+  '-webkit-appearance': 'none'
+}, _unopinionatedRules['::-webkit-file-upload-button'] = {
+  '-webkit-appearance': 'button',
+  font: 'inherit'
+}, _unopinionatedRules['details,\n  menu'] = {
+  display: 'block'
+}, _unopinionatedRules.summary = {
+  display: 'list-item'
+}, _unopinionatedRules.canvas = {
+  display: 'inline-block'
+}, _unopinionatedRules.template = {
+  display: 'none'
+}, _unopinionatedRules['[hidden]'] = {
+  display: 'none'
+}, _unopinionatedRules);
+
+function mergeRules(baseRules, additionalRules) {
+  var mergedRules = _extends({}, baseRules);
+  Object.keys(additionalRules).forEach(function (key) {
+    if (mergedRules[key]) {
+      mergedRules[key] = _extends({}, mergedRules[key], additionalRules[key]);
+    } else {
+      mergedRules[key] = _extends({}, additionalRules[key]);
+    }
+  });
+  return mergedRules;
+}
+
+/**
+ * CSS to normalize abnormalities across browsers (normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css)
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *    ...normalize(),
+ * }
+ *
+ * // styled-components usage
+ * injectGlobal`${normalize()}`
+ *
+ * // CSS as JS Output
+ *
+ * html {
+ *   fontFamily: 'sans-serif',
+ *   lineHeight: 1.15,
+ *   textSizeAdjust: 100%,
+ * } ...
+ */
+function normalize(excludeOpinionated) {
+  if (excludeOpinionated) return unopinionatedRules;
+  return mergeRules(unopinionatedRules, opinionatedRules);
+}
+
+//      
+
+/**
+ * CSS to style the placeholder pseudo-element.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...placeholder({'color': 'blue'})
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.input`
+ *    ${placeholder({'color': 'blue'})}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * 'input': {
+ *   '&:-moz-placeholder': {
+ *     'color': 'blue',
+ *   },
+ *   '&:-ms-input-placeholder': {
+ *     'color': 'blue',
+ *   },
+ *   '&::-moz-placeholder': {
+ *     'color': 'blue',
+ *   },
+ *   '&::-webkit-input-placeholder': {
+ *     'color': 'blue',
+ *   },
+ * },
+ */
+
+function placeholder(styles) {
+  var _ref;
+
+  var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '&';
+
+  return _ref = {}, _ref[parent + '::-webkit-input-placeholder'] = _extends({}, styles), _ref[parent + ':-moz-placeholder'] = _extends({}, styles), _ref[parent + '::-moz-placeholder'] = _extends({}, styles), _ref[parent + ':-ms-input-placeholder'] = _extends({}, styles), _ref;
+}
+
+var _templateObject = /*#__PURE__*/ taggedTemplateLiteralLoose(['radial-gradient(', '', '', '', ')'], ['radial-gradient(', '', '', '', ')']);
+
+//      
+
+/** */
+
+function parseFallback(colorStops) {
+  return colorStops[0].split(' ')[0];
+}
+
+function constructGradientValue(literals) {
+  var template = '';
+  for (var i = 0; i < literals.length; i += 1) {
+    template += literals[i];
+    // Adds leading coma if properties preceed color-stops
+    if (i === 3 && (arguments.length <= i + 1 ? undefined : arguments[i + 1]) && ((arguments.length <= 1 ? undefined : arguments[1]) || (arguments.length <= 2 ? undefined : arguments[2]) || (arguments.length <= 3 ? undefined : arguments[3]))) {
+      template = template.slice(0, -1);
+      template += ', ' + (arguments.length <= i + 1 ? undefined : arguments[i + 1]);
+      // No trailing space if color-stops is the only param provided
+    } else if (i === 3 && (arguments.length <= i + 1 ? undefined : arguments[i + 1]) && !(arguments.length <= 1 ? undefined : arguments[1]) && !(arguments.length <= 2 ? undefined : arguments[2]) && !(arguments.length <= 3 ? undefined : arguments[3])) {
+      template += '' + (arguments.length <= i + 1 ? undefined : arguments[i + 1]);
+      // Only adds substitution if it is defined
+    } else if (arguments.length <= i + 1 ? undefined : arguments[i + 1]) {
+      template += (arguments.length <= i + 1 ? undefined : arguments[i + 1]) + ' ';
+    }
+  }
+  return template.trim();
+}
+
+/**
+ * CSS for declaring a radial gradient, including a fallback background-color. The fallback is either the first color-stop or an explicitly passed fallback color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...radialGradient({
+ *     colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
+ *     extent: 'farthest-corner at 45px 45px',
+ *     position: 'center',
+ *     shape: 'ellipse',
+ *   })
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${radialGradient({
+ *     colorStops: ['#00FFFF 0%', 'rgba(0, 0, 255, 0) 50%', '#0000FF 95%'],
+ *     extent: 'farthest-corner at 45px 45px',
+ *     position: 'center',
+ *     shape: 'ellipse',
+ *   })}
+ *`
+ *
+ * // CSS as JS Output
+ *
+ * div: {
+ *   'backgroundColor': '#00FFFF',
+ *   'backgroundImage': 'radial-gradient(center ellipse farthest-corner at 45px 45px, #00FFFF 0%, rgba(0, 0, 255, 0) 50%, #0000FF 95%)',
+ * }
+ */
+
+function radialGradient(_ref) {
+  var colorStops = _ref.colorStops,
+      extent = _ref.extent,
+      fallback = _ref.fallback,
+      position = _ref.position,
+      shape = _ref.shape;
+
+  if (!colorStops || colorStops.length < 2) {
+    throw new Error('radialGradient requries at least 2 color-stops to properly render.');
+  }
+  return {
+    backgroundColor: fallback || parseFallback(colorStops),
+    backgroundImage: constructGradientValue(_templateObject, position, shape, extent, colorStops.join(', '))
+  };
+}
+
+//      
+
+/**
+ * A helper to generate a retina background image and non-retina
+ * background image. The retina background image will output to a HiDPI media query. The mixin uses
+ * a _2x.png filename suffix by default.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *  ...retinaImage('my-img')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${retinaImage('my-img')}
+ * `
+ *
+ * // CSS as JS Output
+ * div {
+ *   backgroundImage: 'url(my-img.png)',
+ *   '@media only screen and (-webkit-min-device-pixel-ratio: 1.3),
+ *    only screen and (min--moz-device-pixel-ratio: 1.3),
+ *    only screen and (-o-min-device-pixel-ratio: 1.3/1),
+ *    only screen and (min-resolution: 144dpi),
+ *    only screen and (min-resolution: 1.5dppx)': {
+ *     backgroundImage: 'url(my-img_2x.png)',
+ *   }
+ * }
+ */
+function retinaImage(filename, backgroundSize) {
+  var extension = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'png';
+
+  var _ref;
+
+  var retinaFilename = arguments[3];
+  var retinaSuffix = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : '_2x';
+
+  if (!filename) {
+    throw new Error('Please supply a filename to retinaImage() as the first argument.');
+  }
+  // Replace the dot at the beginning of the passed extension if one exists
+  var ext = extension.replace(/^\./, '');
+  var rFilename = retinaFilename ? retinaFilename + '.' + ext : '' + filename + retinaSuffix + '.' + ext;
+
+  return _ref = {
+    backgroundImage: 'url(' + filename + '.' + ext + ')'
+  }, _ref[hiDPI()] = {
+    backgroundImage: 'url(' + rFilename + ')',
+    backgroundSize: backgroundSize
+  }, _ref;
+}
+
+//      
+
+/**
+ * CSS to style the selection pseudo-element.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...selection({
+ *     'backgroundColor': 'blue'
+ *   }, 'section')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${selection({'backgroundColor': 'blue'}, 'section')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * 'div': {
+ *   'section::-moz-selection': {
+ *     'backgroundColor':'blue',
+ *   },
+ *   'section::selection': {
+ *     'backgroundColor': 'blue',
+ *   }
+ * }
+ */
+
+function selection(styles) {
+  var _ref;
+
+  var parent = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+  return _ref = {}, _ref[parent + '::-moz-selection'] = _extends({}, styles), _ref[parent + '::selection'] = _extends({}, styles), _ref;
+}
+
+//      
+
+/* eslint-disable key-spacing */
+var functionsMap = {
+  easeInBack: 'cubic-bezier(0.600, -0.280, 0.735, 0.045)',
+  easeInCirc: 'cubic-bezier(0.600,  0.040, 0.980, 0.335)',
+  easeInCubic: 'cubic-bezier(0.550,  0.055, 0.675, 0.190)',
+  easeInExpo: 'cubic-bezier(0.950,  0.050, 0.795, 0.035)',
+  easeInQuad: 'cubic-bezier(0.550,  0.085, 0.680, 0.530)',
+  easeInQuart: 'cubic-bezier(0.895,  0.030, 0.685, 0.220)',
+  easeInQuint: 'cubic-bezier(0.755,  0.050, 0.855, 0.060)',
+  easeInSine: 'cubic-bezier(0.470,  0.000, 0.745, 0.715)',
+
+  easeOutBack: 'cubic-bezier(0.175,  0.885, 0.320, 1.275)',
+  easeOutCubic: 'cubic-bezier(0.215,  0.610, 0.355, 1.000)',
+  easeOutCirc: 'cubic-bezier(0.075,  0.820, 0.165, 1.000)',
+  easeOutExpo: 'cubic-bezier(0.190,  1.000, 0.220, 1.000)',
+  easeOutQuad: 'cubic-bezier(0.250,  0.460, 0.450, 0.940)',
+  easeOutQuart: 'cubic-bezier(0.165,  0.840, 0.440, 1.000)',
+  easeOutQuint: 'cubic-bezier(0.230,  1.000, 0.320, 1.000)',
+  easeOutSine: 'cubic-bezier(0.390,  0.575, 0.565, 1.000)',
+
+  easeInOutBack: 'cubic-bezier(0.680, -0.550, 0.265, 1.550)',
+  easeInOutCirc: 'cubic-bezier(0.785,  0.135, 0.150, 0.860)',
+  easeInOutCubic: 'cubic-bezier(0.645,  0.045, 0.355, 1.000)',
+  easeInOutExpo: 'cubic-bezier(1.000,  0.000, 0.000, 1.000)',
+  easeInOutQuad: 'cubic-bezier(0.455,  0.030, 0.515, 0.955)',
+  easeInOutQuart: 'cubic-bezier(0.770,  0.000, 0.175, 1.000)',
+  easeInOutQuint: 'cubic-bezier(0.860,  0.000, 0.070, 1.000)',
+  easeInOutSine: 'cubic-bezier(0.445,  0.050, 0.550, 0.950)'
+  /* eslint-enable key-spacing */
+
+  /** */
+
+  /**
+   * String to represent common easing functions as demonstrated here: (github.com/jaukia/easie).
+   *
+   * @example
+   * // Styles as object usage
+   * const styles = {
+   *   'transitionTimingFunction': timingFunctions('easeInQuad')
+   * }
+   *
+   * // styled-components usage
+   *  const div = styled.div`
+   *   transitionTimingFunction: ${timingFunctions('easeInQuad')};
+   * `
+   *
+   * // CSS as JS Output
+   *
+   * 'div': {
+   *   'transitionTimingFunction': 'cubic-bezier(0.550,  0.085, 0.680, 0.530)',
+   * }
+   */
+
+};function timingFunctions(timingFunction) {
+  return functionsMap[timingFunction];
+}
+
+//      
+
+/** */
+
+var getBorderWidth = function getBorderWidth(pointingDirection, height, width) {
+  switch (pointingDirection) {
+    case 'top':
+      return '0 ' + width / 2 + 'px ' + height + 'px ' + width / 2 + 'px';
+    case 'left':
+      return height / 2 + 'px ' + width + 'px ' + height / 2 + 'px 0';
+    case 'bottom':
+      return height + 'px ' + width / 2 + 'px 0 ' + width / 2 + 'px';
+    case 'right':
+      return height / 2 + 'px 0 ' + height / 2 + 'px ' + width + 'px';
+
+    default:
+      throw new Error("Passed invalid argument to triangle, please pass correct pointingDirection e.g. 'right'.");
+  }
+};
+
+// needed for border-color
+var reverseDirection = {
+  left: 'Right',
+  right: 'Left',
+  top: 'Bottom',
+  bottom: 'Top'
+
+  /**
+   * CSS to represent triangle with any pointing direction with an optional background color. Accepts number or px values for height and width.
+   *
+   * @example
+   * // Styles as object usage
+   *
+   * const styles = {
+   *   ...triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })
+   * }
+   *
+   *
+   * // styled-components usage
+   * const div = styled.div`
+   *   ${triangle({ pointingDirection: 'right', width: '100px', height: '100px', foregroundColor: 'red' })}
+   *
+   *
+   * // CSS as JS Output
+   *
+   * div: {
+   *  'borderColor': 'transparent',
+   *  'borderLeftColor': 'red !important',
+   *  'borderStyle': 'solid',
+   *  'borderWidth': '50px 0 50px 100px',
+   *  'height': '0',
+   *  'width': '0',
+   * }
+   */
+
+};function triangle(_ref) {
+  var _ref2;
+
+  var pointingDirection = _ref.pointingDirection,
+      height = _ref.height,
+      width = _ref.width,
+      foregroundColor = _ref.foregroundColor,
+      _ref$backgroundColor = _ref.backgroundColor,
+      backgroundColor = _ref$backgroundColor === undefined ? 'transparent' : _ref$backgroundColor;
+
+  var unitlessHeight = parseFloat(height);
+  var unitlessWidth = parseFloat(width);
+  if (isNaN(unitlessHeight) || isNaN(unitlessWidth)) {
+    throw new Error('Passed an invalid value to `height` or `width`. Please provide a pixel based unit');
+  }
+
+  return _ref2 = {
+    borderColor: backgroundColor,
+    width: '0',
+    height: '0',
+    borderWidth: getBorderWidth(pointingDirection, unitlessHeight, unitlessWidth),
+    borderStyle: 'solid'
+  }, _ref2['border' + reverseDirection[pointingDirection] + 'Color'] = foregroundColor + ' !important', _ref2;
+}
+
+//      
+
+/**
+ * Provides an easy way to change the `wordWrap` property.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...wordWrap('break-word')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${wordWrap('break-word')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * const styles = {
+ *   overflowWrap: 'break-word',
+ *   wordWrap: 'break-word',
+ *   wordBreak: 'break-all',
+ * }
+ */
+
+function wordWrap() {
+  var wrap = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'break-word';
+
+  var wordBreak = wrap === 'break-word' ? 'break-all' : wrap;
+  return {
+    overflowWrap: wrap,
+    wordWrap: wrap,
+    wordBreak: wordBreak
+  };
+}
+
+//      
+
+
+function colorToInt(color) {
+  return Math.round(color * 255);
+}
+
+function convertToInt(red, green, blue) {
+  return colorToInt(red) + "," + colorToInt(green) + "," + colorToInt(blue);
+}
+
+function hslToRgb(hue, saturation, lightness) {
+  var convert = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : convertToInt;
+
+  if (saturation === 0) {
+    // achromatic
+    return convert(lightness, lightness, lightness);
+  }
+
+  // formular from https://en.wikipedia.org/wiki/HSL_and_HSV
+  var huePrime = hue % 360 / 60;
+  var chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
+  var secondComponent = chroma * (1 - Math.abs(huePrime % 2 - 1));
+
+  var red = 0;
+  var green = 0;
+  var blue = 0;
+
+  if (huePrime >= 0 && huePrime < 1) {
+    red = chroma;
+    green = secondComponent;
+  } else if (huePrime >= 1 && huePrime < 2) {
+    red = secondComponent;
+    green = chroma;
+  } else if (huePrime >= 2 && huePrime < 3) {
+    green = chroma;
+    blue = secondComponent;
+  } else if (huePrime >= 3 && huePrime < 4) {
+    green = secondComponent;
+    blue = chroma;
+  } else if (huePrime >= 4 && huePrime < 5) {
+    red = secondComponent;
+    blue = chroma;
+  } else if (huePrime >= 5 && huePrime < 6) {
+    red = chroma;
+    blue = secondComponent;
+  }
+
+  var lightnessModification = lightness - chroma / 2;
+  var finalRed = red + lightnessModification;
+  var finalGreen = green + lightnessModification;
+  var finalBlue = blue + lightnessModification;
+  return convert(finalRed, finalGreen, finalBlue);
+}
+
+//      
+var namedColorMap = {
+  aliceblue: 'f0f8ff',
+  antiquewhite: 'faebd7',
+  aqua: '00ffff',
+  aquamarine: '7fffd4',
+  azure: 'f0ffff',
+  beige: 'f5f5dc',
+  bisque: 'ffe4c4',
+  black: '000',
+  blanchedalmond: 'ffebcd',
+  blue: '0000ff',
+  blueviolet: '8a2be2',
+  brown: 'a52a2a',
+  burlywood: 'deb887',
+  cadetblue: '5f9ea0',
+  chartreuse: '7fff00',
+  chocolate: 'd2691e',
+  coral: 'ff7f50',
+  cornflowerblue: '6495ed',
+  cornsilk: 'fff8dc',
+  crimson: 'dc143c',
+  cyan: '00ffff',
+  darkblue: '00008b',
+  darkcyan: '008b8b',
+  darkgoldenrod: 'b8860b',
+  darkgray: 'a9a9a9',
+  darkgreen: '006400',
+  darkgrey: 'a9a9a9',
+  darkkhaki: 'bdb76b',
+  darkmagenta: '8b008b',
+  darkolivegreen: '556b2f',
+  darkorange: 'ff8c00',
+  darkorchid: '9932cc',
+  darkred: '8b0000',
+  darksalmon: 'e9967a',
+  darkseagreen: '8fbc8f',
+  darkslateblue: '483d8b',
+  darkslategray: '2f4f4f',
+  darkslategrey: '2f4f4f',
+  darkturquoise: '00ced1',
+  darkviolet: '9400d3',
+  deeppink: 'ff1493',
+  deepskyblue: '00bfff',
+  dimgray: '696969',
+  dimgrey: '696969',
+  dodgerblue: '1e90ff',
+  firebrick: 'b22222',
+  floralwhite: 'fffaf0',
+  forestgreen: '228b22',
+  fuchsia: 'ff00ff',
+  gainsboro: 'dcdcdc',
+  ghostwhite: 'f8f8ff',
+  gold: 'ffd700',
+  goldenrod: 'daa520',
+  gray: '808080',
+  green: '008000',
+  greenyellow: 'adff2f',
+  grey: '808080',
+  honeydew: 'f0fff0',
+  hotpink: 'ff69b4',
+  indianred: 'cd5c5c',
+  indigo: '4b0082',
+  ivory: 'fffff0',
+  khaki: 'f0e68c',
+  lavender: 'e6e6fa',
+  lavenderblush: 'fff0f5',
+  lawngreen: '7cfc00',
+  lemonchiffon: 'fffacd',
+  lightblue: 'add8e6',
+  lightcoral: 'f08080',
+  lightcyan: 'e0ffff',
+  lightgoldenrodyellow: 'fafad2',
+  lightgray: 'd3d3d3',
+  lightgreen: '90ee90',
+  lightgrey: 'd3d3d3',
+  lightpink: 'ffb6c1',
+  lightsalmon: 'ffa07a',
+  lightseagreen: '20b2aa',
+  lightskyblue: '87cefa',
+  lightslategray: '789',
+  lightslategrey: '789',
+  lightsteelblue: 'b0c4de',
+  lightyellow: 'ffffe0',
+  lime: '0f0',
+  limegreen: '32cd32',
+  linen: 'faf0e6',
+  magenta: 'f0f',
+  maroon: '800000',
+  mediumaquamarine: '66cdaa',
+  mediumblue: '0000cd',
+  mediumorchid: 'ba55d3',
+  mediumpurple: '9370db',
+  mediumseagreen: '3cb371',
+  mediumslateblue: '7b68ee',
+  mediumspringgreen: '00fa9a',
+  mediumturquoise: '48d1cc',
+  mediumvioletred: 'c71585',
+  midnightblue: '191970',
+  mintcream: 'f5fffa',
+  mistyrose: 'ffe4e1',
+  moccasin: 'ffe4b5',
+  navajowhite: 'ffdead',
+  navy: '000080',
+  oldlace: 'fdf5e6',
+  olive: '808000',
+  olivedrab: '6b8e23',
+  orange: 'ffa500',
+  orangered: 'ff4500',
+  orchid: 'da70d6',
+  palegoldenrod: 'eee8aa',
+  palegreen: '98fb98',
+  paleturquoise: 'afeeee',
+  palevioletred: 'db7093',
+  papayawhip: 'ffefd5',
+  peachpuff: 'ffdab9',
+  peru: 'cd853f',
+  pink: 'ffc0cb',
+  plum: 'dda0dd',
+  powderblue: 'b0e0e6',
+  purple: '800080',
+  rebeccapurple: '639',
+  red: 'f00',
+  rosybrown: 'bc8f8f',
+  royalblue: '4169e1',
+  saddlebrown: '8b4513',
+  salmon: 'fa8072',
+  sandybrown: 'f4a460',
+  seagreen: '2e8b57',
+  seashell: 'fff5ee',
+  sienna: 'a0522d',
+  silver: 'c0c0c0',
+  skyblue: '87ceeb',
+  slateblue: '6a5acd',
+  slategray: '708090',
+  slategrey: '708090',
+  snow: 'fffafa',
+  springgreen: '00ff7f',
+  steelblue: '4682b4',
+  tan: 'd2b48c',
+  teal: '008080',
+  thistle: 'd8bfd8',
+  tomato: 'ff6347',
+  turquoise: '40e0d0',
+  violet: 'ee82ee',
+  wheat: 'f5deb3',
+  white: 'fff',
+  whitesmoke: 'f5f5f5',
+  yellow: 'ff0',
+  yellowgreen: '9acd32'
+
+  /**
+   * Checks if a string is a CSS named color and returns its equivalent hex value, otherwise returns the original color.
+   * @private
+   */
+};function nameToHex(color) {
+  if (typeof color !== 'string') return color;
+  var normalizedColorName = color.toLowerCase();
+  return namedColorMap[normalizedColorName] ? '#' + namedColorMap[normalizedColorName] : color;
+}
+
+//      
+var hexRegex = /^#[a-fA-F0-9]{6}$/;
+var reducedHexRegex = /^#[a-fA-F0-9]{3}$/;
+var rgbRegex = /^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/;
+var rgbaRegex = /^rgba\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*([-+]?[0-9]*[.]?[0-9]+)\s*\)$/;
+var hslRegex = /^hsl\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*\)$/;
+var hslaRegex = /^hsla\(\s*(\d{1,3})\s*,\s*(\d{1,3})%\s*,\s*(\d{1,3})%\s*,\s*([-+]?[0-9]*[.]?[0-9]+)\s*\)$/;
+
+/**
+ * Returns an RgbColor or RgbaColor object. This utility function is only useful
+ * if want to extract a color component. With the color util `toColorString` you
+ * can convert a RgbColor or RgbaColor object back to a string.
+ *
+ * @example
+ * // Assigns `{ red: 255, green: 0, blue: 0 }` to color1
+ * const color1 = 'rgb(255, 0, 0)';
+ * // Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
+ * const color2 = 'hsla(210, 10%, 40%, 0.75)';
+ */
+function parseToRgb(color) {
+  if (typeof color !== 'string') {
+    throw new Error('Passed an incorrect argument to a color function, please pass a string representation of a color.');
+  }
+  var normalizedColor = nameToHex(color);
+  if (normalizedColor.match(hexRegex)) {
+    return {
+      red: parseInt('' + normalizedColor[1] + normalizedColor[2], 16),
+      green: parseInt('' + normalizedColor[3] + normalizedColor[4], 16),
+      blue: parseInt('' + normalizedColor[5] + normalizedColor[6], 16)
+    };
+  }
+  if (normalizedColor.match(reducedHexRegex)) {
+    return {
+      red: parseInt('' + normalizedColor[1] + normalizedColor[1], 16),
+      green: parseInt('' + normalizedColor[2] + normalizedColor[2], 16),
+      blue: parseInt('' + normalizedColor[3] + normalizedColor[3], 16)
+    };
+  }
+  var rgbMatched = rgbRegex.exec(normalizedColor);
+  if (rgbMatched) {
+    return {
+      red: parseInt('' + rgbMatched[1], 10),
+      green: parseInt('' + rgbMatched[2], 10),
+      blue: parseInt('' + rgbMatched[3], 10)
+    };
+  }
+  var rgbaMatched = rgbaRegex.exec(normalizedColor);
+  if (rgbaMatched) {
+    return {
+      red: parseInt('' + rgbaMatched[1], 10),
+      green: parseInt('' + rgbaMatched[2], 10),
+      blue: parseInt('' + rgbaMatched[3], 10),
+      alpha: parseFloat('' + rgbaMatched[4])
+    };
+  }
+  var hslMatched = hslRegex.exec(normalizedColor);
+  if (hslMatched) {
+    var hue = parseInt('' + hslMatched[1], 10);
+    var saturation = parseInt('' + hslMatched[2], 10) / 100;
+    var lightness = parseInt('' + hslMatched[3], 10) / 100;
+    var rgbColorString = 'rgb(' + hslToRgb(hue, saturation, lightness) + ')';
+    var hslRgbMatched = rgbRegex.exec(rgbColorString);
+    return {
+      red: parseInt('' + hslRgbMatched[1], 10),
+      green: parseInt('' + hslRgbMatched[2], 10),
+      blue: parseInt('' + hslRgbMatched[3], 10)
+    };
+  }
+  var hslaMatched = hslaRegex.exec(normalizedColor);
+  if (hslaMatched) {
+    var _hue = parseInt('' + hslaMatched[1], 10);
+    var _saturation = parseInt('' + hslaMatched[2], 10) / 100;
+    var _lightness = parseInt('' + hslaMatched[3], 10) / 100;
+    var _rgbColorString = 'rgb(' + hslToRgb(_hue, _saturation, _lightness) + ')';
+    var _hslRgbMatched = rgbRegex.exec(_rgbColorString);
+    return {
+      red: parseInt('' + _hslRgbMatched[1], 10),
+      green: parseInt('' + _hslRgbMatched[2], 10),
+      blue: parseInt('' + _hslRgbMatched[3], 10),
+      alpha: parseFloat('' + hslaMatched[4])
+    };
+  }
+  throw new Error("Couldn't parse the color string. Please provide the color as a string in hex, rgb, rgba, hsl or hsla notation.");
+}
+
+//      
+
+
+function rgbToHsl(color) {
+  // make sure rgb are contained in a set of [0, 255]
+  var red = color.red / 255;
+  var green = color.green / 255;
+  var blue = color.blue / 255;
+
+  var max = Math.max(red, green, blue);
+  var min = Math.min(red, green, blue);
+  var lightness = (max + min) / 2;
+
+  if (max === min) {
+    // achromatic
+    if (color.alpha !== undefined) {
+      return {
+        hue: 0,
+        saturation: 0,
+        lightness: lightness,
+        alpha: color.alpha
+      };
+    } else {
+      return { hue: 0, saturation: 0, lightness: lightness };
+    }
+  }
+
+  var hue = void 0;
+  var delta = max - min;
+  var saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+  switch (max) {
+    case red:
+      hue = (green - blue) / delta + (green < blue ? 6 : 0);
+      break;
+    case green:
+      hue = (blue - red) / delta + 2;
+      break;
+    default:
+      // blue case
+      hue = (red - green) / delta + 4;
+      break;
+  }
+
+  hue *= 60;
+  if (color.alpha !== undefined) {
+    return {
+      hue: hue,
+      saturation: saturation,
+      lightness: lightness,
+      alpha: color.alpha
+    };
+  }
+  return { hue: hue, saturation: saturation, lightness: lightness };
+}
+
+//      
+
+/**
+ * Returns an HslColor or HslaColor object. This utility function is only useful
+ * if want to extract a color component. With the color util `toColorString` you
+ * can convert a HslColor or HslaColor object back to a string.
+ *
+ * @example
+ * // Assigns `{ red: 255, green: 0, blue: 0 }` to color1
+ * const color1 = 'rgb(255, 0, 0)';
+ * // Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
+ * const color2 = 'hsla(210, 10%, 40%, 0.75)';
+ */
+function parseToHsl(color) {
+  // Note: At a later stage we can optimize this function as right now a hsl
+  // color would be parsed converted to rgb values and converted back to hsl.
+  return rgbToHsl(parseToRgb(color));
+}
+
+//      
+
+/**
+ * Reduces hex values if possible e.g. #ff8866 to #f86
+ * @private
+ */
+var reduceHexValue = function reduceHexValue(value) {
+  if (value.length === 7 && value[1] === value[2] && value[3] === value[4] && value[5] === value[6]) {
+    return "#" + value[1] + value[3] + value[5];
+  }
+  return value;
+};
+
+//      
+function numberToHex(value) {
+  var hex = value.toString(16);
+  return hex.length === 1 ? "0" + hex : hex;
+}
+
+//      
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: rgb(255, 205, 100),
+ *   background: rgb({ red: 255, green: 205, blue: 100 }),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${rgb(255, 205, 100)};
+ *   background: ${rgb({ red: 255, green: 205, blue: 100 })};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#ffcd64";
+ *   background: "#ffcd64";
+ * }
+ */
+function rgb(value, green, blue) {
+  if (typeof value === 'number' && typeof green === 'number' && typeof blue === 'number') {
+    return reduceHexValue('#' + numberToHex(value) + numberToHex(green) + numberToHex(blue));
+  } else if (typeof value === 'object' && green === undefined && blue === undefined) {
+    return reduceHexValue('#' + numberToHex(value.red) + numberToHex(value.green) + numberToHex(value.blue));
+  }
+
+  throw new Error('Passed invalid arguments to rgb, please pass multiple numbers e.g. rgb(255, 205, 100) or an object e.g. rgb({ red: 255, green: 205, blue: 100 }).');
+}
+
+//      
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
+ *
+ * Can also be used to fade a color by passing a hex value or named CSS color along with an alpha value.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: rgba(255, 205, 100, 0.7),
+ *   background: rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 }),
+ *   background: rgba(255, 205, 100, 1),
+ *   background: rgba('#ffffff', 0.4),
+ *   background: rgba('black', 0.7),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${rgba(255, 205, 100, 0.7)};
+ *   background: ${rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 })};
+ *   background: ${rgba(255, 205, 100, 1)};
+ *   background: ${rgba('#ffffff', 0.4)};
+ *   background: ${rgba('black', 0.7)};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "rgba(255,205,100,0.7)";
+ *   background: "rgba(255,205,100,0.7)";
+ *   background: "#ffcd64";
+ *   background: "rgba(255,255,255,0.4)";
+ *   background: "rgba(0,0,0,0.7)";
+ * }
+ */
+function rgba(firstValue, secondValue, thirdValue, fourthValue) {
+  if (typeof firstValue === 'string' && typeof secondValue === 'number') {
+    var rgbValue = parseToRgb(firstValue);
+    return 'rgba(' + rgbValue.red + ',' + rgbValue.green + ',' + rgbValue.blue + ',' + secondValue + ')';
+  } else if (typeof firstValue === 'number' && typeof secondValue === 'number' && typeof thirdValue === 'number' && typeof fourthValue === 'number') {
+    return fourthValue >= 1 ? rgb(firstValue, secondValue, thirdValue) : 'rgba(' + firstValue + ',' + secondValue + ',' + thirdValue + ',' + fourthValue + ')';
+  } else if (typeof firstValue === 'object' && secondValue === undefined && thirdValue === undefined && fourthValue === undefined) {
+    return firstValue.alpha >= 1 ? rgb(firstValue.red, firstValue.green, firstValue.blue) : 'rgba(' + firstValue.red + ',' + firstValue.green + ',' + firstValue.blue + ',' + firstValue.alpha + ')';
+  }
+
+  throw new Error('Passed invalid arguments to rgba, please pass multiple numbers e.g. rgb(255, 205, 100, 0.75) or an object e.g. rgb({ red: 255, green: 205, blue: 100, alpha: 0.75 }).');
+}
+
+//      
+function colorToHex(color) {
+  return numberToHex(Math.round(color * 255));
+}
+
+function convertToHex(red, green, blue) {
+  return reduceHexValue('#' + colorToHex(red) + colorToHex(green) + colorToHex(blue));
+}
+
+function hslToHex(hue, saturation, lightness) {
+  return hslToRgb(hue, saturation, lightness, convertToHex);
+}
+
+//      
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: hsl(359, 0.75, 0.4),
+ *   background: hsl({ hue: 360, saturation: 0.75, lightness: 0.4 }),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${hsl(359, 0.75, 0.4)};
+ *   background: ${hsl({ hue: 360, saturation: 0.75, lightness: 0.4 })};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#b3191c";
+ *   background: "#b3191c";
+ * }
+ */
+function hsl(value, saturation, lightness) {
+  if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number') {
+    return hslToHex(value, saturation, lightness);
+  } else if (typeof value === 'object' && saturation === undefined && lightness === undefined) {
+    return hslToHex(value.hue, value.saturation, value.lightness);
+  }
+
+  throw new Error('Passed invalid arguments to hsl, please pass multiple numbers e.g. hsl(360, 0.75, 0.4) or an object e.g. rgb({ hue: 255, saturation: 0.4, lightness: 0.75 }).');
+}
+
+//      
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: hsla(359, 0.75, 0.4, 0.7),
+ *   background: hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 }),
+ *   background: hsla(359, 0.75, 0.4, 1),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${hsla(359, 0.75, 0.4, 0.7)};
+ *   background: ${hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 })};
+ *   background: ${hsla(359, 0.75, 0.4, 1)};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "rgba(179,25,28,0.7)";
+ *   background: "rgba(179,25,28,0.7)";
+ *   background: "#b3191c";
+ * }
+ */
+function hsla(value, saturation, lightness, alpha) {
+  if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number' && typeof alpha === 'number') {
+    return alpha >= 1 ? hslToHex(value, saturation, lightness) : 'rgba(' + hslToRgb(value, saturation, lightness) + ',' + alpha + ')';
+  } else if (typeof value === 'object' && saturation === undefined && lightness === undefined && alpha === undefined) {
+    return value.alpha >= 1 ? hslToHex(value.hue, value.saturation, value.lightness) : 'rgba(' + hslToRgb(value.hue, value.saturation, value.lightness) + ',' + value.alpha + ')';
+  }
+
+  throw new Error('Passed invalid arguments to hsla, please pass multiple numbers e.g. hsl(360, 0.75, 0.4, 0.7) or an object e.g. rgb({ hue: 255, saturation: 0.4, lightness: 0.75, alpha: 0.7 }).');
+}
+
+//      
+var isRgb = function isRgb(color) {
+  return typeof color.red === 'number' && typeof color.green === 'number' && typeof color.blue === 'number' && (typeof color.alpha !== 'number' || typeof color.alpha === 'undefined');
+};
+
+var isRgba = function isRgba(color) {
+  return typeof color.red === 'number' && typeof color.green === 'number' && typeof color.blue === 'number' && typeof color.alpha === 'number';
+};
+
+var isHsl = function isHsl(color) {
+  return typeof color.hue === 'number' && typeof color.saturation === 'number' && typeof color.lightness === 'number' && (typeof color.alpha !== 'number' || typeof color.alpha === 'undefined');
+};
+
+var isHsla = function isHsla(color) {
+  return typeof color.hue === 'number' && typeof color.saturation === 'number' && typeof color.lightness === 'number' && typeof color.alpha === 'number';
+};
+
+var errMsg = 'Passed invalid argument to toColorString, please pass a RgbColor, RgbaColor, HslColor or HslaColor object.';
+
+/**
+ * Converts a RgbColor, RgbaColor, HslColor or HslaColor object to a color string.
+ * This util is useful in case you only know on runtime which color object is
+ * used. Otherwise we recommend to rely on `rgb`, `rgba`, `hsl` or `hsla`.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: toColorString({ red: 255, green: 205, blue: 100 }),
+ *   background: toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 }),
+ *   background: toColorString({ hue: 240, saturation: 1, lightness: 0.5 }),
+ *   background: toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 }),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${toColorString({ red: 255, green: 205, blue: 100 })};
+ *   background: ${toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 })};
+ *   background: ${toColorString({ hue: 240, saturation: 1, lightness: 0.5 })};
+ *   background: ${toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 })};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#ffcd64";
+ *   background: "rgba(255,205,100,0.72)";
+ *   background: "#00f";
+ *   background: "rgba(179,25,25,0.72)";
+ * }
+ */
+
+function toColorString(color) {
+  if (typeof color !== 'object') throw new Error(errMsg);
+  if (isRgba(color)) return rgba(color);
+  if (isRgb(color)) return rgb(color);
+  if (isHsla(color)) return hsla(color);
+  if (isHsl(color)) return hsl(color);
+
+  throw new Error(errMsg);
+}
+
+//      
+
+// Type definitions taken from https://github.com/gcanti/flow-static-land/blob/master/src/Fun.js
+
+
+// eslint-disable-next-line no-unused-vars
+
+
+// eslint-disable-next-line no-unused-vars
+
+// eslint-disable-next-line no-redeclare
+
+
+function curried(f, length, acc) {
+  return function fn() {
+    // eslint-disable-next-line prefer-rest-params
+    var combined = acc.concat(Array.prototype.slice.call(arguments));
+    return combined.length >= length ? f.apply(this, combined) : curried(f, length, combined);
+  };
+}
+
+// eslint-disable-next-line no-redeclare
+function curry(f) {
+  // eslint-disable-line no-redeclare
+  return curried(f, f.length, []);
+}
+
+//      
+
+/**
+ * Changes the hue of the color. Hue is a number between 0 to 360. The first
+ * argument for adjustHue is the amount of degrees the color is rotated along
+ * the color wheel.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: adjustHue(180, '#448'),
+ *   background: adjustHue(180, 'rgba(101,100,205,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${adjustHue(180, '#448')};
+ *   background: ${adjustHue(180, 'rgba(101,100,205,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#888844";
+ *   background: "rgba(136,136,68,0.7)";
+ * }
+ */
+function adjustHue(degree, color) {
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends({}, hslColor, {
+    hue: (hslColor.hue + degree) % 360
+  }));
+}
+
+var curriedAdjustHue = /*#__PURE__*/curry(adjustHue);
+
+//      
+
+/**
+ * Returns the complement of the provided color. This is identical to adjustHue(180, <color>).
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: complement('#448'),
+ *   background: complement('rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${complement('#448')};
+ *   background: ${complement('rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#884";
+ *   background: "rgba(153,153,153,0.7)";
+ * }
+ */
+function complement(color) {
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends({}, hslColor, {
+    hue: (hslColor.hue + 180) % 360
+  }));
+}
+
+//      
+
+function guard(lowerBoundary, upperBoundary, value) {
+  return Math.max(lowerBoundary, Math.min(upperBoundary, value));
+}
+
+//      
+
+/**
+ * Returns a string value for the darkened color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: darken(0.2, '#FFCD64'),
+ *   background: darken(0.2, 'rgba(255,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${darken(0.2, '#FFCD64')};
+ *   background: ${darken(0.2, 'rgba(255,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#ffbd31";
+ *   background: "rgba(255,189,49,0.7)";
+ * }
+ */
+function darken(amount, color) {
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends({}, hslColor, {
+    lightness: guard(0, 1, hslColor.lightness - amount)
+  }));
+}
+
+var curriedDarken = /*#__PURE__*/curry(darken);
+
+//      
+
+/**
+ * Decreases the intensity of a color. Its range is between 0 to 1. The first
+ * argument of the desaturate function is the amount by how much the color
+ * intensity should be decreased.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: desaturate(0.2, '#CCCD64'),
+ *   background: desaturate(0.2, 'rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${desaturate(0.2, '#CCCD64')};
+ *   background: ${desaturate(0.2, 'rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#b8b979";
+ *   background: "rgba(184,185,121,0.7)";
+ * }
+ */
+function desaturate(amount, color) {
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends({}, hslColor, {
+    saturation: guard(0, 1, hslColor.saturation - amount)
+  }));
+}
+
+var curriedDesaturate = /*#__PURE__*/curry(desaturate);
+
+//      
+/**
+ * Returns a number (float) representing the luminance of a color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff',
+ *   background: getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
+ *                             'rgba(58, 133, 255, 1)' :
+ *                             'rgba(255, 57, 149, 1)',
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff'};
+ *   background: ${getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
+ *                             'rgba(58, 133, 255, 1)' :
+ *                             'rgba(255, 57, 149, 1)'};
+ *
+ * // CSS in JS Output
+ *
+ * div {
+ *   background: "#CCCD64";
+ *   background: "rgba(58, 133, 255, 1)";
+ * }
+ */
+function getLuminance(color) {
+  var rgbColor = parseToRgb(color);
+
+  var _Object$keys$map = Object.keys(rgbColor).map(function (key) {
+    var channel = rgbColor[key] / 255;
+    return channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+  }),
+      r = _Object$keys$map[0],
+      g = _Object$keys$map[1],
+      b = _Object$keys$map[2];
+
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+
+//      
+
+/**
+ * Converts the color to a grayscale, by reducing its saturation to 0.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: grayscale('#CCCD64'),
+ *   background: grayscale('rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${grayscale('#CCCD64')};
+ *   background: ${grayscale('rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#999";
+ *   background: "rgba(153,153,153,0.7)";
+ * }
+ */
+function grayscale(color) {
+  return toColorString(_extends({}, parseToHsl(color), {
+    saturation: 0
+  }));
+}
+
+//      
+
+/**
+ * Inverts the red, green and blue values of a color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: invert('#CCCD64'),
+ *   background: invert('rgba(101,100,205,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${invert('#CCCD64')};
+ *   background: ${invert('rgba(101,100,205,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#33329b";
+ *   background: "rgba(154,155,50,0.7)";
+ * }
+ */
+function invert(color) {
+  // parse color string to rgb
+  var value = parseToRgb(color);
+  return toColorString(_extends({}, value, {
+    red: 255 - value.red,
+    green: 255 - value.green,
+    blue: 255 - value.blue
+  }));
+}
+
+//      
+
+/**
+ * Returns a string value for the lightened color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: lighten(0.2, '#CCCD64'),
+ *   background: lighten(0.2, 'rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${lighten(0.2, '#FFCD64')};
+ *   background: ${lighten(0.2, 'rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#e5e6b1";
+ *   background: "rgba(229,230,177,0.7)";
+ * }
+ */
+function lighten(amount, color) {
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends({}, hslColor, {
+    lightness: guard(0, 1, hslColor.lightness + amount)
+  }));
+}
+
+var curriedLighten = /*#__PURE__*/curry(lighten);
+
+//      
+
+/**
+ * Mixes two colors together by calculating the average of each of the RGB components.
+ *
+ * By default the weight is 0.5 meaning that half of the first color and half the second
+ * color should be used. Optionally the weight can be modified by providing a number
+ * as the first argument. 0.25 means that a quarter of the first color and three quarters
+ * of the second color should be used.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: mix(0.5, '#f00', '#00f')
+ *   background: mix(0.25, '#f00', '#00f')
+ *   background: mix(0.5, 'rgba(255, 0, 0, 0.5)', '#00f')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${mix(0.5, '#f00', '#00f')};
+ *   background: ${mix(0.25, '#f00', '#00f')};
+ *   background: ${mix(0.5, 'rgba(255, 0, 0, 0.5)', '#00f')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#7f007f";
+ *   background: "#3f00bf";
+ *   background: "rgba(63, 0, 191, 0.75)";
+ * }
+ */
+function mix() {
+  var weight = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0.5;
+  var color = arguments[1];
+  var otherColor = arguments[2];
+
+  var parsedColor1 = parseToRgb(color);
+  var color1 = _extends({}, parsedColor1, {
+    alpha: typeof parsedColor1.alpha === 'number' ? parsedColor1.alpha : 1
+  });
+
+  var parsedColor2 = parseToRgb(otherColor);
+  var color2 = _extends({}, parsedColor2, {
+    alpha: typeof parsedColor2.alpha === 'number' ? parsedColor2.alpha : 1
+
+    // The formular is copied from the original Sass implementation:
+    // http://sass-lang.com/documentation/Sass/Script/Functions.html#mix-instance_method
+  });var alphaDelta = color1.alpha - color2.alpha;
+  var x = weight * 2 - 1;
+  var y = x * alphaDelta === -1 ? x : x + alphaDelta;
+  var z = 1 + x * alphaDelta;
+  var weight1 = (y / z + 1) / 2.0;
+  var weight2 = 1 - weight1;
+
+  var mixedColor = {
+    red: Math.floor(color1.red * weight1 + color2.red * weight2),
+    green: Math.floor(color1.green * weight1 + color2.green * weight2),
+    blue: Math.floor(color1.blue * weight1 + color2.blue * weight2),
+    alpha: color1.alpha + (color2.alpha - color1.alpha) * (weight / 1.0)
+  };
+
+  return rgba(mixedColor);
+}
+
+var curriedMix = /*#__PURE__*/curry(mix);
+
+//      
+/**
+ * Increases the opacity of a color. Its range for the amount is between 0 to 1.
+ *
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: opacify(0.1, 'rgba(255, 255, 255, 0.9)');
+ *   background: opacify(0.2, 'hsla(0, 0%, 100%, 0.5)'),
+ *   background: opacify(0.5, 'rgba(255, 0, 0, 0.2)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${opacify(0.1, 'rgba(255, 255, 255, 0.9)')};
+ *   background: ${opacify(0.2, 'hsla(0, 0%, 100%, 0.5)')},
+ *   background: ${opacify(0.5, 'rgba(255, 0, 0, 0.2)')},
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#fff";
+ *   background: "rgba(255,255,255,0.7)";
+ *   background: "rgba(255,0,0,0.7)";
+ * }
+ */
+function opacify(amount, color) {
+  var parsedColor = parseToRgb(color);
+  var alpha = typeof parsedColor.alpha === 'number' ? parsedColor.alpha : 1;
+  var colorWithAlpha = _extends({}, parsedColor, {
+    alpha: guard(0, 1, (alpha * 100 + amount * 100) / 100)
+  });
+  return rgba(colorWithAlpha);
+}
+
+var curriedOpacify = /*#__PURE__*/curry(opacify);
+
+//      
+/**
+ * Selects black or white for best contrast depending on the luminosity of the given color.
+ * Follows W3C specs for readability at https://www.w3.org/TR/WCAG20-TECHS/G18.html
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   color: readableColor('#000'),
+ *   color: readableColor('papayawhip'),
+ *   color: readableColor('rgb(255,0,0)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   color: ${readableColor('#000')};
+ *   color: ${readableColor('papayawhip')};
+ *   color: ${readableColor('rgb(255,0,0)')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   color: "#fff";
+ *   color: "#fff";
+ *   color: "#000";
+ * }
+ */
+
+function readableColor(color) {
+  return getLuminance(color) > 0.179 ? '#000' : '#fff';
+}
+
+var curriedReadableColor = /*#__PURE__*/curry(readableColor);
+
+//      
+
+/**
+ * Increases the intensity of a color. Its range is between 0 to 1. The first
+ * argument of the saturate function is the amount by how much the color
+ * intensity should be increased.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: saturate(0.2, '#CCCD64'),
+ *   background: saturate(0.2, 'rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${saturate(0.2, '#FFCD64')};
+ *   background: ${saturate(0.2, 'rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#e0e250";
+ *   background: "rgba(224,226,80,0.7)";
+ * }
+ */
+function saturate(amount, color) {
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends({}, hslColor, {
+    saturation: guard(0, 1, hslColor.saturation + amount)
+  }));
+}
+
+var curriedSaturate = /*#__PURE__*/curry(saturate);
+
+//      
+
+/**
+ * Sets the hue of a color to the provided value. The hue range can be
+ * from 0 and 359.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: setHue(42, '#CCCD64'),
+ *   background: setHue(244, 'rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${setHue(42, '#CCCD64')};
+ *   background: ${setHue(244, 'rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#cdae64";
+ *   background: "rgba(107,100,205,0.7)";
+ * }
+ */
+function setHue(hue, color) {
+  return toColorString(_extends({}, parseToHsl(color), {
+    hue: hue
+  }));
+}
+
+var curriedSetHue = /*#__PURE__*/curry(setHue);
+
+//      
+
+/**
+ * Sets the lightness of a color to the provided value. The lightness range can be
+ * from 0 and 1.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: setLightness(0.2, '#CCCD64'),
+ *   background: setLightness(0.75, 'rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${setLightness(0.2, '#CCCD64')};
+ *   background: ${setLightness(0.75, 'rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#4d4d19";
+ *   background: "rgba(223,224,159,0.7)";
+ * }
+ */
+function setLightness(lightness, color) {
+  return toColorString(_extends({}, parseToHsl(color), {
+    lightness: lightness
+  }));
+}
+
+var curriedSetLightness = /*#__PURE__*/curry(setLightness);
+
+//      
+
+/**
+ * Sets the saturation of a color to the provided value. The lightness range can be
+ * from 0 and 1.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: setSaturation(0.2, '#CCCD64'),
+ *   background: setSaturation(0.75, 'rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${setSaturation(0.2, '#CCCD64')};
+ *   background: ${setSaturation(0.75, 'rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#adad84";
+ *   background: "rgba(228,229,76,0.7)";
+ * }
+ */
+function setSaturation(saturation, color) {
+  return toColorString(_extends({}, parseToHsl(color), {
+    saturation: saturation
+  }));
+}
+
+var curriedSetSaturation = /*#__PURE__*/curry(setSaturation);
+
+//      
+
+/**
+ * Shades a color by mixing it with black. `shade` can produce
+ * hue shifts, where as `darken` manipulates the luminance channel and therefore
+ * doesn't produce hue shifts.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: shade(0.25, '#00f')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${shade(0.25, '#00f')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#00003f";
+ * }
+ */
+
+function shade(percentage, color) {
+  if (typeof percentage !== 'number' || percentage > 1 || percentage < -1) {
+    throw new Error('Passed an incorrect argument to shade, please pass a percentage less than or equal to 1 and larger than or equal to -1.');
+  }
+  if (typeof color !== 'string') {
+    throw new Error('Passed an incorrect argument to a color function, please pass a string representation of a color.');
+  }
+  return curriedMix(percentage, color, 'rgb(0, 0, 0)');
+}
+
+var curriedShade = /*#__PURE__*/curry(shade);
+
+//      
+
+/**
+ * Tints a color by mixing it with white. `tint` can produce
+ * hue shifts, where as `lighten` manipulates the luminance channel and therefore
+ * doesn't produce hue shifts.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: tint(0.25, '#00f')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${tint(0.25, '#00f')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#bfbfff";
+ * }
+ */
+
+function tint(percentage, color) {
+  if (typeof percentage !== 'number' || percentage > 1 || percentage < -1) {
+    throw new Error('Passed an incorrect argument to tint, please pass a percentage less than or equal to 1 and larger than or equal to -1.');
+  }
+  if (typeof color !== 'string') {
+    throw new Error('Passed an incorrect argument to a color function, please pass a string representation of a color.');
+  }
+  return curriedMix(percentage, color, 'rgb(255, 255, 255)');
+}
+
+var curriedTint = /*#__PURE__*/curry(tint);
+
+//      
+/**
+ * Decreases the opacity of a color. Its range for the amount is between 0 to 1.
+ *
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: transparentize(0.1, '#fff');
+ *   background: transparentize(0.2, 'hsl(0, 0%, 100%)'),
+ *   background: transparentize(0.5, 'rgba(255, 0, 0, 0.8)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${transparentize(0.1, '#fff')};
+ *   background: ${transparentize(0.2, 'hsl(0, 0%, 100%)')},
+ *   background: ${transparentize(0.5, 'rgba(255, 0, 0, 0.8)')},
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "rgba(255,255,255,0.9)";
+ *   background: "rgba(255,255,255,0.8)";
+ *   background: "rgba(255,0,0,0.3)";
+ * }
+ */
+function transparentize(amount, color) {
+  var parsedColor = parseToRgb(color);
+  var alpha = typeof parsedColor.alpha === 'number' ? parsedColor.alpha : 1;
+  var colorWithAlpha = _extends({}, parsedColor, {
+    alpha: guard(0, 1, (alpha * 100 - amount * 100) / 100)
+  });
+  return rgba(colorWithAlpha);
+}
+
+var curriedTransparentize = /*#__PURE__*/curry(transparentize);
+
+//      
+
+/** */
+
+/**
+ * Shorthand for easily setting the animation property. Allows either multiple arrays with animations
+ * or a single animation spread over the arguments.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...animation(['rotate', '1s', 'ease-in-out'], ['colorchange', '2s'])
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${animation(['rotate', '1s', 'ease-in-out'], ['colorchange', '2s'])}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'animation': 'rotate 1s ease-in-out, colorchange 2s'
+ * }
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...animation('rotate', '1s', 'ease-in-out')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${animation('rotate', '1s', 'ease-in-out')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'animation': 'rotate 1s ease-in-out'
+ * }
+ */
+function animation() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  // Allow single or multiple animations passed
+  var multiMode = Array.isArray(args[0]);
+  if (!multiMode && args.length > 8) {
+    throw new Error('The animation shorthand only takes 8 arguments. See the specification for more information: http://mdn.io/animation');
+  }
+  var code = args.map(function (arg) {
+    if (multiMode && !Array.isArray(arg) || !multiMode && Array.isArray(arg)) {
+      throw new Error("To pass multiple animations please supply them in arrays, e.g. animation(['rotate', '2s'], ['move', '1s'])\nTo pass a single animation please supply them in simple values, e.g. animation('rotate', '2s')");
+    }
+    if (Array.isArray(arg) && arg.length > 8) {
+      throw new Error('The animation shorthand arrays can only have 8 elements. See the specification for more information: http://mdn.io/animation');
+    }
+
+    return Array.isArray(arg) ? arg.join(' ') : arg;
+  }).join(', ');
+
+  return {
+    animation: code
+  };
+}
+
+//      
+
+/**
+ * Shorthand that accepts any number of backgroundImage values as parameters for creating a single background statement.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...backgroundImages('url("/image/background.jpg")', 'linear-gradient(red, green)')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${backgroundImages('url("/image/background.jpg")', 'linear-gradient(red, green)')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'backgroundImage': 'url("/image/background.jpg"), linear-gradient(red, green)'
+ * }
+ */
+
+function backgroundImages() {
+  for (var _len = arguments.length, properties = Array(_len), _key = 0; _key < _len; _key++) {
+    properties[_key] = arguments[_key];
+  }
+
+  return {
+    backgroundImage: properties.join(', ')
+  };
+}
+
+//      
+
+/**
+ * Shorthand that accepts any number of background values as parameters for creating a single background statement.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...backgrounds('url("/image/background.jpg")', 'linear-gradient(red, green)', 'center no-repeat')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${backgrounds('url("/image/background.jpg")', 'linear-gradient(red, green)', 'center no-repeat')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'background': 'url("/image/background.jpg"), linear-gradient(red, green), center no-repeat'
+ * }
+ */
+function backgrounds() {
+  for (var _len = arguments.length, properties = Array(_len), _key = 0; _key < _len; _key++) {
+    properties[_key] = arguments[_key];
+  }
+
+  return {
+    background: properties.join(', ')
+  };
+}
+
+//      
+/**
+ * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...borderColor('red', 'green', 'blue', 'yellow')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${borderColor('red', 'green', 'blue', 'yellow')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'borderTopColor': 'red',
+ *   'borderRightColor': 'green',
+ *   'borderBottomColor': 'blue',
+ *   'borderLeftColor': 'yellow'
+ * }
+ */
+
+function borderColor() {
+  for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
+    values[_key] = arguments[_key];
+  }
+
+  return directionalProperty.apply(undefined, ['borderColor'].concat(values));
+}
+
+//      
+/**
+ * Shorthand that accepts a value for side and a value for radius and applies the radius value to both corners of the side.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...borderRadius('top', '5px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${borderRadius('top', '5px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'borderTopRightRadius': '5px',
+ *   'borderTopLeftRadius': '5px',
+ * }
+ */
+
+function borderRadius(side, radius) {
+  var uppercaseSide = capitalizeString(side);
+  if (!radius && radius !== 0) {
+    throw new Error('borderRadius expects a radius value as a string or number as the second argument.');
+  }
+  if (uppercaseSide === 'Top' || uppercaseSide === 'Bottom') {
+    var _ref;
+
+    return _ref = {}, _ref['border' + uppercaseSide + 'RightRadius'] = radius, _ref['border' + uppercaseSide + 'LeftRadius'] = radius, _ref;
+  }
+
+  if (uppercaseSide === 'Left' || uppercaseSide === 'Right') {
+    var _ref2;
+
+    return _ref2 = {}, _ref2['borderTop' + uppercaseSide + 'Radius'] = radius, _ref2['borderBottom' + uppercaseSide + 'Radius'] = radius, _ref2;
+  }
+
+  throw new Error('borderRadius expects one of "top", "bottom", "left" or "right" as the first argument.');
+}
+
+//      
+/**
+ * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...borderStyle('solid', 'dashed', 'dotted', 'double')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${borderStyle('solid', 'dashed', 'dotted', 'double')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'borderTopStyle': 'solid',
+ *   'borderRightStyle': 'dashed',
+ *   'borderBottomStyle': 'dotted',
+ *   'borderLeftStyle': 'double'
+ * }
+ */
+
+function borderStyle() {
+  for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
+    values[_key] = arguments[_key];
+  }
+
+  return directionalProperty.apply(undefined, ['borderStyle'].concat(values));
+}
+
+//      
+/**
+ * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...borderWidth('12px', '24px', '36px', '48px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${borderWidth('12px', '24px', '36px', '48px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'borderTopWidth': '12px',
+ *   'borderRightWidth': '24px',
+ *   'borderBottomWidth': '36px',
+ *   'borderLeftWidth': '48px'
+ * }
+ */
+function borderWidth() {
+  for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
+    values[_key] = arguments[_key];
+  }
+
+  return directionalProperty.apply(undefined, ['borderWidth'].concat(values));
+}
+
+//      
+
+
+function generateSelectors(template, state) {
+  var stateSuffix = state ? ':' + state : '';
+  return template(stateSuffix);
+}
+
+/**
+ * Function helper that adds an array of states to a template of selectors. Used in textInputs and buttons.
+ * @private
+ */
+function statefulSelectors(states, template, stateMap) {
+  if (!template) throw new Error('You must provide a template to this method.');
+  if (states.length === 0) return generateSelectors(template, null);
+  var selectors = [];
+  for (var i = 0; i < states.length; i += 1) {
+    if (stateMap && stateMap.indexOf(states[i]) < 0) {
+      throw new Error('You passed an unsupported selector state to this method.');
+    }
+    selectors.push(generateSelectors(template, states[i]));
+  }
+  selectors = selectors.join(',');
+  return selectors;
+}
+
+//      
+var stateMap = [undefined, null, 'active', 'focus', 'hover'];
+
+function template(state) {
+  return 'button' + state + ',\n  input[type="button"]' + state + ',\n  input[type="reset"]' + state + ',\n  input[type="submit"]' + state;
+}
+
+/**
+ * Populates selectors that target all buttons. You can pass optional states to append to the selectors.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   [buttons('active')]: {
+ *     'border': 'none'
+ *   }
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   > ${buttons('active')} {
+ *     border: none;
+ *   }
+ * `
+ *
+ * // CSS in JS Output
+ *
+ *  'button:active,
+ *  'input[type="button"]:active,
+ *  'input[type=\"reset\"]:active,
+ *  'input[type=\"submit\"]:active: {
+ *   'border': 'none'
+ * }
+ */
+
+function buttons() {
+  for (var _len = arguments.length, states = Array(_len), _key = 0; _key < _len; _key++) {
+    states[_key] = arguments[_key];
+  }
+
+  return statefulSelectors(states, template, stateMap);
+}
+
+//      
+/**
+ * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...margin('12px', '24px', '36px', '48px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${margin('12px', '24px', '36px', '48px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'marginTop': '12px',
+ *   'marginRight': '24px',
+ *   'marginBottom': '36px',
+ *   'marginLeft': '48px'
+ * }
+ */
+
+function margin() {
+  for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
+    values[_key] = arguments[_key];
+  }
+
+  return directionalProperty.apply(undefined, ['margin'].concat(values));
+}
+
+//      
+/**
+ * Shorthand that accepts up to four values, including null to skip a value, and maps them to their respective directions.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...padding('12px', '24px', '36px', '48px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${padding('12px', '24px', '36px', '48px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'paddingTop': '12px',
+ *   'paddingRight': '24px',
+ *   'paddingBottom': '36px',
+ *   'paddingLeft': '48px'
+ * }
+ */
+
+function padding() {
+  for (var _len = arguments.length, values = Array(_len), _key = 0; _key < _len; _key++) {
+    values[_key] = arguments[_key];
+  }
+
+  return directionalProperty.apply(undefined, ['padding'].concat(values));
+}
+
+//      
+var positionMap$1 = ['absolute', 'fixed', 'relative', 'static', 'sticky'];
+
+/**
+ * Shorthand accepts up to five values, including null to skip a value, and maps them to their respective directions. The first value can optionally be a position keyword.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...position('12px', '24px', '36px', '48px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${position('12px', '24px', '36px', '48px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'top': '12px',
+ *   'right': '24px',
+ *   'bottom': '36px',
+ *   'left': '48px'
+ * }
+ *
+ * // Styles as object usage
+ * const styles = {
+ *   ...position('absolute', '12px', '24px', '36px', '48px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${position('absolute', '12px', '24px', '36px', '48px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'position': 'absolute',
+ *   'top': '12px',
+ *   'right': '24px',
+ *   'bottom': '36px',
+ *   'left': '48px'
+ * }
+ */
+
+function position(positionKeyword) {
+  for (var _len = arguments.length, values = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    values[_key - 1] = arguments[_key];
+  }
+
+  if (positionMap$1.indexOf(positionKeyword) >= 0) {
+    return _extends({
+      position: positionKeyword
+    }, directionalProperty.apply(undefined, [''].concat(values)));
+  } else {
+    var firstValue = positionKeyword; // in this case position is actually the first value
+    return directionalProperty.apply(undefined, ['', firstValue].concat(values));
+  }
+}
+
+//      
+
+/**
+ * Shorthand to set the height and width properties in a single statement.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...size('300px', '250px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${size('300px', '250px')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'height': '300px',
+ *   'width': '250px',
+ * }
+ */
+
+function size(height) {
+  var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : height;
+
+  return {
+    height: height,
+    width: width
+  };
+}
+
+//      
+var stateMap$1 = [undefined, null, 'active', 'focus', 'hover'];
+
+function template$1(state) {
+  return 'input[type="color"]' + state + ',\n    input[type="date"]' + state + ',\n    input[type="datetime"]' + state + ',\n    input[type="datetime-local"]' + state + ',\n    input[type="email"]' + state + ',\n    input[type="month"]' + state + ',\n    input[type="number"]' + state + ',\n    input[type="password"]' + state + ',\n    input[type="search"]' + state + ',\n    input[type="tel"]' + state + ',\n    input[type="text"]' + state + ',\n    input[type="time"]' + state + ',\n    input[type="url"]' + state + ',\n    input[type="week"]' + state + ',\n    input:not([type])' + state + ',\n    textarea' + state;
+}
+
+/**
+ * Populates selectors that target all text inputs. You can pass optional states to append to the selectors.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   [textInputs('active')]: {
+ *     'border': 'none'
+ *   }
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   > ${textInputs('active')} {
+ *     border: none;
+ *   }
+ * `
+ *
+ * // CSS in JS Output
+ *
+ *  'input[type="color"]:active,
+ *  input[type="date"]:active,
+ *  input[type="datetime"]:active,
+ *  input[type="datetime-local"]:active,
+ *  input[type="email"]:active,
+ *  input[type="month"]:active,
+ *  input[type="number"]:active,
+ *  input[type="password"]:active,
+ *  input[type="search"]:active,
+ *  input[type="tel"]:active,
+ *  input[type="text"]:active,
+ *  input[type="time"]:active,
+ *  input[type="url"]:active,
+ *  input[type="week"]:active,
+ *  input:not([type]):active,
+ *  textarea:active': {
+ *   'border': 'none'
+ * }
+ */
+
+function textInputs() {
+  for (var _len = arguments.length, states = Array(_len), _key = 0; _key < _len; _key++) {
+    states[_key] = arguments[_key];
+  }
+
+  return statefulSelectors(states, template$1, stateMap$1);
+}
+
+//      
+
+/**
+ * Shorthand that accepts any number of transition values as parameters for creating a single transition statement.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...transitions('opacity 1.0s ease-in 0s', 'width 2.0s ease-in 2s')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${transitions('opacity 1.0s ease-in 0s', 'width 2.0s ease-in 2s')}
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div {
+ *   'transition': 'opacity 1.0s ease-in 0s, width 2.0s ease-in 2s'
+ * }
+ */
+
+function transitions() {
+  for (var _len = arguments.length, properties = Array(_len), _key = 0; _key < _len; _key++) {
+    properties[_key] = arguments[_key];
+  }
+
+  return {
+    transition: properties.join(', ')
+  };
+}
+
+//      
+// Helpers
+// Mixins
+// Color
+// Shorthands
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/prop-types-exact/build/helpers/isPlainObject.js":
 /***/ (function(module, exports) {
 
@@ -2882,7 +6016,7 @@ module.exports = exports['default'];
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_emotion__ = __webpack_require__("./node_modules/emotion/dist/index.es.js");
-/* unused harmony namespace reexport */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_1_emotion__["injectGlobal"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_create_emotion_styled__ = __webpack_require__("./node_modules/create-emotion-styled/dist/index.es.js");
 
 
@@ -3059,12 +6193,14 @@ var _default = function _default() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("./node_modules/next/link.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_theme__ = __webpack_require__("./src/styles/theme/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__containers_user__ = __webpack_require__("./src/containers/user/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__containers_post__ = __webpack_require__("./src/containers/post/index.tsx");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils_data_reducers__ = __webpack_require__("./src/utils/data-reducers.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_emotion_theming__ = __webpack_require__("./node_modules/emotion-theming/dist/index.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__globalStyles__ = __webpack_require__("./src/globalStyles.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles__ = __webpack_require__("./src/styles.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_theme__ = __webpack_require__("./src/styles/theme/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__containers_fetcher__ = __webpack_require__("./src/containers/fetcher/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__containers_user__ = __webpack_require__("./src/containers/user/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__containers_post__ = __webpack_require__("./src/containers/post/index.tsx");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__ = __webpack_require__("./src/utils/data-reducers.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_emotion_theming__ = __webpack_require__("./node_modules/emotion-theming/dist/index.es.js");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/app.tsx";
 
 
@@ -3083,66 +6219,78 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 
+
+
 var App = function App() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__styles__["a" /* AppWrapper */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 19
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
     href: "/about",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 20
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 21
     }
-  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_emotion_theming__["a" /* ThemeProvider */], {
-    theme: __WEBPACK_IMPORTED_MODULE_2__styles_theme__["a" /* theme */],
+  }, "About")), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__styles__["c" /* FullWidth */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 23
     }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__containers_fetcher__["a" /* Fetcher */], {
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_emotion_theming__["a" /* ThemeProvider */], {
+    theme: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 24
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__containers_fetcher__["a" /* Fetcher */], {
     endPoint: "users",
-    dataReducer: __WEBPACK_IMPORTED_MODULE_6__utils_data_reducers__["b" /* usersHandler */],
+    dataReducer: __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__["b" /* usersHandler */],
     renderComponent: function renderComponent(data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4__containers_user__["a" /* User */], _extends({}, data, {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__containers_user__["a" /* User */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23
+          lineNumber: 28
         }
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 25
     }
-  })), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7_emotion_theming__["a" /* ThemeProvider */], {
-    theme: __WEBPACK_IMPORTED_MODULE_2__styles_theme__["a" /* theme */],
+  }))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__styles__["b" /* ContainedWidth */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 32
     }
-  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__containers_fetcher__["a" /* Fetcher */], {
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_emotion_theming__["a" /* ThemeProvider */], {
+    theme: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */],
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__containers_fetcher__["a" /* Fetcher */], {
     endPoint: "posts",
-    dataReducer: __WEBPACK_IMPORTED_MODULE_6__utils_data_reducers__["a" /* postsHandler */],
+    dataReducer: __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__["a" /* postsHandler */],
     renderComponent: function renderComponent(data) {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__containers_post__["a" /* Post */], _extends({}, data, {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__containers_post__["a" /* Post */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30
+          lineNumber: 37
         }
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 34
     }
-  })));
+  }))));
 };
 ;
 
@@ -3156,6 +6304,71 @@ var App = function App() {
   }
 
   reactHotLoader.register(App, "App", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/app.tsx");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/components/btn/index.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Button; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_emotion__ = __webpack_require__("./node_modules/react-emotion/dist/index.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_polished__ = __webpack_require__("./node_modules/polished/dist/polished.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_typography__ = __webpack_require__("./src/styles/typography/index.ts");
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+
+
+
+var Button =
+/*#__PURE__*/
+Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("button", {
+  target: "ev13vne0"
+})({
+  label: 'button',
+  borderRadius: '28px',
+  fontFamily: __WEBPACK_IMPORTED_MODULE_2__styles_typography__["d" /* font */].fontFamily,
+  fontSize: '20px',
+  cursor: 'pointer',
+  padding: '10px 20px 10px 20px',
+  textDecoration: 'none',
+  border: 'none',
+  margin: "2rem 0",
+  minWidth: 100,
+  transition: 'all 0.2s linear 0s'
+}, function (_ref) {
+  var buttonColour = _ref.buttonColour,
+      fontColour = _ref.fontColour;
+  return {
+    backgroundColor: buttonColour,
+    color: fontColour,
+    '&:hover': {
+      background: Object(__WEBPACK_IMPORTED_MODULE_1_polished__["a" /* lighten */])(0.1, "".concat(buttonColour)),
+      textDecoration: 'none'
+    }
+  };
+});
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(Button, "Button", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/btn/index.ts");
   leaveModule(module);
 })();
 
@@ -3326,6 +6539,10 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -3356,20 +6573,28 @@ function (_React$Component) {
     value: function render() {
       var _props = this.props,
           cols = _props.cols,
-          renderContent = _props.renderContent;
+          renderContent = _props.renderContent,
+          dataArray = _props.dataArray;
+      var items = dataArray.map(function (dataItem, i) {
+        var props = _objectSpread({}, dataItem);
+
+        return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["b" /* FlexItem */], {
+          key: i,
+          xs: cols.xs,
+          sm: cols.sm,
+          md: cols.md,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 22
+          }
+        }, renderContent(props));
+      });
       return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* FlexContainer */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17
+          lineNumber: 28
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["b" /* FlexItem */], {
-        xs: cols.xs,
-        sm: cols.sm,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 18
-        }
-      }, renderContent()));
+      }, items);
     }
   }, {
     key: "__reactstandin__regenerateByEval",
@@ -3437,18 +6662,24 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
 })({
   label: 'flex-item',
   position: 'relative',
-  boxSizing: 'border-box'
+  boxSizing: 'border-box',
+  border: '1px solid grey',
+  width: '100%'
 }, function (_ref) {
   var _ref2;
 
   var xs = _ref.xs,
-      sm = _ref.sm;
+      sm = _ref.sm,
+      md = _ref.md;
   return _ref2 = {}, _defineProperty(_ref2, __WEBPACK_IMPORTED_MODULE_1__styles_breakpoints__["a" /* mq */][0], {
     border: '1px solid red',
     width: "calc(".concat(100 / xs, "% - ", 0, "px)")
   }), _defineProperty(_ref2, __WEBPACK_IMPORTED_MODULE_1__styles_breakpoints__["a" /* mq */][1], {
     border: '1px solid blue',
     width: "calc(".concat(100 / sm, "% - ", 0, "px)")
+  }), _defineProperty(_ref2, __WEBPACK_IMPORTED_MODULE_1__styles_breakpoints__["a" /* mq */][2], {
+    border: '1px solid yellow',
+    width: "calc(".concat(100 / md, "% - ", 0, "px)")
   }), _ref2;
 });
 ;
@@ -3666,15 +6897,8 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 
 var Post = function Post(props) {
-  var posts = Object.values(props).map(function (post, i) {
-    return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__components_card__["a" /* Card */], _extends({
-      key: i
-    }, post, {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 12
-      }
-    }));
+  var posts = Object.values(props).map(function (post) {
+    return post;
   });
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* PostWrapper */], {
     __source: {
@@ -3682,13 +6906,19 @@ var Post = function Post(props) {
       lineNumber: 16
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_flex_grid__["a" /* FlexGrid */], {
-    data: props,
+    dataArray: posts,
     cols: {
-      xs: 1,
-      sm: 2
+      xs: 2,
+      sm: 3,
+      md: 4
     },
-    renderContent: function renderContent() {
-      return posts;
+    renderContent: function renderContent(props) {
+      return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__components_card__["a" /* Card */], _extends({}, props, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        }
+      }));
     },
     __source: {
       fileName: _jsxFileName,
@@ -3764,7 +6994,10 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/cjs/react.development.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/containers/user/styles.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_typography__ = __webpack_require__("./src/styles/typography/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_btn__ = __webpack_require__("./src/components/btn/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_typography__ = __webpack_require__("./src/styles/typography/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styles_theme__ = __webpack_require__("./src/styles/theme/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styles_breakpoints__ = __webpack_require__("./src/styles/breakpoints/index.ts");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/user/index.tsx";
 
 (function () {
@@ -3776,47 +7009,55 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
 
 
 
+
+
+
 var User = function User(props) {
   // export const User: React.SFC<IUserData> = props => {
   var bio = props.bio,
       coverImage = props.coverImage,
       name = props.name,
       profileImage = props.profileImage;
-  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserWrapper */], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__styles_typography__["a" /* H2 */], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 14
-    }
-  }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__styles_typography__["c" /* P */], {
-    fontColour: "#ff00ff",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    }
-  }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
-    style: {
-      width: 100
-    },
-    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(coverImage),
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["c" /* UserWrapper */], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
     }
-  }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("img", {
-    style: {
-      width: 50
-    },
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserDetails */], {
+    backgroundSrc: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(coverImage),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["b" /* UserProfile */], {
     src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(profileImage),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 18
     }
-  }));
+  }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__styles_typography__["a" /* H2 */], {
+    fontColour: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */].white,
+    fontAlign: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
+    }
+  }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__styles_typography__["c" /* P */], {
+    maxWidth: __WEBPACK_IMPORTED_MODULE_5__styles_breakpoints__["b" /* px */].sm,
+    fontColour: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */].white,
+    fontAlign: "center",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 22
+    }
+  }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_btn__["a" /* Button */], {
+    buttonColour: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */].pink,
+    fontColour: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */].white,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 25
+    }
+  }, "CV")));
 };
 ;
 
@@ -3842,8 +7083,12 @@ var User = function User(props) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserWrapper; });
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return UserWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserDetails; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return UserProfile; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_emotion__ = __webpack_require__("./node_modules/react-emotion/dist/index.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles_theme__ = __webpack_require__("./src/styles/theme/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_common__ = __webpack_require__("./src/styles/common.ts");
 (function () {
   var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
 
@@ -3851,12 +7096,51 @@ var User = function User(props) {
 })();
 
 
+
+
 var UserWrapper =
 /*#__PURE__*/
 Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
   target: "ejpu0hx0"
 })({
-  label: 'user-wrapper'
+  label: 'user-wrapper',
+  position: 'relative',
+  width: '100%',
+  height: '100%'
+});
+var UserDetails =
+/*#__PURE__*/
+Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
+  target: "ejpu0hx1"
+})({
+  label: 'user-details',
+  minHeight: 300,
+  textAlign: 'center',
+  padding: __WEBPACK_IMPORTED_MODULE_2__styles_common__["a" /* common */].padding,
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
+  backgroundSize: 'cover',
+  '& h2': {
+    marginTop: '1rem'
+  }
+}, function (_ref) {
+  var backgroundSrc = _ref.backgroundSrc;
+  return {
+    backgroundImage: "url(".concat(backgroundSrc, ")")
+  };
+});
+var UserProfile =
+/*#__PURE__*/
+Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("img", {
+  target: "ejpu0hx2"
+})({
+  label: 'user-profile',
+  width: 100,
+  height: 'auto',
+  marginTop: '3rem',
+  borderRadius: '50%',
+  boxSizing: 'border-box',
+  border: "3px solid ".concat(__WEBPACK_IMPORTED_MODULE_1__styles_theme__["a" /* theme */].white)
 });
 ;
 
@@ -3870,6 +7154,84 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
   }
 
   reactHotLoader.register(UserWrapper, "UserWrapper", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/user/styles.ts");
+  reactHotLoader.register(UserDetails, "UserDetails", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/user/styles.ts");
+  reactHotLoader.register(UserProfile, "UserProfile", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/containers/user/styles.ts");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/globalStyles.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_emotion__ = __webpack_require__("./node_modules/react-emotion/dist/index.es.js");
+
+Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["b" /* injectGlobal */])("html,body,#root{width:100%;min-width:320px;height:100%;padding:0;margin:0;}");
+
+/***/ }),
+
+/***/ "./src/styles.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return FullWidth; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ContainedWidth; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_emotion__ = __webpack_require__("./node_modules/react-emotion/dist/index.es.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_styles_breakpoints__ = __webpack_require__("./src/styles/breakpoints/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_common__ = __webpack_require__("./src/styles/common.ts");
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+
+
+
+var AppWrapper =
+/*#__PURE__*/
+Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
+  target: "e1v25kk20"
+})({
+  label: 'app'
+});
+var FullWidth =
+/*#__PURE__*/
+Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
+  target: "e1v25kk21"
+})({
+  label: 'full-width',
+  width: '100%'
+});
+var ContainedWidth =
+/*#__PURE__*/
+Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
+  target: "e1v25kk22"
+})({
+  label: 'contained-width',
+  margin: '0 auto',
+  padding: "0px ".concat(__WEBPACK_IMPORTED_MODULE_2__styles_common__["a" /* common */].padding, "px 0px ").concat(__WEBPACK_IMPORTED_MODULE_2__styles_common__["a" /* common */].padding, "px"),
+  maxWidth: "".concat(__WEBPACK_IMPORTED_MODULE_1__src_styles_breakpoints__["b" /* px */].lg)
+});
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(AppWrapper, "AppWrapper", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/styles.ts");
+  reactHotLoader.register(FullWidth, "FullWidth", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/styles.ts");
+  reactHotLoader.register(ContainedWidth, "ContainedWidth", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/styles.ts");
   leaveModule(module);
 })();
 
@@ -3882,7 +7244,8 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mq; });
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return px; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return mq; });
 (function () {
   var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
 
@@ -3894,7 +7257,6 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("div", {
 // sm > 576 < md 768
 // md > 768 < 992
 // lg > 992 < 1200
-// xl > 1200
 var px = {
   xs: 576,
   sm: 768,
@@ -3929,6 +7291,40 @@ var mq = breakpoints.map(function (bp) {
   reactHotLoader.register(px, "px", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/styles/breakpoints/index.ts");
   reactHotLoader.register(breakpoints, "breakpoints", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/styles/breakpoints/index.ts");
   reactHotLoader.register(mq, "mq", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/styles/breakpoints/index.ts");
+  leaveModule(module);
+})();
+
+;
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__("./node_modules/webpack/buildin/harmony-module.js")(module)))
+
+/***/ }),
+
+/***/ "./src/styles/common.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return common; });
+(function () {
+  var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
+
+  enterModule && enterModule(module);
+})();
+
+var common = {
+  padding: 10
+};
+;
+
+(function () {
+  var reactHotLoader = __webpack_require__("./node_modules/react-hot-loader/index.js").default;
+
+  var leaveModule = __webpack_require__("./node_modules/react-hot-loader/index.js").leaveModule;
+
+  if (!reactHotLoader) {
+    return;
+  }
+
+  reactHotLoader.register(common, "common", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/styles/common.ts");
   leaveModule(module);
 })();
 
@@ -4010,7 +7406,8 @@ var theme = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return P; });
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return font; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return P; });
 /* unused harmony export UL */
 /* unused harmony export OL */
 /* unused harmony export LI */
@@ -4039,19 +7436,24 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/*! Typebase.less v0.1.0 | MIT License */
 
+
+/*! Typebase.less v0.1.0 | MIT License */
 
 /* Types */
 
 /* Setup */
 var font = {
   fontFamily: "Roboto, sans-serif",
-  color: __WEBPACK_IMPORTED_MODULE_1__theme___["a" /* theme */].darkest
+  color: __WEBPACK_IMPORTED_MODULE_1__theme___["a" /* theme */].darkest,
+  textAlign: 'left',
+  margin: '0 auto',
+  maxWidth: '100%'
 };
 var headingFont = {
   fontFamily: "Nunito, sans-serif",
-  color: __WEBPACK_IMPORTED_MODULE_1__theme___["a" /* theme */].darkest
+  color: __WEBPACK_IMPORTED_MODULE_1__theme___["a" /* theme */].darkest,
+  textAlign: 'left'
 };
 
 var lis = _objectSpread({}, font, {
@@ -4080,9 +7482,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("p", {
   marginTop: '1.5rem',
   marginBottom: 0
 }), function (_ref) {
-  var fontColour = _ref.fontColour;
+  var fontColour = _ref.fontColour,
+      fontAlign = _ref.fontAlign,
+      maxWidth = _ref.maxWidth;
   return {
-    color: fontColour ? fontColour : '#000000'
+    color: fontColour ? fontColour : font.color,
+    textAlign: fontAlign ? fontAlign : font.textAlign,
+    width: maxWidth ? maxWidth : font.maxWidth
   };
 });
 var UL =
@@ -4132,7 +7538,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h1", {
   fontSize: '4.242rem',
   lineHeight: '4.5rem',
   marginTop: '3rem'
-}));
+}), function (_ref2) {
+  var fontColour = _ref2.fontColour,
+      fontAlign = _ref2.fontAlign;
+  return {
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  };
+});
 var H2 =
 /*#__PURE__*/
 Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h2", {
@@ -4142,7 +7555,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h2", {
   fontSize: '2.828rem',
   lineHeight: '3rem',
   marginTop: '3rem'
-}));
+}), function (_ref3) {
+  var fontColour = _ref3.fontColour,
+      fontAlign = _ref3.fontAlign;
+  return {
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  };
+});
 var H3 =
 /*#__PURE__*/
 Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h3", {
@@ -4150,7 +7570,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h3", {
 })(_objectSpread({}, headings, {
   label: 'h3',
   fontSize: '1.414rem'
-}));
+}), function (_ref4) {
+  var fontColour = _ref4.fontColour,
+      fontAlign = _ref4.fontAlign;
+  return {
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  };
+});
 var H4 =
 /*#__PURE__*/
 Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h4", {
@@ -4158,7 +7585,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h4", {
 })(_objectSpread({}, headings, {
   label: 'h4',
   fontSize: '0.707rem'
-}));
+}), function (_ref5) {
+  var fontColour = _ref5.fontColour,
+      fontAlign = _ref5.fontAlign;
+  return {
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  };
+});
 var H5 =
 /*#__PURE__*/
 Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h5", {
@@ -4166,7 +7600,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h5", {
 })(_objectSpread({}, headings, {
   label: 'h5',
   fontSize: '0.4713333333333333rem'
-}));
+}), function (_ref6) {
+  var fontColour = _ref6.fontColour,
+      fontAlign = _ref6.fontAlign;
+  return {
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  };
+});
 var H6 =
 /*#__PURE__*/
 Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h6", {
@@ -4174,7 +7615,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0_react_emotion__["a" /* default */])("h6", {
 })(_objectSpread({}, headings, {
   label: 'h6',
   fontSize: '0.3535rem'
-}));
+}), function (_ref7) {
+  var fontColour = _ref7.fontColour,
+      fontAlign = _ref7.fontAlign;
+  return {
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  };
+});
 /* Tables */
 
 var TABLE =

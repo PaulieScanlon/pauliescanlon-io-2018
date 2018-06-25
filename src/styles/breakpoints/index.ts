@@ -3,17 +3,15 @@
 // sm > 576 < md 768
 // md > 768 < 992
 // lg > 992 < 1200
-// xl > 1200
 
 export interface IPx {
   xs: number;
   sm: number;
   md?: number;
   lg?: number;
-  xl?: number;
 }
 
-const px = {
+export const px = {
   xs: 576,
   sm: 768,
   md: 992,

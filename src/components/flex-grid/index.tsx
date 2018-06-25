@@ -5,20 +5,26 @@ import { IPx } from '../../styles/breakpoints';
 import { FlexContainer, FlexItem } from './styles';
 
 interface IProps {
-  data: any;
+  dataArray: any[];
   cols: IPx;
-  renderContent(): React.ReactNode;
+  renderContent(props: any): React.ReactNode;
 }
 
 export class FlexGrid extends React.Component<IProps, null> {
   render() {
-    const { cols, renderContent } = this.props;
-    return (
-      <FlexContainer>
-        <FlexItem xs={cols.xs} sm={cols.sm}>
-          {renderContent()}
+    const { cols, renderContent, dataArray } = this.props;
+
+    const items = dataArray.map((dataItem: any, i: number) => {
+      const props = {
+        ...dataItem
+      };
+      return (
+        <FlexItem key={i} xs={cols.xs} sm={cols.sm} md={cols.md}>
+          {renderContent(props)}
         </FlexItem>
-      </FlexContainer>
-    );
+      );
+    });
+
+    return <FlexContainer>{items}</FlexContainer>;
   }
 }

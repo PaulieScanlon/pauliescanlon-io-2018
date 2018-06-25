@@ -1,23 +1,28 @@
-/*! Typebase.less v0.1.0 | MIT License */
-
 import styled from 'react-emotion';
 
 import { theme } from '../theme/';
 
+/*! Typebase.less v0.1.0 | MIT License */
 /* Types */
-interface IGProps {
+interface ITypography {
   fontColour?: string;
+  fontAlign?: string;
+  maxWidth?: number;
 }
 
 /* Setup */
-const font = {
+export const font = {
   fontFamily: `Roboto, sans-serif`,
-  color: theme.darkest
+  color: theme.darkest,
+  textAlign: 'left',
+  margin: '0 auto',
+  maxWidth: '100%'
 };
 
 const headingFont = {
   fontFamily: `Nunito, sans-serif`,
-  color: theme.darkest
+  color: theme.darkest,
+  textAlign: 'left'
 };
 
 const lis = {
@@ -39,28 +44,30 @@ const tables = {
 };
 
 /* Copy & Lists */
-export const P = styled.p<IGProps>(
+export const P = styled.p<ITypography>(
   {
-    ...font,
+    ...(font as any),
     label: 'p',
     lineHeight: '1.5rem',
     marginTop: '1.5rem',
     marginBottom: 0
   },
-  ({ fontColour }) => ({
-    color: fontColour ? fontColour : '#000000'
+  ({ fontColour, fontAlign, maxWidth }: any) => ({
+    color: fontColour ? fontColour : font.color,
+    textAlign: fontAlign ? fontAlign : font.textAlign,
+    width: maxWidth ? maxWidth : font.maxWidth
   })
 );
 
 export const UL = styled.ul({
-  ...font,
+  ...(font as any),
   label: 'ul',
   marginTop: '1.5rem',
   marginBottom: '1.5rem'
 });
 
 export const OL = styled(UL)({
-  ...font,
+  ...(font as any),
   label: 'ol',
   marginTop: 0,
   marginBottom: 0,
@@ -70,7 +77,7 @@ export const OL = styled(UL)({
 });
 
 export const LI = styled.li({
-  ...lis,
+  ...(lis as any),
   label: 'li'
 });
 
@@ -82,49 +89,85 @@ export const BLOCKQUOTE = styled.blockquote({
 });
 
 /* Headings */
-export const H1 = styled.h1({
-  ...headings,
-  label: 'h1',
-  fontSize: '4.242rem',
-  lineHeight: '4.5rem',
-  marginTop: '3rem'
-});
+export const H1 = styled.h1<ITypography>(
+  {
+    ...(headings as any),
+    label: 'h1',
+    fontSize: '4.242rem',
+    lineHeight: '4.5rem',
+    marginTop: '3rem'
+  },
+  ({ fontColour, fontAlign }: any) => ({
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  })
+);
 
-export const H2 = styled.h2({
-  ...headings,
-  label: 'h2',
-  fontSize: '2.828rem',
-  lineHeight: '3rem',
-  marginTop: '3rem'
-});
+export const H2 = styled.h2<ITypography>(
+  {
+    ...(headings as any),
+    label: 'h2',
+    fontSize: '2.828rem',
+    lineHeight: '3rem',
+    marginTop: '3rem'
+  },
+  ({ fontColour, fontAlign }: any) => ({
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  })
+);
 
-export const H3 = styled.h3({
-  ...headings,
-  label: 'h3',
-  fontSize: '1.414rem'
-});
+export const H3 = styled.h3<ITypography>(
+  {
+    ...(headings as any),
+    label: 'h3',
+    fontSize: '1.414rem'
+  },
+  ({ fontColour, fontAlign }: any) => ({
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  })
+);
 
-export const H4 = styled.h4({
-  ...headings,
-  label: 'h4',
-  fontSize: '0.707rem'
-});
+export const H4 = styled.h4<ITypography>(
+  {
+    ...(headings as any),
+    label: 'h4',
+    fontSize: '0.707rem'
+  },
+  ({ fontColour, fontAlign }: any) => ({
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  })
+);
 
-export const H5 = styled.h5({
-  ...headings,
-  label: 'h5',
-  fontSize: '0.4713333333333333rem'
-});
+export const H5 = styled.h5<ITypography>(
+  {
+    ...(headings as any),
+    label: 'h5',
+    fontSize: '0.4713333333333333rem'
+  },
+  ({ fontColour, fontAlign }: any) => ({
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  })
+);
 
-export const H6 = styled.h6({
-  ...headings,
-  label: 'h6',
-  fontSize: '0.3535rem'
-});
+export const H6 = styled.h6<ITypography>(
+  {
+    ...(headings as any),
+    label: 'h6',
+    fontSize: '0.3535rem'
+  },
+  ({ fontColour, fontAlign }: any) => ({
+    color: fontColour ? fontColour : headingFont.color,
+    textAlign: fontAlign ? fontAlign : headingFont.textAlign
+  })
+);
 
 /* Tables */
 export const TABLE = styled.table({
-  ...font,
+  ...(font as any),
   ...tables,
   label: 'table',
   marginTop: '1.5rem',
@@ -138,7 +181,7 @@ export const TD = styled.td({
 });
 
 export const TH = styled.th({
-  ...font,
+  ...(font as any),
   ...tables,
   label: 'th'
 });
@@ -151,7 +194,7 @@ export const CODE = styled.code({
 
 /* Leading paragraph text */
 export const LEAD = {
-  ...font,
+  ...(font as any),
   label: 'lead',
   fontSize: '1.414rem'
 };

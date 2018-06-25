@@ -1,27 +1,31 @@
 import * as React from 'react';
 
-import { UserWrapper } from './styles';
-
 import { IUserData } from '../../types/data-types';
 
+import { UserWrapper, UserDetails, UserProfile } from './styles';
+import { Button } from '../../components/btn';
+
 import { H2, P } from '../../styles/typography';
+import { theme } from '../../styles/theme';
+import { px } from '../../styles/breakpoints';
 
 export const User = (props: IUserData) => {
   // export const User: React.SFC<IUserData> = props => {
   const { bio, coverImage, name, profileImage } = props;
   return (
     <UserWrapper>
-      <H2>{name}</H2>
-      <P fontColour="#ff00ff">{bio}</P>
-      <img
-        style={{ width: 100 }}
-        src={`${process.env.GHOST_CMS}${coverImage}`}
-      />
-
-      <img
-        style={{ width: 50 }}
-        src={`${process.env.GHOST_CMS}${profileImage}`}
-      />
+      <UserDetails backgroundSrc={`${process.env.GHOST_CMS}${coverImage}`}>
+        <UserProfile src={`${process.env.GHOST_CMS}${profileImage}`} />
+        <H2 fontColour={theme.white} fontAlign="center">
+          {name}
+        </H2>
+        <P maxWidth={px.sm} fontColour={theme.white} fontAlign="center">
+          {bio}
+        </P>
+        <Button buttonColour={theme.pink} fontColour={theme.white}>
+          CV
+        </Button>
+      </UserDetails>
     </UserWrapper>
   );
 };
