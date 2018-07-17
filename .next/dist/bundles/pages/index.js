@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -156,7 +156,7 @@ var App = function App() {
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__containers_fetcher__["a" /* Fetcher */], {
     endPoint: "users",
-    dataReducer: __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__["b" /* usersHandler */],
+    dataReducer: __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__["c" /* usersHandler */],
     renderComponent: function renderComponent(data) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__containers_user__["a" /* User */], _extends({}, data, {
         __source: {
@@ -251,31 +251,46 @@ __WEBPACK_IMPORTED_MODULE_0_react_emotion___default()("button", {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Card; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("react");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__styles__ = __webpack_require__("./src/components/card/styles.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles_typography__ = __webpack_require__("./src/styles/typography/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link__ = __webpack_require__("next/link");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_link___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_link__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__styles__ = __webpack_require__("./src/components/card/styles.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styles_typography__ = __webpack_require__("./src/styles/typography/index.ts");
 var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/components/card/index.tsx";
 
 
 
+
 var Card = function Card(postData) {
-  var title = postData.title,
-      customExcerpt = postData.customExcerpt;
-  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* CardWrapper */], {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 12
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__styles_typography__["b" /* H3 */], {
+  var customExcerpt = postData.customExcerpt,
+      id = postData.id,
+      title = postData.title;
+  return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__styles__["a" /* CardWrapper */], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13
     }
-  }, title), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__styles_typography__["c" /* P */], {
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__styles_typography__["b" /* H3 */], {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 14
     }
-  }, customExcerpt));
+  }, title), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__styles_typography__["c" /* P */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    }
+  }, customExcerpt), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
+    href: "/asd?".concat(id),
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 16
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"]("a", {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    }
+  }, id)));
 };
 
 /***/ }),
@@ -525,7 +540,7 @@ function (_React$Component) {
       dataFetch.then(function (res) {
         _this2.setState({
           isLoading: res.isLoading,
-          data: res.data ? _this2.props.dataReducer(res.data[_this2.props.endPoint]) : null,
+          data: res.data ? _this2.props.dataReducer(res.data) : null,
           hasErrored: res.hasErrored
         });
       });
@@ -543,7 +558,7 @@ function (_React$Component) {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__components_loading__["a" /* Loading */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 48
+            lineNumber: 46
           }
         });
       }
@@ -551,7 +566,7 @@ function (_React$Component) {
       return hasErrored ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_error__["a" /* Error */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51
+          lineNumber: 49
         }
       }) : renderComponent(data);
     }
@@ -1172,7 +1187,8 @@ var HUG = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return usersHandler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return usersHandler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return thingHandler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return postsHandler; });
 var mapTags = function mapTags(tags) {
   var tagNames = tags.map(function (tag) {
@@ -1183,17 +1199,21 @@ var mapTags = function mapTags(tags) {
 
 var usersHandler = function usersHandler(data) {
   var userData = {
-    bio: data[0].bio,
-    coverImage: data[0].cover_image,
+    bio: data.users[0].bio,
+    coverImage: data.users[0].cover_image,
     //TODO return with process.env.GHOST_CMS
-    name: data[0].name,
-    profileImage: data[0].profile_image //TODO return with process.env.GHOST_CMS
+    name: data.users[0].name,
+    profileImage: data.users[0].profile_image //TODO return with process.env.GHOST_CMS
 
   };
   return userData;
 };
+var thingHandler = function thingHandler(data) {
+  // console.log("thingHandler:", data);
+  return data;
+};
 var postsHandler = function postsHandler(data) {
-  var posts = data.map(function (data) {
+  var posts = data.posts.map(function (data) {
     return {
       customExcerpt: data.custom_excerpt,
       featureImage: data.feature_image,
@@ -1227,43 +1247,48 @@ var fetchType = {
   //these are the endPoint 'props' for Fetcher
   users: function users() {
     return goFetch({
-      endPoint: 'users/1'
+      endPoint: "users/1"
     });
   },
   posts: function posts() {
     return goFetch({
-      endPoint: 'posts',
+      endPoint: "posts",
       params: {
-        include: 'tags'
+        include: "tags"
       }
     });
   },
-  tags: function tags() {
+  thing: function thing() {
     return goFetch({
-      endPoint: 'tags',
+      endPoint: "posts",
       params: {
-        include: 'count.posts'
+        include: "tags"
       }
     });
-  },
-  sections: function sections() {
-    return goFetch({
-      endPoint: 'posts',
-      params: {
-        filter: 'page:true',
-        order: 'title dsc'
-      }
-    });
-  }
+  } // tags: () => {
+  //   return goFetch({
+  //     endPoint: 'tags',
+  //     params: { include: 'count.posts' }
+  //   });
+  // },
+  // sections: () => {
+  //   return goFetch({
+  //     endPoint: 'posts',
+  //     params: {
+  //       filter: 'page:true',
+  //       order: 'title dsc'
+  //     }
+  //   });
+  // }
+
 };
 
 var goFetch = function goFetch(_ref) {
   var endPoint = _ref.endPoint,
       params = _ref.params;
-  return fetch(window['ghost'].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
+  return fetch(window["ghost"].url.api("".concat(endPoint), _objectSpread({}, params))).then(function (res) {
     return res.json();
   }).then(function (data) {
-    // console.log('data: ', data);
     return {
       isLoading: false,
       data: data,
@@ -1280,7 +1305,7 @@ var goFetch = function goFetch(_ref) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.tsx");

@@ -1,4 +1,4 @@
-import { IUserData, IPostData } from '../types/data-types';
+import { IUserData, IPostData } from "../types/data-types";
 
 const mapTags = (tags: any): string[] => {
   const tagNames = tags.map(tag => {
@@ -10,16 +10,21 @@ const mapTags = (tags: any): string[] => {
 
 export const usersHandler = (data: any): IUserData => {
   const userData = {
-    bio: data[0].bio,
-    coverImage: data[0].cover_image, //TODO return with process.env.GHOST_CMS
-    name: data[0].name,
-    profileImage: data[0].profile_image //TODO return with process.env.GHOST_CMS
+    bio: data.users[0].bio,
+    coverImage: data.users[0].cover_image, //TODO return with process.env.GHOST_CMS
+    name: data.users[0].name,
+    profileImage: data.users[0].profile_image //TODO return with process.env.GHOST_CMS
   };
   return userData;
 };
 
+export const thingHandler = (data: any): any => {
+  // console.log("thingHandler:", data);
+  return data;
+};
+
 export const postsHandler = (data: any): IPostData => {
-  const posts = data.map((data: any) => {
+  const posts = data.posts.map((data: any) => {
     return {
       customExcerpt: data.custom_excerpt,
       featureImage: data.feature_image, //TODO return with process.env.GHOST_CMS

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { Loading } from '../../components/loading';
-import { Error } from '../../components/error';
+import { Loading } from "../../components/loading";
+import { Error } from "../../components/error";
 
-import { fetchType } from '../../utils/fetch';
+import { fetchType } from "../../utils/fetch";
 
 interface IProps {
   endPoint: string;
@@ -32,9 +32,7 @@ export class Fetcher extends React.Component<IProps, IState> {
     dataFetch.then(res => {
       this.setState({
         isLoading: res.isLoading,
-        data: res.data
-          ? this.props.dataReducer(res.data[this.props.endPoint])
-          : null,
+        data: res.data ? this.props.dataReducer(res.data) : null,
         hasErrored: res.hasErrored
       });
     });

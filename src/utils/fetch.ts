@@ -11,44 +11,50 @@ export const fetchType = {
   //these are the endPoint 'props' for Fetcher
   users: () => {
     return goFetch({
-      endPoint: 'users/1'
+      endPoint: "users/1"
     });
   },
 
   posts: () => {
     return goFetch({
-      endPoint: 'posts',
-      params: { include: 'tags' }
+      endPoint: "posts",
+      params: { include: "tags" }
     });
   },
 
-  tags: () => {
+  thing: () => {
     return goFetch({
-      endPoint: 'tags',
-      params: { include: 'count.posts' }
-    });
-  },
-
-  sections: () => {
-    return goFetch({
-      endPoint: 'posts',
-      params: {
-        filter: 'page:true',
-        order: 'title dsc'
-      }
+      endPoint: "posts",
+      params: { include: "tags" }
     });
   }
+
+  // tags: () => {
+  //   return goFetch({
+  //     endPoint: 'tags',
+  //     params: { include: 'count.posts' }
+  //   });
+  // },
+
+  // sections: () => {
+  //   return goFetch({
+  //     endPoint: 'posts',
+  //     params: {
+  //       filter: 'page:true',
+  //       order: 'title dsc'
+  //     }
+  //   });
+  // }
 };
 
 const goFetch = ({ endPoint, params }: IProps) => {
   return fetch(
-    window['ghost'].url.api(`${endPoint}`, {
+    window["ghost"].url.api(`${endPoint}`, {
       ...params
     })
   )
     .then(res => res.json())
     .then(data => {
-      // console.log('data: ', data);
       return {
         isLoading: false,
         data,
