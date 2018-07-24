@@ -2,8 +2,23 @@ import * as React from "react";
 
 import { IPostData } from "../../types/data-types";
 
-export const Thing = (props: IPostData[]) => {
-  console.log("Thing props: ", props);
+interface IProps {
+  posts: IPostData[];
+  id: string;
+}
 
-  return <div>Thing</div>;
+export const Thing = (props: IProps) => {
+  const { id, posts } = props;
+
+  const single = posts.filter(post => post.id === id);
+
+  const { title } = single["0"];
+
+  return (
+    <div>
+      <p>Thing</p>
+      <p>{id}</p>
+      <p>{title}</p>
+    </div>
+  );
 };

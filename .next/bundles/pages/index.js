@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/', function() {
           var comp = 
-      webpackJsonp([6],{
+      webpackJsonp([5],{
 
 /***/ "./node_modules/@babel/runtime/core-js/json/stringify.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -6420,7 +6420,13 @@ var Card = function Card(postData) {
       lineNumber: 15
     }
   }, customExcerpt), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
-    href: "/asd?".concat(id),
+    href: {
+      pathname: "/asd",
+      query: {
+        post: "".concat(id)
+      }
+    },
+    passHref: true,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
@@ -7900,7 +7906,7 @@ var goFetch = function goFetch(_ref) {
 
 /***/ }),
 
-/***/ 9:
+/***/ 8:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.tsx");
@@ -7908,7 +7914,7 @@ module.exports = __webpack_require__("./pages/index.tsx");
 
 /***/ })
 
-},[9])
+},[8])
           return { page: comp.default }
         })
       ;

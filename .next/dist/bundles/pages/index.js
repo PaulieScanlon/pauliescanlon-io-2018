@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -280,7 +280,13 @@ var Card = function Card(postData) {
       lineNumber: 15
     }
   }, customExcerpt), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
-    href: "/asd?".concat(id),
+    href: {
+      pathname: "/asd",
+      query: {
+        post: "".concat(id)
+      }
+    },
+    passHref: true,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
@@ -1305,7 +1311,7 @@ var goFetch = function goFetch(_ref) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.tsx");

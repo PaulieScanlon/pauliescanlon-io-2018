@@ -13,7 +13,7 @@ export const Card = (postData: IPostData) => {
     <CardWrapper>
       <H3>{title}</H3>
       <P>{customExcerpt}</P>
-      <Link href={`/asd?${id}`}>
+      <Link href={{ pathname: "/asd", query: { post: `${id}` } }} passHref>
         <a>{id}</a>
       </Link>
     </CardWrapper>
