@@ -8,7 +8,7 @@ import { theme } from "./styles/theme";
 import { Fetcher } from "./containers/fetcher";
 import { Thing } from "./containers/thing";
 
-import { thingHandler } from "./utils/data-reducers";
+import { postsHandler } from "./utils/data-reducers";
 
 import { ThemeProvider } from "emotion-theming";
 
@@ -34,19 +34,24 @@ export class Asd extends React.Component<null, IState> {
   }
 
   render() {
+    const { id } = this.state;
+
     return (
       <AppWrapper>
         <FullWidth>
           <div>Asd</div>
-          {/* <div>{pageProps}</div> */}
+
           <ThemeProvider theme={theme}>
-            <Fetcher
-              endPoint="posts"
-              dataReducer={thingHandler}
-              renderComponent={data => (
-                <Thing posts={data.posts} id={this.state.id} />
-              )}
-            />
+            {id ? (
+              <Fetcher
+                fetchMethod={{
+                  method: "singlePost",
+                  query: id
+                }}
+                dataReducer={postsHandler}
+                renderComponent={data => <Thing {...data} />}
+              />
+            ) : null}
           </ThemeProvider>
         </FullWidth>
       </AppWrapper>

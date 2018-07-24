@@ -6,7 +6,10 @@ import { Error } from "../../components/error";
 import { fetchType } from "../../utils/fetch";
 
 interface IProps {
-  endPoint: string;
+  fetchMethod: {
+    method: string;
+    query?: string;
+  };
   dataReducer(data: any);
   renderComponent(data: any): React.ReactNode;
 }
@@ -28,7 +31,9 @@ export class Fetcher extends React.Component<IProps, IState> {
   }
 
   componentDidMount() {
-    const dataFetch = fetchType[this.props.endPoint]();
+    const { method, query } = this.props.fetchMethod;
+    const dataFetch = fetchType[method](query);
+
     dataFetch.then(res => {
       this.setState({
         isLoading: res.isLoading,

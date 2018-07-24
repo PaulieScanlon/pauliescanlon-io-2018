@@ -2,23 +2,16 @@ import * as React from "react";
 
 import { IPostData } from "../../types/data-types";
 
-interface IProps {
-  posts: IPostData[];
-  id: string;
-}
+import { H3, P } from "../../styles/typography";
 
-export const Thing = (props: IProps) => {
-  const { id, posts } = props;
-
-  const single = posts.filter(post => post.id === id);
-
-  const { title } = single["0"];
+export const Thing = (props: IPostData) => {
+  const { customExcerpt, title } = props[0];
 
   return (
     <div>
       <p>Thing</p>
-      <p>{id}</p>
-      <p>{title}</p>
+      <H3>{title}</H3>
+      <P>{customExcerpt}</P>
     </div>
   );
 };

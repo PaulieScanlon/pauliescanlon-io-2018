@@ -2,7 +2,7 @@ module.exports =
 
         __NEXT_REGISTER_PAGE('/', function() {
           var comp = 
-      webpackJsonp([5],{
+      webpackJsonp([6],{
 
 /***/ "./node_modules/@babel/runtime/core-js/json/stringify.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -6250,13 +6250,16 @@ var App = function App() {
       lineNumber: 24
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__containers_fetcher__["a" /* Fetcher */], {
-    endPoint: "users",
-    dataReducer: __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__["c" /* usersHandler */],
+    fetchMethod: {
+      method: "users",
+      query: "1"
+    },
+    dataReducer: __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__["b" /* usersHandler */],
     renderComponent: function renderComponent(data) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__containers_user__["a" /* User */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
+          lineNumber: 31
         }
       }));
     },
@@ -6267,28 +6270,30 @@ var App = function App() {
   }))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__styles__["b" /* ContainedWidth */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 35
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9_emotion_theming__["a" /* ThemeProvider */], {
     theme: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */],
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 36
     }
   }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5__containers_fetcher__["a" /* Fetcher */], {
-    endPoint: "posts",
+    fetchMethod: {
+      method: "posts"
+    },
     dataReducer: __WEBPACK_IMPORTED_MODULE_8__utils_data_reducers__["a" /* postsHandler */],
     renderComponent: function renderComponent(data) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__containers_post__["a" /* Post */], _extends({}, data, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 42
         }
       }));
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 37
     }
   }))));
 };
@@ -6828,7 +6833,10 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var dataFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* fetchType */][this.props.endPoint]();
+      var _props$fetchMethod = this.props.fetchMethod,
+          method = _props$fetchMethod.method,
+          query = _props$fetchMethod.query;
+      var dataFetch = __WEBPACK_IMPORTED_MODULE_3__utils_fetch__["a" /* fetchType */][method](query);
       dataFetch.then(function (res) {
         _this2.setState({
           isLoading: res.isLoading,
@@ -6850,7 +6858,7 @@ function (_React$Component) {
         return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__components_loading__["a" /* Loading */], {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 46
+            lineNumber: 51
           }
         });
       }
@@ -6858,7 +6866,7 @@ function (_React$Component) {
       return hasErrored ? __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_error__["a" /* Error */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49
+          lineNumber: 54
         }
       }) : renderComponent(data);
     }
@@ -7737,8 +7745,7 @@ var HUG = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return usersHandler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return thingHandler; });
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return usersHandler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return postsHandler; });
 (function () {
   var enterModule = __webpack_require__("./node_modules/react-hot-loader/index.js").enterModule;
@@ -7763,10 +7770,6 @@ var usersHandler = function usersHandler(data) {
 
   };
   return userData;
-};
-var thingHandler = function thingHandler(data) {
-  // console.log("thingHandler:", data);
-  return data;
 };
 var postsHandler = function postsHandler(data) {
   var posts = data.posts.map(function (data) {
@@ -7800,7 +7803,6 @@ var postsHandler = function postsHandler(data) {
 
   reactHotLoader.register(mapTags, "mapTags", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/utils/data-reducers.ts");
   reactHotLoader.register(usersHandler, "usersHandler", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/utils/data-reducers.ts");
-  reactHotLoader.register(thingHandler, "thingHandler", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/utils/data-reducers.ts");
   reactHotLoader.register(postsHandler, "postsHandler", "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2018/src/utils/data-reducers.ts");
   leaveModule(module);
 })();
@@ -7826,10 +7828,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var fetchType = {
-  //these are the endPoint 'props' for Fetcher
-  users: function users() {
+  //these are the fetchMethod: method
+  users: function users(query) {
     return goFetch({
-      endPoint: "users/1"
+      endPoint: "users/".concat(query)
     });
   },
   posts: function posts() {
@@ -7840,9 +7842,9 @@ var fetchType = {
       }
     });
   },
-  thing: function thing() {
+  singlePost: function singlePost(query) {
     return goFetch({
-      endPoint: "posts",
+      endPoint: "posts/".concat(query),
       params: {
         include: "tags"
       }
@@ -7906,7 +7908,7 @@ var goFetch = function goFetch(_ref) {
 
 /***/ }),
 
-/***/ 8:
+/***/ 9:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.tsx");
@@ -7914,7 +7916,7 @@ module.exports = __webpack_require__("./pages/index.tsx");
 
 /***/ })
 
-},[8])
+},[9])
           return { page: comp.default }
         })
       ;

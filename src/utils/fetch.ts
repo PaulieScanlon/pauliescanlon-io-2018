@@ -8,10 +8,10 @@ interface IProps {
 }
 
 export const fetchType = {
-  //these are the endPoint 'props' for Fetcher
-  users: () => {
+  //these are the fetchMethod: method
+  users: (query: string) => {
     return goFetch({
-      endPoint: "users/1"
+      endPoint: `users/${query}`
     });
   },
 
@@ -22,9 +22,9 @@ export const fetchType = {
     });
   },
 
-  thing: () => {
+  singlePost: (query: string) => {
     return goFetch({
-      endPoint: "posts",
+      endPoint: `posts/${query}`,
       params: { include: "tags" }
     });
   }

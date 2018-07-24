@@ -18,11 +18,6 @@ export const usersHandler = (data: any): IUserData => {
   return userData;
 };
 
-export const thingHandler = (data: any): any => {
-  // console.log("thingHandler:", data);
-  return data;
-};
-
 export const postsHandler = (data: any): IPostData => {
   const posts = data.posts.map((data: any) => {
     return {
