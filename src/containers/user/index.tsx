@@ -1,21 +1,22 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { IUserData } from '../../types/data-types';
+import { IUserData } from "../../types/data-types";
 
-import { UserWrapper, UserDetails, UserProfile } from './styles';
-import { Button } from '../../components/btn';
+import { UserWrapper, UserDetails, UserProfile } from "./styles";
+import { Button } from "../../components/btn";
 
-import { H2, P } from '../../styles/typography';
-import { theme } from '../../styles/theme';
-import { px } from '../../styles/breakpoints';
+import { H2, P } from "../../styles/typography";
+import { theme } from "../../styles/theme";
+import { px } from "../../styles/breakpoints";
 
 export const User = (props: IUserData) => {
   // export const User: React.SFC<IUserData> = props => {
   const { bio, coverImage, name, profileImage } = props;
+
   return (
     <UserWrapper>
-      <UserDetails backgroundSrc={`${process.env.GHOST_CMS}${coverImage}`}>
-        <UserProfile src={`${process.env.GHOST_CMS}${profileImage}`} />
+      <UserDetails backgroundSrc={coverImage}>
+        <UserProfile src={profileImage} />
         <H2 fontColour={theme.white} fontAlign="center">
           {name}
         </H2>

@@ -268,7 +268,8 @@ var _jsxFileName = "/Users/superMacBook4/Desktop/_development/pauliescanlon-io-2
 var Card = function Card(postData) {
   var customExcerpt = postData.customExcerpt,
       id = postData.id,
-      title = postData.title;
+      title = postData.title,
+      url = postData.url;
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__styles__["a" /* CardWrapper */], {
     __source: {
       fileName: _jsxFileName,
@@ -301,7 +302,12 @@ var Card = function Card(postData) {
       fileName: _jsxFileName,
       lineNumber: 17
     }
-  }, id)));
+  }, id)), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__styles_typography__["c" /* P */], {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    }
+  }, url));
 };
 
 /***/ }),
@@ -688,26 +694,26 @@ var User = function User(props) {
   return __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["c" /* UserWrapper */], {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
-    }
-  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserDetails */], {
-    backgroundSrc: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(coverImage),
-    __source: {
-      fileName: _jsxFileName,
       lineNumber: 17
     }
-  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["b" /* UserProfile */], {
-    src: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(profileImage),
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["a" /* UserDetails */], {
+    backgroundSrc: coverImage,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 18
+    }
+  }, __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_1__styles__["b" /* UserProfile */], {
+    src: profileImage,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 19
     }
   }), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__styles_typography__["a" /* H2 */], {
     fontColour: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */].white,
     fontAlign: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 20
     }
   }, name), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_3__styles_typography__["c" /* P */], {
     maxWidth: __WEBPACK_IMPORTED_MODULE_5__styles_breakpoints__["b" /* px */].sm,
@@ -715,14 +721,14 @@ var User = function User(props) {
     fontAlign: "center",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 23
     }
   }, bio), __WEBPACK_IMPORTED_MODULE_0_react__["createElement"](__WEBPACK_IMPORTED_MODULE_2__components_btn__["a" /* Button */], {
     buttonColour: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */].pink,
     fontColour: __WEBPACK_IMPORTED_MODULE_4__styles_theme__["a" /* theme */].white,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 26
     }
   }, "CV")));
 };
@@ -1213,11 +1219,9 @@ var mapTags = function mapTags(tags) {
 var usersHandler = function usersHandler(data) {
   var userData = {
     bio: data.users[0].bio,
-    coverImage: data.users[0].cover_image,
-    //TODO return with process.env.GHOST_CMS
+    coverImage: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(data.users[0].cover_image),
     name: data.users[0].name,
-    profileImage: data.users[0].profile_image //TODO return with process.env.GHOST_CMS
-
+    profileImage: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(data.users[0].profile_image)
   };
   return userData;
 };
@@ -1225,8 +1229,7 @@ var postsHandler = function postsHandler(data) {
   var posts = data.posts.map(function (data) {
     return {
       customExcerpt: data.custom_excerpt,
-      featureImage: data.feature_image,
-      //TODO return with process.env.GHOST_CMS
+      featureImage: "".concat(process && process.env && process.env.GHOST_CMS || "http://138.68.162.135").concat(data.feature_image),
       featured: data.featured,
       html: data.html,
       id: data.id,
@@ -1234,7 +1237,7 @@ var postsHandler = function postsHandler(data) {
       slug: data.slug,
       tags: mapTags(data.tags),
       title: data.title,
-      url: data.url //TODO return with process.env.GHOST_CMS ?
+      url: data.url //@TODO return with process.env.GHOST_CMS ?
 
     };
   });

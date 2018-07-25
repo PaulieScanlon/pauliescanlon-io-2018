@@ -11,9 +11,9 @@ const mapTags = (tags: any): string[] => {
 export const usersHandler = (data: any): IUserData => {
   const userData = {
     bio: data.users[0].bio,
-    coverImage: data.users[0].cover_image, //TODO return with process.env.GHOST_CMS
+    coverImage: `${process.env.GHOST_CMS}${data.users[0].cover_image}`,
     name: data.users[0].name,
-    profileImage: data.users[0].profile_image //TODO return with process.env.GHOST_CMS
+    profileImage: `${process.env.GHOST_CMS}${data.users[0].profile_image}`
   };
   return userData;
 };
@@ -22,7 +22,7 @@ export const postsHandler = (data: any): IPostData => {
   const posts = data.posts.map((data: any) => {
     return {
       customExcerpt: data.custom_excerpt,
-      featureImage: data.feature_image, //TODO return with process.env.GHOST_CMS
+      featureImage: `${process.env.GHOST_CMS}${data.feature_image}`,
       featured: data.featured,
       html: data.html,
       id: data.id,
@@ -30,7 +30,7 @@ export const postsHandler = (data: any): IPostData => {
       slug: data.slug,
       tags: mapTags(data.tags),
       title: data.title,
-      url: data.url //TODO return with process.env.GHOST_CMS ?
+      url: data.url //@TODO return with process.env.GHOST_CMS ?
     };
   });
   return posts;
