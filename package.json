@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "test": "NODE_ENV=test jest",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start -p $PORT",
+    "dev": "next src",
+    "build": "next build src",
+    "start": "next start src -p $PORT",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
