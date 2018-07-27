@@ -7,7 +7,7 @@ import { FlexGrid } from "../../atoms/flex-grid";
 
 import { Card } from "../../molecules/card";
 
-export const Posts = (props: IPostData[]) => {
+export const PortfolioItems = (props: IPostData[]) => {
   const posts = Object.values(props).map((post: IPostData) => {
     return post;
   });

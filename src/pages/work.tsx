@@ -1,14 +1,15 @@
 import * as React from "react";
 import { TemplateWrapper } from "../styles";
 
-import { Item } from "../templates/item";
+import { Project } from "../templates/project";
 
-const Info: React.SFC = () => {
+const Work: React.SFC = () => {
   return (
     <TemplateWrapper>
-      <Item />
+      {/* <AppBar /> */}
+      <Project />
     </TemplateWrapper>
   );
 };
 
-export default Info;
+export default Work;

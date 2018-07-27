@@ -16,7 +16,7 @@ export const Card = (postData: IPostData) => {
     <CardWrapper>
       <H3>{title}</H3>
       <P>{customExcerpt}</P>
-      <Link href={{ pathname: "/info", query: { post: `${id}` } }} passHref>
+      <Link href={{ pathname: "/work", query: { project: `${id}` } }} passHref>
         <a>{id}</a>
       </Link>
       {/* @TODO can this be used as a tidy url thing */}
