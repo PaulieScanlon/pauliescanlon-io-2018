@@ -1,16 +1,14 @@
 import * as React from "react";
 import { TemplateWrapper } from "../styles";
 
-import { Home } from "../templates/home";
+import { Item } from "../templates/item";
 
-import "../globalStyles";
-
-const Index: React.SFC = () => {
+const Info: React.SFC = () => {
   return (
     <TemplateWrapper>
-      <Home />
+      <Item />
     </TemplateWrapper>
   );
 };
 
-export default Index;
+export default Info;

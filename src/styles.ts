@@ -3,8 +3,8 @@ import styled from "react-emotion";
 import { px } from "./styles/breakpoints";
 import { common } from "./styles/common";
 
-export const AppWrapper = styled.div({
-  label: "app"
+export const TemplateWrapper = styled.div({
+  label: "template-wrapper"
 });
 
 export const FullWidth = styled.div({

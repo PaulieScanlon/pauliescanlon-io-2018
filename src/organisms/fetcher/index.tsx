@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { Loading } from "../../components/loading";
-import { Error } from "../../components/error";
+import { Loading } from "../../atoms/loading";
+import { Error } from "../../atoms/error";
 
 import { fetchType } from "../../utils/fetch";
 

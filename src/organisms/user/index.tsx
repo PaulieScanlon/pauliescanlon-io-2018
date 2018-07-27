@@ -3,7 +3,7 @@ import * as React from "react";
 import { IUserData } from "../../types/data-types";
 
 import { UserWrapper, UserDetails, UserProfile } from "./styles";
-import { Button } from "../../components/btn";
+import { Button } from "../../atoms/button";
 
 import { H2, P } from "../../styles/typography";
 import { theme } from "../../styles/theme";

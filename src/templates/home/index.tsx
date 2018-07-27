@@ -1,20 +1,19 @@
-import "../../globalStyles";
-
-import { AppWrapper, FullWidth, ContainedWidth } from "../../styles";
+import * as React from "react";
+import { FullWidth, ContainedWidth } from "../../styles";
 
 import { theme } from "../../styles/theme";
 
-import { Fetcher } from "../../containers/fetcher";
-import { User } from "../../containers/user";
-import { Post } from "../../containers/post";
+import { Fetcher } from "../../organisms/fetcher";
+import { User } from "../../organisms/user";
+import { Posts } from "../../organisms/posts";
 
-import { usersHandler, postsHandler } from "../../utils/data-reducers";
+import { usersHandler, postsHandler } from "../../reducers/data-reducers";
 
 import { ThemeProvider } from "emotion-theming";
 
-export const App: React.SFC = () => {
+export const Home: React.SFC = () => {
   return (
-    <AppWrapper>
+    <React.Fragment>
       <FullWidth>
         <ThemeProvider theme={theme}>
           <Fetcher
@@ -34,10 +33,10 @@ export const App: React.SFC = () => {
               method: "posts"
             }}
             dataReducer={postsHandler}
-            renderComponent={data => <Post {...data} />}
+            renderComponent={data => <Posts {...data} />}
           />
         </ThemeProvider>
       </ContainedWidth>
-    </AppWrapper>
+    </React.Fragment>
   );
 };

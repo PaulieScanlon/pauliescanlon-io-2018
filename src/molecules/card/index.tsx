@@ -3,7 +3,10 @@ import Link from "next/link";
 
 import { IPostData } from "../../types/data-types";
 
+import { Button } from "../../atoms/button";
+
 import { CardWrapper } from "./styles";
+import { theme } from "../../styles/theme";
 import { H3, P } from "../../styles/typography";
 
 export const Card = (postData: IPostData) => {
@@ -13,11 +16,13 @@ export const Card = (postData: IPostData) => {
     <CardWrapper>
       <H3>{title}</H3>
       <P>{customExcerpt}</P>
-      <Link href={{ pathname: "/asd", query: { post: `${id}` } }} passHref>
+      <Link href={{ pathname: "/info", query: { post: `${id}` } }} passHref>
         <a>{id}</a>
       </Link>
       {/* @TODO can this be used as a tidy url thing */}
-      <P>{url}</P>
+      <Button buttonColour={theme.pink} fontColour={theme.white}>
+        {url}
+      </Button>
     </CardWrapper>
   );
 };
