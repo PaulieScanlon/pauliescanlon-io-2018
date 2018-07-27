@@ -1,14 +1,15 @@
 import * as React from "react";
-import "./globalStyles";
+import Link from "next/link";
+import "../../globalStyles";
 
-import { AppWrapper, FullWidth } from "./styles";
+import { AppWrapper, FullWidth } from "../../styles";
 
-import { theme } from "./styles/theme";
+import { theme } from "../../styles/theme";
 
-import { Fetcher } from "./containers/fetcher";
-import { Thing } from "./containers/thing";
+import { Fetcher } from "../../containers/fetcher";
+import { Thing } from "../../containers/thing";
 
-import { postsHandler } from "./utils/data-reducers";
+import { postsHandler } from "../../utils/data-reducers";
 
 import { ThemeProvider } from "emotion-theming";
 
@@ -40,7 +41,9 @@ export class Asd extends React.Component<null, IState> {
       <AppWrapper>
         <FullWidth>
           <div>Asd</div>
-
+          <Link href="/index">
+            <a>Index</a>
+          </Link>
           <ThemeProvider theme={theme}>
             {id ? (
               <Fetcher

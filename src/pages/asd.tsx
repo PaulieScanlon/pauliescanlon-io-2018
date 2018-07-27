@@ -1,3 +1,3 @@
-import { Asd } from "../asd";
+import { Asd } from "../templates/asd";
 
 export default () => <Asd />;
