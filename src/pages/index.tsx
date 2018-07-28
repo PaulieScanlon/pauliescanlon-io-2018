@@ -3,6 +3,7 @@ import { TemplateWrapper } from "../styles";
 
 import { Intro } from "../templates/intro";
 import { Portfolio } from "../templates/portfolio";
+import { Skills } from "../templates/skills";
 
 import "../globalStyles";
 
@@ -11,6 +12,7 @@ const Index: React.SFC = () => {
     <TemplateWrapper>
       <Intro />
       <Portfolio />
+      <Skills />
     </TemplateWrapper>
   );
 };

@@ -27,14 +27,14 @@ export const fetchType = {
       endPoint: `posts/${query}`,
       params: { include: "tags" }
     });
-  }
+  },
 
-  // tags: () => {
-  //   return goFetch({
-  //     endPoint: 'tags',
-  //     params: { include: 'count.posts' }
-  //   });
-  // },
+  tags: () => {
+    return goFetch({
+      endPoint: "tags",
+      params: { include: "count.posts" }
+    });
+  }
 
   // sections: () => {
   //   return goFetch({

@@ -1,4 +1,4 @@
-import { IUserData, IPostData } from "../types/data-types";
+import { IUserData, IPostData, ITagData } from "../types/data-types";
 
 const mapTags = (tags: any): string[] => {
   const tagNames = tags.map(tag => {
@@ -34,4 +34,15 @@ export const postsHandler = (data: any): IPostData => {
     };
   });
   return posts;
+};
+
+export const tagsHandler = (data: any): ITagData => {
+  const tags = data.tags.map((data: any) => {
+    return {
+      name: data.name,
+      count: data.count.posts
+    };
+  });
+
+  return tags;
 };

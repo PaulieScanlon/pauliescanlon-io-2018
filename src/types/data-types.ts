@@ -17,3 +17,8 @@ export interface IPostData {
   title: string;
   url: string;
 }
+
+export interface ITagData {
+  name: string;
+  count: number;
+}
