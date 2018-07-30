@@ -13,22 +13,22 @@
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
     "emotion-theming": "^9.2.6",
-    "next": "^6.0.3",
+    "next": "^6.1.1",
     "polished": "^1.9.3",
     "react": "^16.4.1",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.0",
-    "@types/next": "^2.4.7",
+    "@types/jest": "^23.3.1",
+    "@types/next": "^6.1.0",
     "@types/react": "^16.4.7",
     "babel-plugin-emotion": "^9.2.6",
     "babel-plugin-inline-dotenv": "^1.1.2",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
-    "jest": "^23.4.1",
+    "jest": "^23.4.2",
     "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^16.4.0",
-    "ts-jest": "^22.4.6"
+    "react-test-renderer": "^16.4.1",
+    "ts-jest": "^23.0.1"
   }
 }

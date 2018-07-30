@@ -1,7 +1,7 @@
 import { IUserData, IPostData, ITagData } from "../types/data-types";
 
 const mapTags = (tags: any): string[] => {
-  const tagNames = tags.map(tag => {
+  const tagNames = tags.map((tag: any) => {
     return tag.name;
   });
 
