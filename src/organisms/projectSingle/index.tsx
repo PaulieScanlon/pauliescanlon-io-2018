@@ -1,12 +1,15 @@
 import * as React from "react";
 
-import { IPostData } from "../../types/data-types";
+import { ISinglePostData } from "../../types/data-types";
 
 import { H3, P } from "../../styles/typography";
 
-export const ProjectSingle = (props: IPostData) => {
-  const { customExcerpt, title } = props[0];
+interface IProps {
+  singlePost: ISinglePostData;
+}
 
+export const ProjectSingle: React.SFC<IProps> = ({ singlePost }) => {
+  const { title, customExcerpt } = singlePost;
   return (
     <div>
       <p>ProjectSingle</p>

@@ -7,11 +7,11 @@ import { FlexGrid } from "../../atoms/flex-grid";
 
 import { Card } from "../../molecules/card";
 
-export const PortfolioItems = (props: IPostData[]) => {
-  const posts = Object.values(props).map((post: IPostData) => {
-    return post;
-  });
+interface IProps {
+  posts: IPostData[];
+}
 
+export const PortfolioItems: React.SFC<IProps> = ({ posts }) => {
   return (
     <PostsWrapper>
       <FlexGrid

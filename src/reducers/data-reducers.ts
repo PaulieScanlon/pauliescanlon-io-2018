@@ -1,4 +1,9 @@
-import { IUserData, IPostData, ITagData } from "../types/data-types";
+import {
+  IUserData,
+  IPostData,
+  ISinglePostData,
+  ITagData
+} from "../types/data-types";
 
 const mapTags = (tags: any): string[] => {
   const tagNames = tags.map((tag: any) => {
@@ -8,19 +13,20 @@ const mapTags = (tags: any): string[] => {
   return tagNames;
 };
 
-export const usersHandler = (data: any): IUserData => {
+export const usersHandler = (data: any) => {
+  const obj = data.users[0];
   const userData = {
-    bio: data.users[0].bio,
-    coverImage: `${process.env.GHOST_CMS}${data.users[0].cover_image}`,
-    name: data.users[0].name,
-    profileImage: `${process.env.GHOST_CMS}${data.users[0].profile_image}`
-  };
-  return userData;
+    bio: obj.bio,
+    coverImage: `${process.env.GHOST_CMS}${obj.cover_image}`,
+    name: obj.name,
+    profileImage: `${process.env.GHOST_CMS}${obj.profile_image}`
+  } as IUserData;
+  return { userData };
 };
 
-export const postsHandler = (data: any): IPostData => {
-  const posts = data.posts.map((data: any) => {
-    return {
+export const postsHandler = (data: any) => {
+  const posts = data.posts.map(
+    (data: any): IPostData => ({
       customExcerpt: data.custom_excerpt,
       featureImage: `${process.env.GHOST_CMS}${data.feature_image}`,
       featured: data.featured,
@@ -30,19 +36,35 @@ export const postsHandler = (data: any): IPostData => {
       slug: data.slug,
       tags: mapTags(data.tags),
       title: data.title,
-      url: data.url //@TODO return with process.env.GHOST_CMS ?
-    };
-  });
-  return posts;
+      url: `${process.env.GHOST_CMS}${data.url}`
+    })
+  );
+
+  return { posts };
 };
 
-export const tagsHandler = (data: any): ITagData => {
-  const tags = data.tags.map((data: any) => {
-    return {
+export const singlePostHandler = (data: any) => {
+  const obj = data.posts[0];
+  const singlePost = {
+    customExcerpt: obj.custom_excerpt,
+    featureImage: `${process.env.GHOST_CMS}${obj.feature_image}`,
+    html: obj.html,
+    publishedAt: obj.published_at,
+    slug: obj.slug,
+    tags: mapTags(obj.tags),
+    title: obj.title
+  } as ISinglePostData;
+
+  return { singlePost };
+};
+
+export const tagsHandler = (data: any) => {
+  const tags = data.tags.map(
+    (data: any): ITagData => ({
       name: data.name,
       count: data.count.posts
-    };
-  });
+    })
+  );
 
-  return tags;
+  return { tags };
 };

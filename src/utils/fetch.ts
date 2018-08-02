@@ -49,7 +49,7 @@ export const fetchType = {
 
 const goFetch = ({ endPoint, params }: IProps) => {
   return fetch(
-    window["ghost"].url.api(`${endPoint}`, {
+    (window as any)["ghost"].url.api(`${endPoint}`, {
       ...params
     })
   )

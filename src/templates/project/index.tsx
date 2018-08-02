@@ -7,7 +7,7 @@ import { theme } from "../../styles/theme";
 import { Fetcher } from "../../organisms/fetcher";
 import { ProjectSingle } from "../../organisms/projectSingle";
 
-import { postsHandler } from "../../reducers/data-reducers";
+import { singlePostHandler } from "../../reducers/data-reducers";
 
 import { ThemeProvider } from "emotion-theming";
 
@@ -15,7 +15,7 @@ interface IState {
   id: string;
 }
 
-export class Project extends React.Component<null, IState> {
+export class Project extends React.Component<any, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -44,7 +44,7 @@ export class Project extends React.Component<null, IState> {
                 method: "singlePost",
                 query: id
               }}
-              dataReducer={postsHandler}
+              dataReducer={singlePostHandler}
               renderComponent={data => <ProjectSingle {...data} />}
             />
           ) : null}

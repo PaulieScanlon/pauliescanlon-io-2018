@@ -10,7 +10,7 @@ interface IProps {
   renderContent(props: any): React.ReactNode;
 }
 
-export class FlexGrid extends React.Component<IProps, null> {
+export class FlexGrid extends React.Component<IProps> {
   render() {
     const { cols, renderContent, dataArray } = this.props;
 

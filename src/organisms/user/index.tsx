@@ -9,9 +9,12 @@ import { H2, P } from "../../styles/typography";
 import { theme } from "../../styles/theme";
 import { px } from "../../styles/breakpoints";
 
-export const User = (props: IUserData) => {
-  // export const User: React.SFC<IUserData> = props => {
-  const { bio, coverImage, name, profileImage } = props;
+interface IProps {
+  userData: IUserData;
+}
+
+export const User: React.SFC<IProps> = ({ userData }) => {
+  const { bio, coverImage, name, profileImage } = userData;
 
   return (
     <UserWrapper>

@@ -18,6 +18,16 @@ export interface IPostData {
   url: string;
 }
 
+export interface ISinglePostData {
+  customExcerpt: string;
+  featureImage: string;
+  html: string;
+  publishedAt: string;
+  slug: string;
+  tags: string[];
+  title: string;
+}
+
 export interface ITagData {
   name: string;
   count: number;

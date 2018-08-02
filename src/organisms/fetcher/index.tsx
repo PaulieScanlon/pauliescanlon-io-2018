@@ -10,7 +10,7 @@ interface IProps {
     method: string;
     query?: string;
   };
-  dataReducer(data: any);
+  dataReducer(data: any): any;
   renderComponent(data: any): React.ReactNode;
 }
 
@@ -21,7 +21,7 @@ export interface IState {
 }
 
 export class Fetcher extends React.Component<IProps, IState> {
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     this.state = {
       isLoading: true,
@@ -32,9 +32,9 @@ export class Fetcher extends React.Component<IProps, IState> {
 
   componentDidMount() {
     const { method, query } = this.props.fetchMethod;
-    const dataFetch = fetchType[method](query);
+    const dataFetch = (fetchType as any)[method](query);
 
-    dataFetch.then(res => {
+    dataFetch.then((res: any) => {
       this.setState({
         isLoading: res.isLoading,
         data: res.data ? this.props.dataReducer(res.data) : null,

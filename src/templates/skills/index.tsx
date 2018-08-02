@@ -3,7 +3,7 @@ import * as React from "react";
 import { tagsHandler } from "../../reducers/data-reducers";
 
 import { Fetcher } from "../../organisms/fetcher";
-import { SkillsStuff } from "../../organisms/skillsStuff";
+import { SkillsChart } from "../../organisms/skillsChart";
 
 import { ContainedWidth } from "../../styles";
 
@@ -16,7 +16,7 @@ export const Skills: React.SFC = () => {
           method: "tags"
         }}
         dataReducer={tagsHandler}
-        renderComponent={data => <SkillsStuff {...data} />}
+        renderComponent={data => <SkillsChart {...data} />}
       />
     </ContainedWidth>
   );
