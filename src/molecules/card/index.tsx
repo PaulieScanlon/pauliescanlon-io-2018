@@ -1,5 +1,6 @@
 import * as React from "react";
-import Link from "next/link";
+// import Link from "next/link";
+import Router from "next/router";
 
 import { IPostData } from "../../types/data-types";
 
@@ -10,18 +11,24 @@ import { theme } from "../../styles/theme";
 import { H3, P } from "../../styles/typography";
 
 export const Card = (postData: IPostData) => {
-  const { customExcerpt, id, title, url } = postData;
+  const { customExcerpt, id, title } = postData;
+
+  const handler = () =>
+    Router.push({
+      pathname: "/work",
+      query: { project: `${id}` }
+    });
 
   return (
     <CardWrapper>
       <H3>{title}</H3>
       <P>{customExcerpt}</P>
-      <Link href={{ pathname: "/work", query: { project: `${id}` } }} passHref>
-        <a>{id}</a>
-      </Link>
-      {/* @TODO can this be used as a tidy url thing */}
-      <Button buttonColour={theme.pink} fontColour={theme.white}>
-        {url}
+      <Button
+        onClick={handler}
+        buttonColour={theme.pink}
+        fontColour={theme.white}
+      >
+        view
       </Button>
     </CardWrapper>
   );

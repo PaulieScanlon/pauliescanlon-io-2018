@@ -17,7 +17,7 @@ export const Button = styled.button<IButton>(
     padding: "10px 20px 10px 20px",
     textDecoration: "none",
     border: "none",
-    margin: `2rem 0`,
+    margin: 0,
     minWidth: 100,
     transition: "all 0.2s linear 0s"
   },
