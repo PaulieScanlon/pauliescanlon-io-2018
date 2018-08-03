@@ -21,6 +21,8 @@ export interface IState {
 }
 
 export class Fetcher extends React.Component<IProps, IState> {
+  public _isMounted = false;
+
   constructor(props: any) {
     super(props);
     this.state = {
@@ -31,16 +33,23 @@ export class Fetcher extends React.Component<IProps, IState> {
   }
 
   componentDidMount() {
+    // @TODO this _isMounted hack is gross.. works though :-)
+    this._isMounted = true;
     const { method, query } = this.props.fetchMethod;
     const dataFetch = (fetchType as any)[method](query);
-
     dataFetch.then((res: any) => {
-      this.setState({
-        isLoading: res.isLoading,
-        data: res.data ? this.props.dataReducer(res.data) : null,
-        hasErrored: res.hasErrored
-      });
+      if (this._isMounted === true) {
+        this.setState({
+          isLoading: res.isLoading,
+          data: res.data ? this.props.dataReducer(res.data) : null,
+          hasErrored: res.hasErrored
+        });
+      }
     });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

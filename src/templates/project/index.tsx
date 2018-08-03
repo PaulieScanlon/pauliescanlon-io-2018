@@ -25,7 +25,6 @@ export class Project extends React.Component<any, IState> {
 
   componentDidMount() {
     const query = window.location;
-
     const id = query.search.split("?project=").join("");
     this.setState({
       id
