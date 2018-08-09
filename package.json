@@ -6,7 +6,9 @@
     "dev": "next src -p 3030",
     "build": "next build src",
     "start": "next start src -p $PORT",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@zeit/next-typescript": "1.1.0",
@@ -20,17 +22,27 @@
     "react-emotion": "^9.2.6"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-info": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addons": "^3.4.10",
+    "@storybook/react": "^4.0.0-alpha.3",
     "@types/jest": "^23.3.1",
     "@types/next": "^6.1.0",
     "@types/react": "^16.4.7",
     "@types/recharts": "^1.0.24",
+    "@types/storybook__react": "^3.0.9",
+    "babel-core": "^6.26.3",
     "babel-plugin-emotion": "^9.2.6",
     "babel-plugin-inline-dotenv": "^1.1.2",
     "babel-plugin-transform-inline-environment-variables": "^0.4.3",
+    "babel-runtime": "^6.26.0",
     "jest": "^23.4.2",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.4.1",
     "recharts": "^1.1.0",
-    "ts-jest": "^23.0.1"
+    "ts-jest": "^23.0.1",
+    "ts-loader": "^4.4.2",
+    "typescript": "^3.0.1"
   }
 }
