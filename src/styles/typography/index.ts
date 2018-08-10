@@ -13,6 +13,8 @@ interface ITypography {
 /* Setup */
 export const font = {
   fontFamily: `Roboto, sans-serif`,
+  fontWeight: 300,
+  fontSize: 14,
   color: theme.darkest,
   textAlign: "left",
   margin: "0 auto",
@@ -20,9 +22,8 @@ export const font = {
 };
 
 const headingFont = {
-  fontFamily: `Nunito, sans-serif`,
-  color: theme.darkest,
-  textAlign: "left"
+  ...font,
+  fontWeight: 500
 };
 
 const lis = {

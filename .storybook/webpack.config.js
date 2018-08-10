@@ -1,15 +1,11 @@
 const path = require("path");
-const include = path.resolve(__dirname, "../");
 
-module.exports = {
-  module: {
-    rules: [
-      {
-        test: /\.tsx/,
-        loader: "babel-loader!ts-loader",
-        exclude: /node_modules/,
-        include
-      }
-    ]
-  }
+module.exports = (baseConfig, env, config) => {
+  config.module.rules.push({
+    test: /\.(tsx?|ts?)$/,
+    loader: "babel-loader!ts-loader",
+    exclude: /node_modules/
+  });
+  config.resolve.extensions.push(".ts", ".tsx");
+  return config;
 };

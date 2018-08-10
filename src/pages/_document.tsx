@@ -1,5 +1,5 @@
-import Document, { Head, Main, NextScript } from 'next/document';
-import { extractCritical } from 'emotion-server';
+import Document, { Head, Main, NextScript } from "next/document";
+import { extractCritical } from "emotion-server";
 
 // switch to emotion:
 // https://github.com/zeit/next.js/blob/master/examples/with-emotion/pages/_document.js
@@ -27,7 +27,7 @@ export default class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
           <link
-            href="https://fonts.googleapis.com/css?family=Nunito|Roboto"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
             rel="stylesheet"
           />
           <script

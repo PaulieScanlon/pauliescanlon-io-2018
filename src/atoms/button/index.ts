@@ -1,31 +1,38 @@
 import styled from "react-emotion";
-import { lighten } from "polished";
+import { lighten, darken } from "polished";
 import { font } from "../../styles/typography";
+import { theme } from "../../styles/theme";
 
 interface IButton {
-  buttonColour: string;
-  fontColour: string;
+  buttonColour?: string;
+  fontColour?: string;
 }
 
 export const Button = styled.button<IButton>(
   {
     label: "button",
-    borderRadius: "28px",
+    borderRadius: 2,
+    borderStyle: "solid",
+    borderWidth: 1,
     fontFamily: font.fontFamily,
-    fontSize: "20px",
+    fontWeight: font.fontWeight,
+    fontSize: font.fontSize,
     cursor: "pointer",
-    padding: "10px 20px 10px 20px",
+    padding: "5px 10px",
     textDecoration: "none",
-    border: "none",
     margin: 0,
     minWidth: 100,
     transition: "all 0.2s linear 0s"
   },
   ({ buttonColour, fontColour }) => ({
-    backgroundColor: buttonColour,
-    color: fontColour,
+    backgroundColor: buttonColour ? buttonColour : theme.pink,
+    borderColor: darken(0.05, buttonColour ? `${buttonColour}` : theme.pink),
+    color: fontColour ? fontColour : theme.white,
     "&:hover": {
-      background: lighten(0.1, `${buttonColour}`),
+      backgroundColor: lighten(
+        0.1,
+        buttonColour ? `${buttonColour}` : theme.pink
+      ),
       textDecoration: "none"
     }
   })
