@@ -6,7 +6,17 @@ export interface IUserData {
 }
 
 export interface IPostData {
+  /**
+   * Short description for use in card
+   *
+   * @default " "
+   **/
   customExcerpt: string;
+  /**
+   * Absolute url to image
+   *
+   * @default " "
+   **/
   featureImage: string;
   featured: boolean;
   html: string;

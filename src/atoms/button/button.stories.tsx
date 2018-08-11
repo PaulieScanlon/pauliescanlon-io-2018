@@ -1,5 +1,6 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
+import { withInfo } from "@storybook/addon-info";
 
 import { theme } from "../../styles/theme";
 
@@ -7,7 +8,21 @@ import { Button } from "./";
 
 const stories = storiesOf("Atoms/Button", module);
 
-stories.add("default usage", () => <Button>Hooray</Button>);
+stories.add(
+  "default usage",
+  withInfo("Default pink background and white font")(() => (
+    <Button>Hooray</Button>
+  ))
+);
+
+stories.add(
+  "all props",
+  withInfo("Details of all available props")(() => (
+    <Button buttonColour={theme.pink} fontColour={theme.white}>
+      Hooray
+    </Button>
+  ))
+);
 
 stories.add("blue", () => <Button buttonColour={theme.blue}>Hooray</Button>);
 
