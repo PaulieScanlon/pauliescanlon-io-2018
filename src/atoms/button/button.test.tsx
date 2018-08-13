@@ -7,5 +7,6 @@ describe("<Button />", () => {
   it("renders correctly", () => {
     const wrapper = shallow(<Button>Hooray</Button>);
     expect(wrapper).toHaveLength(1);
+    expect(wrapper).toMatchSnapshot();
   });
 });

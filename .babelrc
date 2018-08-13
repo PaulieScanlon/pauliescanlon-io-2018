@@ -1,25 +1,32 @@
 {
-  "presets": ["next/babel", "@zeit/next-typescript/babel"],
   "env": {
-    "test": {
-      "plugins": [
-        [
-          "emotion",
-          { "sourceMap": true, "autoLabel": true, "labelFormat": "⚡[local]" }
-        ]
-      ]
-    },
     "development": {
+      "presets": ["next/babel", "@zeit/next-typescript/babel"],
       "plugins": [
         "inline-dotenv",
         ["emotion", { "sourceMap": true, "autoLabel": true }]
       ]
     },
     "production": {
+      "presets": ["next/babel", "@zeit/next-typescript/babel"],
       "plugins": [
         "transform-inline-environment-variables",
         ["emotion", { "hoist": true }]
       ]
+    },
+    "test": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "preset-env": {
+              "modules": "commonjs"
+            }
+          }
+        ],
+        "@zeit/next-typescript/babel"
+      ],
+      "plugins": [["emotion", { "sourceMap": true, "autoLabel": true }]]
     }
   }
 }
