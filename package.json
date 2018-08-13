@@ -9,8 +9,8 @@
     "start": "next start src -p $PORT",
     "heroku-postbuild": "npm run build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "deploy-storybook": "storybook-to-ghpages"
+    "storybook:build": "build-storybook",
+    "storybook:deploy": "storybook-to-ghpages"
   },
   "dependencies": {
     "@zeit/next-typescript": "1.1.0",
