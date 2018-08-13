@@ -1,11 +1,25 @@
 {
   "presets": ["next/babel", "@zeit/next-typescript/babel"],
   "env": {
+    "test": {
+      "plugins": [
+        [
+          "emotion",
+          { "sourceMap": true, "autoLabel": true, "labelFormat": "⚡[local]" }
+        ]
+      ]
+    },
     "development": {
-      "plugins": ["inline-dotenv", "emotion"]
+      "plugins": [
+        "inline-dotenv",
+        ["emotion", { "sourceMap": true, "autoLabel": true }]
+      ]
     },
     "production": {
-      "plugins": ["transform-inline-environment-variables", "emotion"]
+      "plugins": [
+        "transform-inline-environment-variables",
+        ["emotion", { "hoist": true }]
+      ]
     }
   }
 }
