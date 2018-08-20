@@ -5,13 +5,13 @@ import { extractCritical } from "emotion-server";
 // https://github.com/zeit/next.js/blob/master/examples/with-emotion/pages/_document.js
 
 export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }) {
+  static async getInitialProps({ renderPage }: any) {
     const page = renderPage();
     const styles = extractCritical(page.html);
     return { ...page, ...styles };
   }
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
     const { __NEXT_DATA__, ids } = props;
     if (ids) {
@@ -24,10 +24,14 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <title>Paul Scanlon</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"
+          />
+
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
           <link
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
+            href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
             rel="stylesheet"
           />
           <script

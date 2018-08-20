@@ -1,4 +1,4 @@
-import { injectGlobal } from 'react-emotion';
+import { injectGlobal } from "react-emotion";
 
 injectGlobal`
   html, body, #root {
@@ -7,5 +7,6 @@ injectGlobal`
     height: 100%;
     padding: 0;
     margin: 0; 
+    background: #282a36;
   }
   `;

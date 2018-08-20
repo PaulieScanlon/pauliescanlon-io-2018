@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TemplateWrapper } from "../styles";
+import { TemplateWrapper } from "../styles/styles";
 
 import { Project } from "../templates/project";
 

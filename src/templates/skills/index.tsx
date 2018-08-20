@@ -5,7 +5,7 @@ import { tagsHandler } from "../../reducers/data-reducers";
 import { Fetcher } from "../../organisms/fetcher";
 import { SkillsChart } from "../../organisms/skillsChart";
 
-import { ContainedWidth } from "../../styles";
+import { ContainedWidth } from "../../styles/styles";
 
 export const Skills: React.SFC = () => {
   return (
