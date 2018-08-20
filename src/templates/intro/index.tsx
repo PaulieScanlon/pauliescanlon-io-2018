@@ -5,11 +5,11 @@ import { usersHandler } from "../../reducers/data-reducers";
 import { Fetcher } from "../../organisms/fetcher";
 import { User } from "../../organisms/user";
 
-import { FullWidth } from "../../styles";
+import { ContainedWidth } from "../../styles/styles";
 
 export const Intro: React.SFC = () => {
   return (
-    <FullWidth>
+    <ContainedWidth>
       <Fetcher
         fetchMethod={{
           method: "users",
@@ -18,6 +18,6 @@ export const Intro: React.SFC = () => {
         dataReducer={usersHandler}
         renderComponent={data => <User {...data} />}
       />
-    </FullWidth>
+    </ContainedWidth>
   );
 };

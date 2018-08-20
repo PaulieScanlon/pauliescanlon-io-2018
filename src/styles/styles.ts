@@ -1,10 +1,13 @@
 import styled from "react-emotion";
 
-import { px } from "./styles/breakpoints";
-import { common } from "./styles/common";
+import { px } from "./breakpoints";
+import { common } from "./common";
+import { themeObjects } from "./theme";
 
 export const TemplateWrapper = styled.div({
-  label: "template-wrapper"
+  label: "template-wrapper",
+  marginTop: common.header,
+  backgroundColor: themeObjects.default.primary
 });
 
 export const FullWidth = styled.div({
@@ -16,5 +19,5 @@ export const ContainedWidth = styled.div({
   label: "contained-width",
   margin: "0 auto",
   padding: `0px ${common.padding}px 0px ${common.padding}px`,
-  maxWidth: `${px.lg}`
+  maxWidth: `${px.md}`
 });

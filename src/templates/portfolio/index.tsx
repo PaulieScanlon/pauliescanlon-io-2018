@@ -5,7 +5,7 @@ import { postsHandler } from "../../reducers/data-reducers";
 import { Fetcher } from "../../organisms/fetcher";
 import { PortfolioItems } from "../../organisms/portfolioItems";
 
-import { ContainedWidth } from "../../styles";
+import { ContainedWidth } from "../../styles/styles";
 
 export const Portfolio: React.SFC = () => {
   return (

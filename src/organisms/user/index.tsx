@@ -2,11 +2,12 @@ import * as React from "react";
 
 import { IUserData } from "../../types/data-types";
 
-import { UserWrapper, UserDetails, UserProfile } from "./styles";
-import { Button } from "../../atoms/button";
+import { UserWrapper, UserText, UserProfile } from "./styles";
 
+import Button from "../../atoms/button";
+
+import { themeObjects } from "../../styles/theme";
 import { H2, P } from "../../styles/typography";
-import { theme } from "../../styles/theme";
 import { px } from "../../styles/breakpoints";
 
 interface IProps {
@@ -14,22 +15,16 @@ interface IProps {
 }
 
 export const User: React.SFC<IProps> = ({ userData }) => {
-  const { bio, coverImage, name, profileImage } = userData;
+  const { bio, name, profileImage } = userData;
 
   return (
     <UserWrapper>
-      <UserDetails backgroundSrc={coverImage}>
+      <UserText>
         <UserProfile src={profileImage} />
-        <H2 fontColour={theme.white} fontAlign="center">
-          {name}
-        </H2>
-        <P maxWidth={px.sm} fontColour={theme.white} fontAlign="center">
-          {bio}
-        </P>
-        <Button buttonColour={theme.pink} fontColour={theme.white}>
-          CV
-        </Button>
-      </UserDetails>
+        <H2>{name}</H2>
+        <P maxWidth={px.sm} dangerouslySetInnerHTML={{ __html: bio }} />
+        <Button theme={themeObjects.pink}>CV</Button>
+      </UserText>
     </UserWrapper>
   );
 };

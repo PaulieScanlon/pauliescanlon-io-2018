@@ -1,42 +1,34 @@
-import styled from 'react-emotion';
-import { theme } from '../../styles/theme';
-import { common } from '../../styles/common';
+import styled from "react-emotion";
 
-interface IUserDetails {
-  backgroundSrc: string;
-}
+import { themeObjects } from "../../styles/theme";
+import { common } from "../../styles/common";
 
 export const UserWrapper = styled.div({
-  label: 'user-wrapper',
-  position: 'relative',
-  width: '100%',
-  height: '100%'
+  label: "user-wrapper",
+  boxShadow: common.dropShadow,
+  backgroundColor: themeObjects.default.primary,
+  position: "relative",
+  margin: `${common.padding}px 0px ${common.padding}px 0px`
+  // marginBottom: `${common.padding * 2}px`
 });
 
-export const UserDetails = styled.div<IUserDetails>(
-  {
-    label: 'user-details',
-    minHeight: 300,
-    textAlign: 'center',
-    padding: common.padding,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    '& h2': {
-      marginTop: '1rem'
-    }
-  },
-  ({ backgroundSrc }) => ({
-    backgroundImage: `url(${backgroundSrc})`
-  })
-);
+export const UserText = styled.div({
+  label: "user-text",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start",
+  padding: `${common.padding}`,
+  minHeight: 200,
+  "& p": {
+    flexGrow: 1
+  }
+});
 
 export const UserProfile = styled.img({
-  label: 'user-profile',
+  label: "user-profile",
   width: 100,
-  height: 'auto',
-  marginTop: '3rem',
-  borderRadius: '50%',
-  boxSizing: 'border-box',
-  border: `3px solid ${theme.white}`
+  height: "auto",
+  borderRadius: "50%",
+  boxSizing: "border-box",
+  border: `1px solid ${themeObjects.default.secondary}`
 });

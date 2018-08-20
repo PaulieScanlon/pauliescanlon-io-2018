@@ -1,15 +1,11 @@
 import * as React from "react";
 
-import { FullWidth } from "../../styles";
-
-import { theme } from "../../styles/theme";
+import { FullWidth } from "../../styles/styles";
 
 import { Fetcher } from "../../organisms/fetcher";
 import { ProjectSingle } from "../../organisms/projectSingle";
 
 import { singlePostHandler } from "../../reducers/data-reducers";
-
-import { ThemeProvider } from "emotion-theming";
 
 interface IState {
   id: string;
@@ -36,18 +32,16 @@ export class Project extends React.Component<any, IState> {
 
     return (
       <FullWidth>
-        <ThemeProvider theme={theme}>
-          {id ? (
-            <Fetcher
-              fetchMethod={{
-                method: "singlePost",
-                query: id
-              }}
-              dataReducer={singlePostHandler}
-              renderComponent={data => <ProjectSingle {...data} />}
-            />
-          ) : null}
-        </ThemeProvider>
+        {id ? (
+          <Fetcher
+            fetchMethod={{
+              method: "singlePost",
+              query: id
+            }}
+            dataReducer={singlePostHandler}
+            renderComponent={data => <ProjectSingle {...data} />}
+          />
+        ) : null}
       </FullWidth>
     );
   }

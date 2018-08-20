@@ -1,29 +1,30 @@
 import styled from "react-emotion";
 
-import { theme } from "../theme";
+import { themeObjects } from "../theme";
 
 /*! Typebase.less v0.1.0 | MIT License */
 /* Types */
 interface ITypography {
   fontColour?: string;
+  linkColour?: string;
   fontAlign?: string;
   maxWidth?: number;
 }
 
 /* Setup */
 export const font = {
-  fontFamily: `Roboto, sans-serif`,
-  fontWeight: 300,
-  fontSize: 14,
-  color: theme.darkest,
+  fontFamily: `Inconsolata, monospace`,
+  fontWeight: 700,
+  fontSize: "1rem",
+  color: themeObjects.default.secondary,
   textAlign: "left",
-  margin: "0 auto",
-  maxWidth: "100%"
+  maxWidth: "100%",
+  WebkitFontSmoothing: "antialiased"
 };
 
 const headingFont = {
   ...font,
-  fontWeight: 500
+  fontWeight: 700
 };
 
 const lis = {
@@ -31,11 +32,16 @@ const lis = {
   lineHeight: "1.5rem"
 };
 
+const link = {
+  ...font,
+  color: themeObjects.pink.primary
+};
+
 const headings = {
   /* Change heading typefaces here */
   ...headingFont,
-  marginTop: "1.5rem",
-  marginBottom: 0,
+  marginTop: "1rem",
+  marginBottom: "0.5rem",
   lineHeight: "1.5rem"
 };
 
@@ -49,14 +55,21 @@ export const P = styled.p<ITypography>(
   {
     ...(font as any),
     label: "p",
+    fontWeight: 400,
     lineHeight: "1.5rem",
-    marginTop: "1.5rem",
-    marginBottom: 0
+    marginTop: 0,
+    marginBottom: "1.5rem",
+    a: {
+      ...link
+    }
   },
-  ({ fontColour, fontAlign, maxWidth }: any) => ({
+  ({ fontColour, linkColour, fontAlign, maxWidth }: any) => ({
     color: fontColour ? fontColour : font.color,
     textAlign: fontAlign ? fontAlign : font.textAlign,
-    width: maxWidth ? maxWidth : font.maxWidth
+    width: maxWidth ? maxWidth : font.maxWidth,
+    a: {
+      color: linkColour ? linkColour : link.color
+    }
   })
 );
 
@@ -95,8 +108,7 @@ export const H1 = styled.h1<ITypography>(
     ...(headings as any),
     label: "h1",
     fontSize: "4.242rem",
-    lineHeight: "4.5rem",
-    marginTop: "3rem"
+    lineHeight: "4.5rem"
   },
   ({ fontColour, fontAlign }: any) => ({
     color: fontColour ? fontColour : headingFont.color,
@@ -109,8 +121,7 @@ export const H2 = styled.h2<ITypography>(
     ...(headings as any),
     label: "h2",
     fontSize: "2.828rem",
-    lineHeight: "3rem",
-    marginTop: "3rem"
+    lineHeight: "3rem"
   },
   ({ fontColour, fontAlign }: any) => ({
     color: fontColour ? fontColour : headingFont.color,
