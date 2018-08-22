@@ -59,12 +59,16 @@ export const singlePostHandler = (data: any) => {
 };
 
 export const tagsHandler = (data: any) => {
-  const tags = data.tags.map(
-    (data: any): ITagData => ({
-      name: data.name,
-      count: data.count.posts
-    })
-  );
+  const tags = data.tags
+    .map(
+      (data: any): ITagData => ({
+        name: data.name,
+        count: data.count.posts
+      })
+    )
+    .sort((obj1: ITagData, obj2: ITagData) => obj2.count - obj1.count);
+
+  console.log(tags);
 
   return { tags };
 };

@@ -3,13 +3,13 @@ import * as React from "react";
 import { tagsHandler } from "../../reducers/data-reducers";
 
 import { Fetcher } from "../../organisms/fetcher";
-import { SkillsChart } from "../../organisms/skillsChart";
+import SkillsChart from "../../organisms/skillsChart";
 
 import { ContainedWidth } from "../../styles/styles";
 
 export const Skills: React.SFC = () => {
   return (
-    <ContainedWidth>
+    <ContainedWidth height={300}>
       <p>Skills</p>
       <Fetcher
         fetchMethod={{

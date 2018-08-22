@@ -12,7 +12,6 @@ interface IProps {
 }
 
 export const PortfolioItems: React.SFC<IProps> = ({ posts }) => {
-  console.log(posts);
   return (
     <PortfolioItemsWrapper>
       <FlexGrid

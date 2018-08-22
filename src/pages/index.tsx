@@ -11,8 +11,8 @@ const Index: React.SFC = () => {
   return (
     <TemplateWrapper>
       <Intro />
-      <Portfolio />
       <Skills />
+      <Portfolio />
     </TemplateWrapper>
   );
 };
