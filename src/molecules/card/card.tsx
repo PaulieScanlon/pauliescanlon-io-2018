@@ -5,7 +5,7 @@ import * as React from "react";
 import { IPostData } from "../../types/data-types";
 
 import { CardImage, CardWrapper, CardText } from "./styles";
-import { H3, P } from "../../styles/typography";
+import { P } from "../../styles/typography";
 
 export const Card = (postData: IPostData) => {
   const { customExcerpt, featureImage, id, title } = postData;
@@ -20,7 +20,7 @@ export const Card = (postData: IPostData) => {
     <CardWrapper>
       <CardImage src={featureImage} />
       <CardText>
-        <H3>{title}</H3>
+        <h3>{title}</h3>
         <P>{customExcerpt}</P>
       </CardText>
     </CardWrapper>

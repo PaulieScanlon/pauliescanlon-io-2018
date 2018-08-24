@@ -1,12 +1,12 @@
 import styled from "react-emotion";
 
 import { common } from "../../styles/common";
-import { themeObjects } from "../../styles/theme";
+import { draculaTheme } from "../../styles/theme";
 
 export const CardWrapper = styled.div({
   label: "card-wrapper",
   boxShadow: common.dropShadow,
-  backgroundColor: themeObjects.default.primary,
+  backgroundColor: draculaTheme.background,
   position: "relative",
   // margin: `${common.padding}px 0px`,
   marginBottom: common.padding

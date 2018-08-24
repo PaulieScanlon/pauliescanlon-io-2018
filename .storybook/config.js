@@ -2,7 +2,7 @@ import { addDecorator, configure } from "@storybook/react";
 import { setDefaults } from "@storybook/addon-info";
 import { withKnobs } from "@storybook/addon-knobs/react";
 import withBackgrounds from "@storybook/addon-backgrounds";
-import { themeObjects } from "../src/styles/theme";
+import { draculaTheme } from "../src/styles/theme";
 
 const req = require.context("../src/", true, /\.stories\.tsx$/);
 
@@ -10,8 +10,8 @@ function loadStories() {
   addDecorator(
     withBackgrounds([
       {
-        name: "default.primary",
-        value: themeObjects.default.primary,
+        name: "draculaTheme.background",
+        value: draculaTheme.background,
         default: true
       }
     ])

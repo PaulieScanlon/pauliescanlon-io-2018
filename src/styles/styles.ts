@@ -2,7 +2,7 @@ import styled from "react-emotion";
 
 import { px } from "./breakpoints";
 import { common } from "./common";
-import { themeObjects } from "./theme";
+import { draculaTheme } from "./theme";
 
 interface IProps {
   height?: number;
@@ -11,7 +11,7 @@ interface IProps {
 export const TemplateWrapper = styled.div({
   label: "template-wrapper",
   marginTop: common.header,
-  backgroundColor: themeObjects.default.primary
+  backgroundColor: draculaTheme.background
 });
 
 export const FullWidth = styled.div({
