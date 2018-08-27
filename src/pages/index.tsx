@@ -1,18 +1,20 @@
 import * as React from "react";
-import { TemplateWrapper } from "../styles/styles";
+import { TemplateWrapper, ContainedWidth } from "../styles/styles";
 
-import { Intro } from "../templates/intro";
-import { Portfolio } from "../templates/portfolio";
-import { Skills } from "../templates/skills";
+import IntroTemplate from "../ui/templates/intro-template";
+import PortfolioTemplate from "../ui/templates/portfolio-template";
+import TechTop5Template from "../ui/templates/tech-top-5-template";
 
 import "../styles/globalStyles";
 
 const Index: React.SFC = () => {
   return (
     <TemplateWrapper>
-      <Intro />
-      <Skills />
-      <Portfolio />
+      <ContainedWidth>
+        <IntroTemplate />
+        <TechTop5Template />
+        <PortfolioTemplate />
+      </ContainedWidth>
     </TemplateWrapper>
   );
 };
