@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { PortfolioItemsWrapper } from "./styles";
 
-import { IPostData } from "../../types/data-types";
+import { IPostData } from "../../../types/data-types";
 import FlexGrid from "../../atoms/flex-grid";
 
 import Card from "../../molecules/card";
@@ -21,7 +21,7 @@ export const Portfolio = ({ posts }: IProps) => {
           sm: 2,
           md: 3
         }}
-        renderContent={props => <Card {...props} />}
+        renderContent={data => <Card {...data} />}
       />
     </PortfolioItemsWrapper>
   );

@@ -12,11 +12,6 @@ export const CardWrapper = styled.div({
   marginBottom: common.padding
 });
 
-export const CardImage = styled.img({
-  label: "card-image",
-  width: "100%"
-});
-
 export const CardText = styled.div({
   label: "card-text",
   display: "flex",

@@ -3,11 +3,11 @@ import * as React from "react";
 import { tagsHandler } from "../../../reducers/data-reducers";
 
 import Fetcher from "../../organisms/fetcher";
-import TechTop5 from "../../organisms/tech-top-5";
+import TechTopFive from "../../organisms/tech-top-five";
 
 import { FlexItem } from "../../atoms/flex-grid/styles";
 
-export const TechTop5Template = () => {
+export const TechTopFiveTemplate = () => {
   return (
     <FlexItem xs={1} sm={2} md={3}>
       <p>TechTop5Template</p>
@@ -16,7 +16,7 @@ export const TechTop5Template = () => {
           method: "tags"
         }}
         dataReducer={tagsHandler}
-        renderComponent={data => <TechTop5 {...data} />}
+        renderComponent={data => <TechTopFive {...data} />}
       />
     </FlexItem>
   );

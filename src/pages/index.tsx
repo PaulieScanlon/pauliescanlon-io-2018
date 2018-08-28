@@ -3,7 +3,7 @@ import { TemplateWrapper, ContainedWidth } from "../styles/styles";
 
 import IntroTemplate from "../ui/templates/intro-template";
 import PortfolioTemplate from "../ui/templates/portfolio-template";
-import TechTop5Template from "../ui/templates/tech-top-5-template";
+import TechTopFiveTemplate from "../ui/templates/tech-top-five-template";
 
 import "../styles/globalStyles";
 
@@ -12,7 +12,7 @@ const Index: React.SFC = () => {
     <TemplateWrapper>
       <ContainedWidth>
         <IntroTemplate />
-        <TechTop5Template />
+        <TechTopFiveTemplate />
         <PortfolioTemplate />
       </ContainedWidth>
     </TemplateWrapper>

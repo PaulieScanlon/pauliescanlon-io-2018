@@ -17,7 +17,6 @@ export interface IPostData {
    *
    * @default " "
    **/
-  featureImage: string;
   featured: boolean;
   html: string;
   id: string;
@@ -41,4 +40,5 @@ export interface ISinglePostData {
 export interface ITagData {
   name: string;
   count: number;
+  percent: number;
 }

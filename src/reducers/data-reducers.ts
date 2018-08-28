@@ -28,7 +28,6 @@ export const postsHandler = (data: any) => {
   const posts = data.posts.map(
     (data: any): IPostData => ({
       customExcerpt: data.custom_excerpt,
-      featureImage: `${process.env.GHOST_CMS}${data.feature_image}`,
       featured: data.featured,
       html: data.html,
       id: data.id,
@@ -59,16 +58,23 @@ export const singlePostHandler = (data: any) => {
 };
 
 export const tagsHandler = (data: any) => {
-  const tags = data.tags
-    .map(
-      (data: any): ITagData => ({
-        name: data.name,
-        count: data.count.posts
-      })
-    )
-    .sort((obj1: ITagData, obj2: ITagData) => obj2.count - obj1.count);
+  const sorted = data.tags.sort(
+    (obj1: any, obj2: any) => obj2.count.posts - obj1.count.posts
+  );
 
-  console.log(tags);
+  const segment = sorted.slice(0, 5);
+
+  const total = segment.reduce((sum: any, value: any) => {
+    return sum + value.count.posts;
+  }, 0);
+
+  const tags = segment.map(
+    (data: any): ITagData => ({
+      name: data.name,
+      count: data.count.posts,
+      percent: Math.round((data.count.posts * 100) / total)
+    })
+  );
 
   return { tags };
 };
