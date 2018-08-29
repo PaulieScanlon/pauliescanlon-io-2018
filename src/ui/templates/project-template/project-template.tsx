@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { FullWidth } from "../../../styles/styles";
+import { FullWidth } from "../../../ui/styles/styles";
 
 import Fetcher from "../../organisms/fetcher";
 import Project from "../../organisms/project";

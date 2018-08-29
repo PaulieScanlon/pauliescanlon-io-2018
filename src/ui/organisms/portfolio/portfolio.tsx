@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { PortfolioItemsWrapper } from "./styles";
-
 import { IPostData } from "../../../types/data-types";
-import FlexGrid from "../../atoms/flex-grid";
 
+import { PortfolioWrapper } from "./styles";
+import SectionHeader from "../../atoms/section-header";
+import FlexGrid from "../../atoms/flex-grid";
 import Card from "../../molecules/card";
 
 interface IProps {
@@ -13,7 +13,8 @@ interface IProps {
 
 export const Portfolio = ({ posts }: IProps) => {
   return (
-    <PortfolioItemsWrapper>
+    <PortfolioWrapper>
+      <SectionHeader leading="portfolio-items" trailing="commercial()" />
       <FlexGrid
         dataArray={posts}
         cols={{
@@ -23,6 +24,6 @@ export const Portfolio = ({ posts }: IProps) => {
         }}
         renderContent={data => <Card {...data} />}
       />
-    </PortfolioItemsWrapper>
+    </PortfolioWrapper>
   );
 };

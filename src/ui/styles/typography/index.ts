@@ -27,7 +27,7 @@ export const font = {
   textAlign: "left",
   lineHeight: "18px",
   marginTop: 0,
-  marginBottom: 40,
+  marginBottom: 20,
   maxWidth: "100%"
 };
 

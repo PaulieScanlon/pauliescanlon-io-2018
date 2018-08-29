@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TemplateWrapper, ContainedWidth } from "../ui/styles/styles";
+import { MainWrapper, ContainedWidth, Section } from "../ui/styles/styles";
 
 import IntroTemplate from "../ui/templates/intro-template";
 import PortfolioTemplate from "../ui/templates/portfolio-template";
@@ -9,13 +9,23 @@ import "../ui/styles/globalStyles";
 
 const Index: React.SFC = () => {
   return (
-    <TemplateWrapper>
+    <MainWrapper>
       <ContainedWidth>
-        <IntroTemplate />
-        <TechTopFiveTemplate />
-        <PortfolioTemplate />
+        <Section>
+          <IntroTemplate />
+        </Section>
+
+        <Section style={{ flexWrap: "wrap" }}>
+          <TechTopFiveTemplate />
+          <TechTopFiveTemplate />
+          <TechTopFiveTemplate />
+        </Section>
+
+        <Section>
+          <PortfolioTemplate />
+        </Section>
       </ContainedWidth>
-    </TemplateWrapper>
+    </MainWrapper>
   );
 };
 

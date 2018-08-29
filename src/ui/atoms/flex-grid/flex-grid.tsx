@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { IPx } from "../../styles/breakpoints";
-
-import { FlexContainer, FlexItem } from "./styles";
+import FlexItem from "../flex-item";
+import { FlexContainer } from "./styles";
 
 interface IProps {
   dataArray: any[];

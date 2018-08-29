@@ -5,18 +5,14 @@ import { postsHandler } from "../../../reducers/data-reducers";
 import Fetcher from "../../organisms/fetcher";
 import Portfolio from "../../organisms/portfolio";
 
-import { ContainedWidth } from "../../../ui/styles/styles";
-
 export const PortfolioTemplate = () => {
   return (
-    <ContainedWidth>
-      <Fetcher
-        fetchMethod={{
-          method: "posts"
-        }}
-        dataReducer={postsHandler}
-        renderComponent={data => <Portfolio {...data} />}
-      />
-    </ContainedWidth>
+    <Fetcher
+      fetchMethod={{
+        method: "posts"
+      }}
+      dataReducer={postsHandler}
+      renderComponent={data => <Portfolio {...data} />}
+    />
   );
 };

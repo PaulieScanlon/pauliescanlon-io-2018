@@ -2,6 +2,9 @@ import * as React from "react";
 
 import { ITagData } from "../../../types/data-types";
 
+import { TechTopFiveWrapper } from "./styles";
+import SectionHeader from "../../atoms/section-header";
+
 interface IProps {
   tags: ITagData[];
 }
@@ -17,5 +20,10 @@ export const TechTopFive = ({ tags }: IProps) => {
     );
   });
 
-  return <dl>{list}</dl>;
+  return (
+    <TechTopFiveWrapper>
+      <SectionHeader leading="tech" trailing="top-5-by-usage()" />
+      <dl>{list}</dl>
+    </TechTopFiveWrapper>
+  );
 };

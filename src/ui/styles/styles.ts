@@ -4,12 +4,8 @@ import { px } from "./breakpoints";
 import { common } from "./common";
 import { draculaTheme } from "./theme";
 
-interface IProps {
-  height?: number;
-}
-
-export const TemplateWrapper = styled.div({
-  label: "template-wrapper",
+export const MainWrapper = styled.main({
+  label: "main-wrapper",
   marginTop: common.header,
   backgroundColor: draculaTheme.background
 });
@@ -19,15 +15,17 @@ export const FullWidth = styled.div({
   width: "100%"
 });
 
-export const ContainedWidth = styled.div<IProps>(
-  {
-    label: "contained-width",
-    margin: "0 auto",
-    padding: `0px ${common.padding}px 0px ${common.padding}px`,
-    maxWidth: `${px.md}`,
-    minHeight: 300
-  },
-  ({ height }) => ({
-    height: height
-  })
-);
+export const ContainedWidth = styled.div({
+  label: "contained-width",
+  margin: "0 auto",
+  padding: `0px ${common.padding}px 0px ${common.padding}px`,
+  maxWidth: `${px.md}`,
+  minHeight: 300,
+  border: "1px solid blue"
+});
+
+export const Section = styled.section({
+  label: "section",
+  display: "flex",
+  marginBottom: common.marginBottom
+});
