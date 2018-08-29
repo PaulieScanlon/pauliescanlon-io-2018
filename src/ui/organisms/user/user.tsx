@@ -4,8 +4,8 @@ import { IUserData } from "../../../types/data-types";
 
 import { UserWrapper, UserText } from "./styles";
 
-import { P } from "../../../styles/typography";
-import { px } from "../../../styles/breakpoints";
+import { P } from "../../styles/typography";
+import { px } from "../../styles/breakpoints";
 
 interface IProps {
   userData: IUserData;

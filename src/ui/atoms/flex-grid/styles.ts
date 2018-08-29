@@ -1,8 +1,8 @@
 import styled from "react-emotion";
 
 // import { IPx } from '../../styles/breakpoints';
-import { mq } from "../../../styles/breakpoints";
-import { common } from "../../../styles/common";
+import { mq } from "../../../ui/styles/breakpoints";
+import { common } from "../../../ui/styles/common";
 
 interface IFlexItem {
   xs: number;

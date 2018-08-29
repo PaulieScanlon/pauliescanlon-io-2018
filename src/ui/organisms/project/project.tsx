@@ -5,7 +5,7 @@ import Button from "../../atoms/button";
 
 import { ISinglePostData } from "../../../types/data-types";
 
-import { P } from "../../../styles/typography";
+import { P } from "../../styles/typography";
 
 interface IProps {
   singlePost: ISinglePostData;

@@ -1,7 +1,7 @@
 import styled from "react-emotion";
 
-import { font } from "../../../styles/typography";
-import { draculaTheme } from "../../../styles/theme";
+import { font } from "../../styles/typography";
+import { draculaTheme } from "../../styles/theme";
 
 interface IProps {
   backgroundColour?: string;

@@ -1,11 +1,11 @@
 import * as React from "react";
-import { TemplateWrapper, ContainedWidth } from "../styles/styles";
+import { TemplateWrapper, ContainedWidth } from "../ui/styles/styles";
 
 import IntroTemplate from "../ui/templates/intro-template";
 import PortfolioTemplate from "../ui/templates/portfolio-template";
 import TechTopFiveTemplate from "../ui/templates/tech-top-five-template";
 
-import "../styles/globalStyles";
+import "../ui/styles/globalStyles";
 
 const Index: React.SFC = () => {
   return (

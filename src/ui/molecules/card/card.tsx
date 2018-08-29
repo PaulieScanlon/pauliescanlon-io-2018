@@ -5,7 +5,7 @@ import Router from "next/router";
 import { IPostData } from "../../../types/data-types";
 
 import { CardWrapper, CardText } from "./styles";
-import { P } from "../../../styles/typography";
+import { P } from "../../styles/typography";
 import Button from "../../atoms/button";
 
 export const Card = (postData: IPostData) => {

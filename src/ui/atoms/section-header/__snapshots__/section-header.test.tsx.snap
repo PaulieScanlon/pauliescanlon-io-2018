@@ -1,0 +1,190 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SectionHeader /> renders correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SectionHeader
+    display="inline-block"
+    leading="Lorem-ipsum"
+    trailing="()"
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <H1
+          display="inline-block"
+          fontColour="#50fa7b"
+        >
+          → 
+        </H1>,
+        <H1
+          display="inline-block"
+          fontColour="#ff79c6"
+        >
+          Lorem-ipsum
+        </H1>,
+        <H1
+          display="inline-block"
+          fontColour="#8be9fd"
+        >
+           
+          ()
+        </H1>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "→ ",
+          "display": "inline-block",
+          "fontColour": "#50fa7b",
+        },
+        "ref": null,
+        "rendered": "→ ",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": "Lorem-ipsum",
+          "display": "inline-block",
+          "fontColour": "#ff79c6",
+        },
+        "ref": null,
+        "rendered": "Lorem-ipsum",
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            " ",
+            "()",
+          ],
+          "display": "inline-block",
+          "fontColour": "#8be9fd",
+        },
+        "ref": null,
+        "rendered": Array [
+          " ",
+          "()",
+        ],
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <H1
+            display="inline-block"
+            fontColour="#50fa7b"
+          >
+            → 
+          </H1>,
+          <H1
+            display="inline-block"
+            fontColour="#ff79c6"
+          >
+            Lorem-ipsum
+          </H1>,
+          <H1
+            display="inline-block"
+            fontColour="#8be9fd"
+          >
+             
+            ()
+          </H1>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "→ ",
+            "display": "inline-block",
+            "fontColour": "#50fa7b",
+          },
+          "ref": null,
+          "rendered": "→ ",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": "Lorem-ipsum",
+            "display": "inline-block",
+            "fontColour": "#ff79c6",
+          },
+          "ref": null,
+          "rendered": "Lorem-ipsum",
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              " ",
+              "()",
+            ],
+            "display": "inline-block",
+            "fontColour": "#8be9fd",
+          },
+          "ref": null,
+          "rendered": Array [
+            " ",
+            "()",
+          ],
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;

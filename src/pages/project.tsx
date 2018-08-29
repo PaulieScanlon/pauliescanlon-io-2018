@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TemplateWrapper } from "../styles/styles";
+import { TemplateWrapper } from "../ui/styles/styles";
 
 import ProjectTemplate from "../ui/templates/project-template";
 const Project: React.SFC = () => {

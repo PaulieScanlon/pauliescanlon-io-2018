@@ -5,7 +5,7 @@ import { postsHandler } from "../../../reducers/data-reducers";
 import Fetcher from "../../organisms/fetcher";
 import Portfolio from "../../organisms/portfolio";
 
-import { ContainedWidth } from "../../../styles/styles";
+import { ContainedWidth } from "../../../ui/styles/styles";
 
 export const PortfolioTemplate = () => {
   return (

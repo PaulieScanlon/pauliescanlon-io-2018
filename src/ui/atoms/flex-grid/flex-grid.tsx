@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { IPx } from "../../../styles/breakpoints";
+import { IPx } from "../../styles/breakpoints";
 
 import { FlexContainer, FlexItem } from "./styles";
 

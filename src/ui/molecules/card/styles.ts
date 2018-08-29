@@ -1,7 +1,7 @@
 import styled from "react-emotion";
 
-import { common } from "../../../styles/common";
-import { draculaTheme } from "../../../styles/theme";
+import { common } from "../../styles/common";
+import { draculaTheme } from "../../styles/theme";
 
 export const CardWrapper = styled.div({
   label: "card-wrapper",

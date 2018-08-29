@@ -1,5 +1,5 @@
 import styled from "react-emotion";
-import { common } from "../../../styles/common";
+import { common } from "../../../ui/styles/common";
 
 export const PortfolioItemsWrapper = styled.div({
   label: "portfolio-items-wrapper",

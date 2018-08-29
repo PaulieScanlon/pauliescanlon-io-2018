@@ -5,7 +5,7 @@ import { usersHandler } from "../../../reducers/data-reducers";
 import Fetcher from "../../organisms/fetcher";
 import User from "../../organisms/user";
 
-import { ContainedWidth } from "../../../styles/styles";
+import { ContainedWidth } from "../../../ui/styles/styles";
 
 export const IntroTemplate = () => {
   return (

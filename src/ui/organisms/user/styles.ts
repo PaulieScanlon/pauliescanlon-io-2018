@@ -1,7 +1,7 @@
 import styled from "react-emotion";
 
-import { draculaTheme } from "../../../styles/theme";
-import { common } from "../../../styles/common";
+import { draculaTheme } from "../../../ui/styles/theme";
+import { common } from "../../../ui/styles/common";
 
 export const UserWrapper = styled.div({
   label: "user-wrapper",

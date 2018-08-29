@@ -19,7 +19,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "Hooray",
-      "className": "css-57ccwp-Button-button e8b2jnb0",
+      "className": "css-1rsanyl-Button-button e1b3pzt20",
     },
     "ref": null,
     "rendered": "Hooray",
@@ -32,7 +32,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "Hooray",
-        "className": "css-57ccwp-Button-button e8b2jnb0",
+        "className": "css-1rsanyl-Button-button e1b3pzt20",
       },
       "ref": null,
       "rendered": "Hooray",
