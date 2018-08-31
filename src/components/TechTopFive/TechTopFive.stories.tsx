@@ -10,7 +10,7 @@ const stories = storiesOf("Tech Top Five", module);
 
 stories.add(
   "default usage",
-  withInfo("Displays a list of 5 most used tags")(() => (
-    <TechTopFive tags={tags} />
-  ))
+  withInfo(
+    "TechTopFive is a child of <FlexItem> and displays a list of 5 most used tags"
+  )(() => <TechTopFive tags={tags} />)
 );

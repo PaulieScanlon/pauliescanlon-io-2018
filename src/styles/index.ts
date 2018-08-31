@@ -16,7 +16,14 @@ injectGlobal`
     font-family: ${font.fontFamily};
     background: ${draculaTheme.background};
   }
+  a:link, a:visited, a:hover, a:active {
+    color: ${font.color}
+  }
   `;
+
+// -webkit-font-smoothing: antialiased;
+// -moz-osx-font-smoothing: grayscale;
+// -webkit-text-stroke: 0.2px;
 
 export const common = {
   padding: 20,

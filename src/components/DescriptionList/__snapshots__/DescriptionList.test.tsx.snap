@@ -1,0 +1,573 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DescriptionList /> renders correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DescriptionList
+    data={
+      Array [
+        Object {
+          "description": "Ipsum",
+          "term": "Lorem",
+        },
+        Object {
+          "description": "Sit",
+          "term": "Dolo",
+        },
+        Object {
+          "description": "Adipiscing",
+          "term": "Consectetur",
+        },
+        Object {
+          "description": "Vitae",
+          "term": "Fusce",
+        },
+        Object {
+          "description": "Suscipit",
+          "term": "Molestie",
+        },
+      ]
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <React.Fragment>
+          <DT>
+            Lorem
+          </DT>
+          <DD>
+            Ipsum
+          </DD>
+        </React.Fragment>,
+        <React.Fragment>
+          <DT>
+            Dolo
+          </DT>
+          <DD>
+            Sit
+          </DD>
+        </React.Fragment>,
+        <React.Fragment>
+          <DT>
+            Consectetur
+          </DT>
+          <DD>
+            Adipiscing
+          </DD>
+        </React.Fragment>,
+        <React.Fragment>
+          <DT>
+            Fusce
+          </DT>
+          <DD>
+            Vitae
+          </DD>
+        </React.Fragment>,
+        <React.Fragment>
+          <DT>
+            Molestie
+          </DT>
+          <DD>
+            Suscipit
+          </DD>
+        </React.Fragment>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": "0",
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <DT>
+              Lorem
+            </DT>,
+            <DD>
+              Ipsum
+            </DD>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Lorem",
+            },
+            "ref": null,
+            "rendered": "Lorem",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Ipsum",
+            },
+            "ref": null,
+            "rendered": "Ipsum",
+            "type": [Function],
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      Object {
+        "instance": null,
+        "key": "1",
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <DT>
+              Dolo
+            </DT>,
+            <DD>
+              Sit
+            </DD>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Dolo",
+            },
+            "ref": null,
+            "rendered": "Dolo",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Sit",
+            },
+            "ref": null,
+            "rendered": "Sit",
+            "type": [Function],
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      Object {
+        "instance": null,
+        "key": "2",
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <DT>
+              Consectetur
+            </DT>,
+            <DD>
+              Adipiscing
+            </DD>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Consectetur",
+            },
+            "ref": null,
+            "rendered": "Consectetur",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Adipiscing",
+            },
+            "ref": null,
+            "rendered": "Adipiscing",
+            "type": [Function],
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      Object {
+        "instance": null,
+        "key": "3",
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <DT>
+              Fusce
+            </DT>,
+            <DD>
+              Vitae
+            </DD>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Fusce",
+            },
+            "ref": null,
+            "rendered": "Fusce",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Vitae",
+            },
+            "ref": null,
+            "rendered": "Vitae",
+            "type": [Function],
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+      Object {
+        "instance": null,
+        "key": "4",
+        "nodeType": "function",
+        "props": Object {
+          "children": Array [
+            <DT>
+              Molestie
+            </DT>,
+            <DD>
+              Suscipit
+            </DD>,
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Molestie",
+            },
+            "ref": null,
+            "rendered": "Molestie",
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "children": "Suscipit",
+            },
+            "ref": null,
+            "rendered": "Suscipit",
+            "type": [Function],
+          },
+        ],
+        "type": Symbol(react.fragment),
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <React.Fragment>
+            <DT>
+              Lorem
+            </DT>
+            <DD>
+              Ipsum
+            </DD>
+          </React.Fragment>,
+          <React.Fragment>
+            <DT>
+              Dolo
+            </DT>
+            <DD>
+              Sit
+            </DD>
+          </React.Fragment>,
+          <React.Fragment>
+            <DT>
+              Consectetur
+            </DT>
+            <DD>
+              Adipiscing
+            </DD>
+          </React.Fragment>,
+          <React.Fragment>
+            <DT>
+              Fusce
+            </DT>
+            <DD>
+              Vitae
+            </DD>
+          </React.Fragment>,
+          <React.Fragment>
+            <DT>
+              Molestie
+            </DT>
+            <DD>
+              Suscipit
+            </DD>
+          </React.Fragment>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <DT>
+                Lorem
+              </DT>,
+              <DD>
+                Ipsum
+              </DD>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Lorem",
+              },
+              "ref": null,
+              "rendered": "Lorem",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Ipsum",
+              },
+              "ref": null,
+              "rendered": "Ipsum",
+              "type": [Function],
+            },
+          ],
+          "type": Symbol(react.fragment),
+        },
+        Object {
+          "instance": null,
+          "key": "1",
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <DT>
+                Dolo
+              </DT>,
+              <DD>
+                Sit
+              </DD>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Dolo",
+              },
+              "ref": null,
+              "rendered": "Dolo",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Sit",
+              },
+              "ref": null,
+              "rendered": "Sit",
+              "type": [Function],
+            },
+          ],
+          "type": Symbol(react.fragment),
+        },
+        Object {
+          "instance": null,
+          "key": "2",
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <DT>
+                Consectetur
+              </DT>,
+              <DD>
+                Adipiscing
+              </DD>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Consectetur",
+              },
+              "ref": null,
+              "rendered": "Consectetur",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Adipiscing",
+              },
+              "ref": null,
+              "rendered": "Adipiscing",
+              "type": [Function],
+            },
+          ],
+          "type": Symbol(react.fragment),
+        },
+        Object {
+          "instance": null,
+          "key": "3",
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <DT>
+                Fusce
+              </DT>,
+              <DD>
+                Vitae
+              </DD>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Fusce",
+              },
+              "ref": null,
+              "rendered": "Fusce",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Vitae",
+              },
+              "ref": null,
+              "rendered": "Vitae",
+              "type": [Function],
+            },
+          ],
+          "type": Symbol(react.fragment),
+        },
+        Object {
+          "instance": null,
+          "key": "4",
+          "nodeType": "function",
+          "props": Object {
+            "children": Array [
+              <DT>
+                Molestie
+              </DT>,
+              <DD>
+                Suscipit
+              </DD>,
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Molestie",
+              },
+              "ref": null,
+              "rendered": "Molestie",
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "children": "Suscipit",
+              },
+              "ref": null,
+              "rendered": "Suscipit",
+              "type": [Function],
+            },
+          ],
+          "type": Symbol(react.fragment),
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getSnapshotBeforeUpdate": true,
+        },
+      },
+    },
+    "attachTo": undefined,
+    "hydrateIn": undefined,
+  },
+}
+`;
