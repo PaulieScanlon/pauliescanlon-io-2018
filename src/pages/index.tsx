@@ -1,26 +1,70 @@
 import * as React from "react";
-import { MainWrapper, ContainedWidth, Section } from "../ui/styles/styles";
 
-import IntroTemplate from "../ui/templates/intro-template";
-import PortfolioTemplate from "../ui/templates/portfolio-template";
-import ThreeGridTemplate from "../ui/templates/three-grid-template";
+import {
+  postsHandler,
+  usersHandler,
+  tagsHandler
+} from "../reducers/data-reducers";
 
-import "../ui/styles/globalStyles";
+import { MainWrapper, ContainedWidth, Section } from "../styles";
+
+import { Fetcher } from "../components/Fetcher";
+
+import { TechTopFive } from "../components/TechTopFive";
+import { Portfolio } from "../components/Portfolio";
+import { User } from "../components/User";
+
+import "../styles/";
 
 const Index: React.SFC = () => {
   return (
     <MainWrapper>
       <ContainedWidth>
         <Section>
-          <IntroTemplate />
+          <Fetcher
+            fetchMethod={{
+              method: "users",
+              query: "1"
+            }}
+            dataReducer={usersHandler}
+            renderComponent={data => <User {...data} />}
+          />
         </Section>
 
         <Section>
-          <ThreeGridTemplate />
+          <Fetcher
+            fetchMethod={{
+              method: "tags"
+            }}
+            dataReducer={tagsHandler}
+            renderComponent={data => <TechTopFive {...data} />}
+          />
+
+          <Fetcher
+            fetchMethod={{
+              method: "tags"
+            }}
+            dataReducer={tagsHandler}
+            renderComponent={data => <TechTopFive {...data} />}
+          />
+
+          <Fetcher
+            fetchMethod={{
+              method: "tags"
+            }}
+            dataReducer={tagsHandler}
+            renderComponent={data => <TechTopFive {...data} />}
+          />
         </Section>
 
         <Section>
-          <PortfolioTemplate />
+          <Fetcher
+            fetchMethod={{
+              method: "posts"
+            }}
+            dataReducer={postsHandler}
+            renderComponent={data => <Portfolio {...data} />}
+          />
         </Section>
       </ContainedWidth>
     </MainWrapper>
