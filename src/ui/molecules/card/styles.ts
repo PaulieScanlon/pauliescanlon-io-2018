@@ -8,8 +8,7 @@ export const CardWrapper = styled.div({
   boxShadow: common.dropShadow,
   backgroundColor: draculaTheme.background,
   position: "relative",
-  // margin: `${common.padding}px 0px`,
-  marginBottom: common.padding
+  margin: `2px ${common.padding / 2}px 2px ${common.padding / 2}px`
 });
 
 export const CardText = styled.div({

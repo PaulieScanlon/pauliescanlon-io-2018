@@ -20,12 +20,10 @@ export const ContainedWidth = styled.div({
   margin: "0 auto",
   padding: `0px ${common.padding}px 0px ${common.padding}px`,
   maxWidth: `${px.md}`,
-  minHeight: 300,
-  border: "1px solid blue"
+  minHeight: 300
 });
 
 export const Section = styled.section({
   label: "section",
-  display: "flex",
-  marginBottom: common.marginBottom
+  display: "flex"
 });

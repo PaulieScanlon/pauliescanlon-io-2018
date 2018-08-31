@@ -16,10 +16,7 @@ const mapTags = (tags: any): string[] => {
 export const usersHandler = (data: any) => {
   const obj = data.users[0];
   const userData = {
-    bio: obj.bio,
-    coverImage: `${process.env.GHOST_CMS}${obj.cover_image}`,
-    name: obj.name,
-    profileImage: `${process.env.GHOST_CMS}${obj.profile_image}`
+    bio: obj.bio
   } as IUserData;
   return { userData };
 };

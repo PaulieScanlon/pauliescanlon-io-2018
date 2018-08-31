@@ -4,7 +4,7 @@ import { IPostData } from "../../../types/data-types";
 
 import { PortfolioWrapper } from "./styles";
 import SectionHeader from "../../atoms/section-header";
-import FlexGrid from "../../atoms/flex-grid";
+import PortfolioGrid from "../../atoms/portfolio-grid";
 import Card from "../../molecules/card";
 
 interface IProps {
@@ -15,7 +15,7 @@ export const Portfolio = ({ posts }: IProps) => {
   return (
     <PortfolioWrapper>
       <SectionHeader leading="portfolio-items" trailing="commercial()" />
-      <FlexGrid
+      <PortfolioGrid
         dataArray={posts}
         cols={{
           xs: 1,

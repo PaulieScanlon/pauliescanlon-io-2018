@@ -1,8 +1,5 @@
 export interface IUserData {
   bio: string;
-  coverImage: string;
-  name: string;
-  profileImage: string;
 }
 
 export interface IPostData {

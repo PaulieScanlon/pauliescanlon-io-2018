@@ -10,5 +10,7 @@ const stories = storiesOf("Organisms/Tech Top Five", module);
 
 stories.add(
   "default usage",
-  withInfo("...")(() => <TechTopFive tags={tags} />)
+  withInfo("Displays a list of 5 most used tags")(() => (
+    <TechTopFive tags={tags} />
+  ))
 );

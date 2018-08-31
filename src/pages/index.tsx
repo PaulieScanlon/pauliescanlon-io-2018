@@ -3,7 +3,7 @@ import { MainWrapper, ContainedWidth, Section } from "../ui/styles/styles";
 
 import IntroTemplate from "../ui/templates/intro-template";
 import PortfolioTemplate from "../ui/templates/portfolio-template";
-import TechTopFiveTemplate from "../ui/templates/tech-top-five-template";
+import ThreeGridTemplate from "../ui/templates/three-grid-template";
 
 import "../ui/styles/globalStyles";
 
@@ -15,10 +15,8 @@ const Index: React.SFC = () => {
           <IntroTemplate />
         </Section>
 
-        <Section style={{ flexWrap: "wrap" }}>
-          <TechTopFiveTemplate />
-          <TechTopFiveTemplate />
-          <TechTopFiveTemplate />
+        <Section>
+          <ThreeGridTemplate />
         </Section>
 
         <Section>
