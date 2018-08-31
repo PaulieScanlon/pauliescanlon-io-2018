@@ -32,7 +32,8 @@ export const common = {
     "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
   darkenAmt: 0.01,
   lightenAmt: 0.05,
-  marginBottom: 20
+  marginBottom: 20,
+  hoverTransition: 0.3
 };
 
 export const MainWrapper = styled.main({

@@ -6,7 +6,6 @@ interface IData {
   term: React.ReactNode;
   description: React.ReactNode;
 }
-
 interface IProps {
   data: IData[];
 }

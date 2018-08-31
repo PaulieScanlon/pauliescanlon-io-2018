@@ -37,13 +37,6 @@ export const TechTopFive: React.SFC<IProps> = (props: IProps) => {
         </BarWrapper>
       )
     };
-
-    // <DescriptionList
-    //   key={i}
-    //   leading={tag.name}
-    //   trailing={tag.count}
-    //   suffix={tag.percent}
-    // />
   });
 
   return (

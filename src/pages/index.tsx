@@ -11,10 +11,13 @@ import { MainWrapper, ContainedWidth, Section } from "../styles";
 import { Fetcher } from "../components/Fetcher";
 
 import { TechTopFive } from "../components/TechTopFive";
+import { ContactDetails } from "../components/ContactDetails";
 import { Portfolio } from "../components/Portfolio";
 import { User } from "../components/User";
 
 import "../styles/";
+
+import { cms } from "./cms";
 
 const Index: React.SFC = () => {
   return (
@@ -32,13 +35,7 @@ const Index: React.SFC = () => {
         </Section>
 
         <Section>
-          <Fetcher
-            fetchMethod={{
-              method: "tags"
-            }}
-            dataReducer={tagsHandler}
-            renderComponent={data => <TechTopFive {...data} />}
-          />
+          <ContactDetails details={cms.contact} />
 
           <Fetcher
             fetchMethod={{
