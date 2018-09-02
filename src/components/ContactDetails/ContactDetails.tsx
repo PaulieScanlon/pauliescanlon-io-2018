@@ -1,10 +1,9 @@
 import * as React from "react";
 
 import { SectionHeader } from "../SectionHeader";
-import { FlexItem } from "../FlexItem";
 import { DescriptionList } from "../DescriptionList";
 
-import { ContactLink } from "./styles";
+import { ContactDetailsWrapper, ContactLink } from "./styles";
 
 interface IDetails {
   name: string;
@@ -30,9 +29,9 @@ export const ContactDetails: React.SFC<IProps> = (props: IProps) => {
   });
 
   return (
-    <FlexItem xs={1} sm={2} md={3}>
+    <ContactDetailsWrapper>
       <SectionHeader leading="contact" trailing="()" />
       <DescriptionList data={listData} />
-    </FlexItem>
+    </ContactDetailsWrapper>
   );
 };

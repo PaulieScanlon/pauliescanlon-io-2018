@@ -1,7 +1,6 @@
 import * as React from "react";
 
-import { FetcherLoading } from "../FetcherLoading";
-import { FetcherError } from "../FetcherError";
+import { FetcherIndicator } from "../FetcherIndicator";
 
 import { fetchType } from "../../utils/fetch";
 
@@ -57,9 +56,13 @@ export class Fetcher extends React.Component<IProps, IState> {
 
     const { renderComponent } = this.props;
     if (isLoading) {
-      return <FetcherLoading />;
+      return <FetcherIndicator variant="Loading" />;
     }
 
-    return hasErrored ? <FetcherError /> : renderComponent(data);
+    return hasErrored ? (
+      <FetcherIndicator variant="Error" />
+    ) : (
+      renderComponent(data)
+    );
   }
 }

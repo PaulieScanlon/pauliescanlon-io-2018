@@ -10,7 +10,7 @@ const stories = storiesOf("Contact Details", module);
 
 stories.add(
   "default usage",
-  withInfo(
-    "ContactDetails is a child of <FlexItem> and displays a list of 5 contact methods"
-  )(() => <ContactDetails details={details} />)
+  withInfo("ContactDetails displays a list of 5 contact methods")(() => (
+    <ContactDetails details={details} />
+  ))
 );

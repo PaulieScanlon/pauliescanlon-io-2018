@@ -5,6 +5,12 @@ interface IProps {
   width: number;
 }
 
+export const TechTopFiveWrapper = styled.div({
+  label: "tech-top-five-wrapper",
+  display: "flex",
+  flexDirection: "column"
+});
+
 export const BarWrapper = styled.div({
   label: "bar-wrapper",
   display: "flex",

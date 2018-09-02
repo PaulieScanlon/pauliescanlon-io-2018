@@ -9,7 +9,7 @@ import {
 import { MainWrapper, ContainedWidth, Section } from "../styles";
 
 import { Fetcher } from "../components/Fetcher";
-
+import { FlexItem } from "../components/FlexItem";
 import { TechTopFive } from "../components/TechTopFive";
 import { ContactDetails } from "../components/ContactDetails";
 import { Portfolio } from "../components/Portfolio";
@@ -24,34 +24,40 @@ const Index: React.SFC = () => {
     <MainWrapper>
       <ContainedWidth>
         <Section>
-          <Fetcher
-            fetchMethod={{
-              method: "users",
-              query: "1"
-            }}
-            dataReducer={usersHandler}
-            renderComponent={data => <User {...data} />}
-          />
+          <FlexItem xs={1} sm={1} md={1}>
+            <Fetcher
+              fetchMethod={{
+                method: "users",
+                query: "1"
+              }}
+              dataReducer={usersHandler}
+              renderComponent={data => <User {...data} />}
+            />
+          </FlexItem>
         </Section>
 
         <Section>
-          <ContactDetails details={cms.contact} />
-
-          <Fetcher
-            fetchMethod={{
-              method: "tags"
-            }}
-            dataReducer={tagsHandler}
-            renderComponent={data => <TechTopFive {...data} />}
-          />
-
-          <Fetcher
-            fetchMethod={{
-              method: "tags"
-            }}
-            dataReducer={tagsHandler}
-            renderComponent={data => <TechTopFive {...data} />}
-          />
+          <FlexItem xs={1} sm={2} md={3}>
+            <ContactDetails details={cms.contact} />
+          </FlexItem>
+          <FlexItem xs={1} sm={2} md={3}>
+            <Fetcher
+              fetchMethod={{
+                method: "tags"
+              }}
+              dataReducer={tagsHandler}
+              renderComponent={data => <TechTopFive {...data} />}
+            />
+          </FlexItem>
+          <FlexItem xs={1} sm={2} md={3}>
+            <Fetcher
+              fetchMethod={{
+                method: "tags"
+              }}
+              dataReducer={tagsHandler}
+              renderComponent={data => <TechTopFive {...data} />}
+            />
+          </FlexItem>
         </Section>
 
         <Section>

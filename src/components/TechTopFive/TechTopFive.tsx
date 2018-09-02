@@ -3,11 +3,10 @@ import * as React from "react";
 import { ITagData } from "../../types/data-types";
 
 import { SectionHeader } from "../SectionHeader";
-import { FlexItem } from "../FlexItem";
 import { DescriptionList } from "../DescriptionList";
 import { draculaTheme } from "../../styles/theme";
 
-import { BarWrapper, SimpleBar } from "./styles";
+import { TechTopFiveWrapper, BarWrapper, SimpleBar } from "./styles";
 interface IProps {
   tags: ITagData[];
 }
@@ -40,9 +39,9 @@ export const TechTopFive: React.SFC<IProps> = (props: IProps) => {
   });
 
   return (
-    <FlexItem xs={1} sm={2} md={3}>
+    <TechTopFiveWrapper>
       <SectionHeader leading="tech" trailing="top-5-by-usage()" />
       <DescriptionList data={listData} />
-    </FlexItem>
+    </TechTopFiveWrapper>
   );
 };
