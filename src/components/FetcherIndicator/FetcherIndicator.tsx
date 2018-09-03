@@ -19,8 +19,6 @@ export const FetcherIndicator: React.SFC<IProps> = (props: IProps) => {
 
   const getMessage = (variant: string) => messages[variant];
 
-  console.log("variant: ", getMessage(variant));
-
   return (
     <IndicatorWrapper>
       <P fontColour={draculaTheme.comment}>◊ {getMessage(variant)}</P>

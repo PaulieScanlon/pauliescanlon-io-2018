@@ -56,6 +56,8 @@
     "react-docgen-typescript-loader": "^2.1.1",
     "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-test-renderer": "^16.4.1",
+    "tinycolor2": "^1.4.1",
+    "tinygradient": "^0.4.0",
     "ts-jest": "^23.0.1",
     "ts-loader": "^4.4.2",
     "typescript": "^3.0.1"

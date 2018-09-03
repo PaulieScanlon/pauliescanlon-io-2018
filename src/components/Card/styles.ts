@@ -22,3 +22,13 @@ export const CardText = styled.div({
     flexGrow: 1
   }
 });
+
+export const TagsBlock = styled.div({
+  label: "tags-block",
+  display: "flex",
+  flexWrap: "wrap",
+  marginBottom: `${common.marginBottom}`,
+  "span:not(:last-child)": {
+    marginRight: 5
+  }
+});

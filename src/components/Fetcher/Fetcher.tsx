@@ -56,11 +56,11 @@ export class Fetcher extends React.Component<IProps, IState> {
 
     const { renderComponent } = this.props;
     if (isLoading) {
-      return <FetcherIndicator variant="Loading" />;
+      return <FetcherIndicator variant="loading" />;
     }
 
     return hasErrored ? (
-      <FetcherIndicator variant="Error" />
+      <FetcherIndicator variant="error" />
     ) : (
       renderComponent(data)
     );

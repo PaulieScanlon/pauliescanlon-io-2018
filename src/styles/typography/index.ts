@@ -52,3 +52,17 @@ export const H1 = styled.h1<IProps>(
     display: display
   })
 );
+
+export const H2 = styled.h2<IProps>(
+  {
+    ...(font as any),
+    label: "h2",
+    fontWeight: 700,
+    fontSize: 22,
+    lineHeight: "24px"
+  },
+  ({ fontColour, display }) => ({
+    color: fontColour,
+    display: display
+  })
+);
