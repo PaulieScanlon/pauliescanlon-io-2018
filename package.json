@@ -23,6 +23,7 @@
     "react-emotion": "^9.2.6"
   },
   "devDependencies": {
+    "@octokit/rest": "^15.10.0",
     "@storybook/addon-actions": "^3.4.10",
     "@storybook/addon-backgrounds": "^3.4.10",
     "@storybook/addon-info": "^3.4.10",
@@ -50,6 +51,7 @@
     "jest": "^23.4.2",
     "jest-emotion": "^9.2.7",
     "jest-watch-typeahead": "^0.2.0",
+    "moment": "^2.22.2",
     "npm": "^6.3.0",
     "polished": "^1.9.3",
     "react-addons-test-utils": "^15.6.2",

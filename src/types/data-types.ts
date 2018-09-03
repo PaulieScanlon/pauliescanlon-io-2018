@@ -39,3 +39,10 @@ export interface ITagData {
   count: number;
   percent: number;
 }
+
+export interface IActivityData {
+  date: string;
+  type: string;
+  repo: string;
+  url: string;
+}

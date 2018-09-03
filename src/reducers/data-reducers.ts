@@ -1,3 +1,5 @@
+import moment from "moment";
+
 import {
   IUserData,
   IPostData,
@@ -74,4 +76,19 @@ export const tagsHandler = (data: any) => {
   );
 
   return { tags };
+};
+
+export const gitHubActivityHandler = (data: any) => {
+  const segment = data.slice(0, 5);
+
+  const activity = segment.map((data: any) => {
+    return {
+      date: moment(`${data.created_at}`).format("DD/MM/YYYY"),
+      type: data.type,
+      repo: data.repo.name,
+      url: `${process.env.GITHUB_URL}${data.repo.name}`
+    };
+  });
+
+  return { activity };
 };

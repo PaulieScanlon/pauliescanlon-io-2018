@@ -3,7 +3,8 @@ import * as React from "react";
 import {
   postsHandler,
   usersHandler,
-  tagsHandler
+  tagsHandler,
+  gitHubActivityHandler
 } from "../reducers/data-reducers";
 
 import { MainWrapper, ContainedWidth, Section } from "../styles";
@@ -11,6 +12,7 @@ import { MainWrapper, ContainedWidth, Section } from "../styles";
 import { Fetcher } from "../components/Fetcher";
 import { FlexItem } from "../components/FlexItem";
 import { TechTopFive } from "../components/TechTopFive";
+import { GitHubActivity } from "../components/GitHubActivity";
 import { ContactDetails } from "../components/ContactDetails";
 import { Portfolio } from "../components/Portfolio";
 import { User } from "../components/User";
@@ -40,6 +42,7 @@ const Index: React.SFC = () => {
           <FlexItem xs={1} sm={2} md={3}>
             <ContactDetails details={cms.contact} />
           </FlexItem>
+
           <FlexItem xs={1} sm={2} md={3}>
             <Fetcher
               fetchMethod={{
@@ -49,13 +52,14 @@ const Index: React.SFC = () => {
               renderComponent={data => <TechTopFive {...data} />}
             />
           </FlexItem>
+
           <FlexItem xs={1} sm={2} md={3}>
             <Fetcher
               fetchMethod={{
-                method: "tags"
+                method: "gitHubActivity"
               }}
-              dataReducer={tagsHandler}
-              renderComponent={data => <TechTopFive {...data} />}
+              dataReducer={gitHubActivityHandler}
+              renderComponent={data => <GitHubActivity {...data} />}
             />
           </FlexItem>
         </Section>
