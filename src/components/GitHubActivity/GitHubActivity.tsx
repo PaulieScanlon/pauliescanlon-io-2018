@@ -15,8 +15,6 @@ interface IProps {
 export const GitHubActivity: React.SFC<IProps> = (props: IProps) => {
   const { activity } = props;
 
-  console.log(activity);
-
   const listData = activity.map(item => {
     return {
       term: (

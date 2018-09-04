@@ -40,6 +40,6 @@ describe("getColourRange()", () => {
       singleValueRangeUsage.amt,
       singleValueRangeUsage.colours
     );
-    expect(colours[0]).toEqual(singleValueRangeUsage.colours[0]);
+    expect(colours[0].toString()).toEqual(singleValueRangeUsage.colours[0]);
   });
 });
