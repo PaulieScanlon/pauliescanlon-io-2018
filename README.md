@@ -1,40 +1,48 @@
-[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/zeit/next.js/tree/master/examples/with-typescript)
+# pauliescanlon-io-react-201
 
-# TypeScript Next.js example
+[![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com)
 
-This is a really simple project that show the usage of Next.js with TypeScript.
+The Porfolio of Paul Scanlon.
 
-## How to use it?
+Features:
 
-### Using `create-next-app`
+- React
+- TypeScript
+- Styled Components
+- Storybook
+- Jest
+- Enzyme
+- Made with Next.js
+- GhostCms
 
-Execute [`create-next-app`](https://github.com/segmentio/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+Dev:
 
-```bash
-npx create-next-app --example with-typescript with-typescript-app
-# or
-yarn create next-app --example with-typescript with-typescript-app
-```
-
-### Download manually
-
-Download the example [or clone the repo](https://github.com/zeit/next.js):
-
-```bash
-curl https://codeload.github.com/zeit/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/with-typescript
-cd with-typescript
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
-yarn
+```sh
 yarn dev
 ```
 
-## The idea behind the example
+```sh
+[WP] Access URL:
+ ----------------------------------
+       Local: http://localhost:3030
+ ----------------------------------
+```
 
-Use the [@zeit/next-typescript](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript) plugin to inject the Webpack config required to compile TypeScript to JavaScript. For information about using a TSConfig have a [look at the plugin page](https://github.com/zeit/next-plugins/tree/master/packages/next-typescript/#readme).
+Storybook:
+
+```sh
+yarn storybook
+```
+
+```sh
+[WP] Access URL:
+ ----------------------------------
+       Local: http://localhost:6060
+ ----------------------------------
+```
+
+Test:
+
+```sh
+yarn test
+```
