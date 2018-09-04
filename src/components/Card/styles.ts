@@ -5,6 +5,8 @@ import { draculaTheme } from "../../styles/theme";
 
 export const CardWrapper = styled.div({
   label: "card-wrapper",
+  display: "flex",
+  flexGrow: 1,
   boxShadow: common.dropShadow,
   backgroundColor: draculaTheme.background,
   position: "relative",

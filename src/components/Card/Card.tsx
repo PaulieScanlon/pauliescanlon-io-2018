@@ -1,25 +1,17 @@
 import * as React from "react";
-// import Link from "next/link";
-import Router from "next/router";
+import Link from "next/link";
 
 import { IPostData } from "../../types/data-types";
 
 import { CardWrapper, CardText, TagsBlock } from "./styles";
 import { Tag } from "../Tag";
 import { H2, P } from "../../styles/typography";
-import { Button } from "../Button";
 
 import { getColourRange } from "../../utils/colour";
 import { draculaTheme } from "../../styles/theme";
 
 export const Card = (postData: IPostData) => {
   const { customExcerpt, id, title, tags } = postData;
-
-  const clickHandler = () =>
-    Router.push({
-      pathname: "/project",
-      query: { project: `${id}` }
-    });
 
   const colourRange = [draculaTheme.pink, draculaTheme.cyan];
 
@@ -42,7 +34,15 @@ export const Card = (postData: IPostData) => {
         <H2>{title}</H2>
         <P>{customExcerpt}</P>
         <TagsBlock>{allTheTags}</TagsBlock>
-        <Button onClick={clickHandler}>View</Button>
+
+        <Link
+          href={{
+            pathname: "/project",
+            query: { project: `${id}` }
+          }}
+        >
+          <a>View</a>
+        </Link>
       </CardText>
     </CardWrapper>
   );
