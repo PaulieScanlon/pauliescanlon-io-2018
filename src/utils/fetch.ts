@@ -3,6 +3,7 @@ const octokit = require("@octokit/rest")();
 interface IGhostProps {
   endPoint: string;
   params?: {
+    limit?: string;
     include?: string;
     filter?: string;
     order?: string;
@@ -46,7 +47,7 @@ export const fetchType = {
   tags: () => {
     return ghostFetch({
       endPoint: "tags",
-      params: { include: "count.posts" }
+      params: { limit: "all", include: "count.posts", order: "asc" }
     });
   },
 
