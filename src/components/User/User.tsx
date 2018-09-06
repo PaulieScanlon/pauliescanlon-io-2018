@@ -38,7 +38,7 @@ export const User = ({ userData }: IProps) => {
 
       <ActionsGroup>
         <Action>
-          <ButtonFake grow backgroundColour={draculaTheme.pink}>
+          <ButtonFake grow backgroundColour={draculaTheme.green}>
             {cms.user.cvCta}
           </ButtonFake>
         </Action>

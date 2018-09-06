@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { MainWrapper, ContainedWidth } from "../styles";
+import { MainWrapper, FullWidth } from "../styles";
 
 import { Fetcher } from "../components/Fetcher";
 import { ProjectPage } from "../components/ProjectPage";
@@ -32,7 +32,7 @@ class Project extends React.Component<any, IState> {
 
     return (
       <MainWrapper>
-        <ContainedWidth>
+        <FullWidth>
           {id ? (
             <Fetcher
               fetchMethod={{
@@ -43,7 +43,7 @@ class Project extends React.Component<any, IState> {
               renderComponent={data => <ProjectPage {...data} />}
             />
           ) : null}
-        </ContainedWidth>
+        </FullWidth>
       </MainWrapper>
     );
   }

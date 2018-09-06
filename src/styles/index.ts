@@ -5,6 +5,17 @@ import { draculaTheme } from "./theme";
 
 import { font } from "./typography/";
 
+export const common = {
+  padding: 20,
+  header: 70,
+  dropShadow:
+    "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
+  darkenAmt: 0.01,
+  lightenAmt: 0.05,
+  marginBottom: 20,
+  hoverTransition: 0.3
+};
+
 injectGlobal`
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -57,8 +68,14 @@ injectGlobal`
     color: ${font.color};
     font-family: ${font.fontFamily};
     background: ${draculaTheme.background};
+    p {
+      margin-bottom: ${common.marginBottom}px;
+    }
     a:link, a:visited, a:hover, a:active {
       color: ${font.color}
+    };
+    p a:link, a:visited, a:hover, a:active {
+      color: ${draculaTheme.comment}
     }
   }
   `;
@@ -67,30 +84,22 @@ injectGlobal`
 // -moz-osx-font-smoothing: grayscale;
 // -webkit-text-stroke: 0.2px;
 
-export const common = {
-  padding: 20,
-  header: 70,
-  dropShadow:
-    "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
-  darkenAmt: 0.01,
-  lightenAmt: 0.05,
-  marginBottom: 20,
-  hoverTransition: 0.3
-};
-
 export const MainWrapper = styled.main({
   label: "main-wrapper",
+  position: "relative",
   marginTop: common.header,
   backgroundColor: draculaTheme.background
 });
 
 export const FullWidth = styled.div({
   label: "full-width",
+  position: "relative",
   width: "100%"
 });
 
 export const ContainedWidth = styled.div({
   label: "contained-width",
+  position: "relative",
   margin: "0 auto",
   padding: `0px ${common.padding}px 0px ${common.padding}px`,
   maxWidth: `${px.md}`,
@@ -99,6 +108,7 @@ export const ContainedWidth = styled.div({
 
 export const Section = styled.section({
   label: "section",
+  position: "relative",
   display: "flex",
   flexWrap: "wrap"
 });

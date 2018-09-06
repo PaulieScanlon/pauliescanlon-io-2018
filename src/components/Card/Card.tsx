@@ -41,7 +41,7 @@ export const Card = (postData: IPostData) => {
             query: { project: `${id}` }
           }}
         >
-          <a>View</a>
+          <a style={{ color: draculaTheme.green }}>View</a>
         </Link>
       </CardText>
     </CardWrapper>

@@ -1,30 +1,44 @@
 import * as React from "react";
-import Router from "next/router";
+import Link from "next/link";
 
 import { ISinglePostData } from "../../types/data-types";
+import { H2, P } from "../../styles/typography";
+import { draculaTheme } from "../../styles/theme";
 
-import { P } from "../../styles/typography";
-import { Button } from "../Button";
+import {
+  FeatureImageWrapper,
+  FeatureImage,
+  ProjectBodyWrapper,
+  ProjectBody
+} from "./styles";
 
 interface IProps {
   singlePost: ISinglePostData;
 }
 
 export const ProjectPage = ({ singlePost }: IProps) => {
-  const { title, customExcerpt, html } = singlePost;
-
-  const clickHandler = () =>
-    Router.push({
-      pathname: "/"
-    });
+  const { title, featureImage, customExcerpt, html } = singlePost;
 
   return (
     <div>
-      <p>ProjectSingle</p>
-      <P>{title}</P>
-      <P>{customExcerpt}</P>
-      <P dangerouslySetInnerHTML={{ __html: html }} />
-      <Button onClick={clickHandler}>Back</Button>
+      <FeatureImageWrapper>
+        <FeatureImage backgroundImage={featureImage} />
+      </FeatureImageWrapper>
+
+      <ProjectBodyWrapper>
+        <ProjectBody>
+          <H2>{title}</H2>
+          <P>{customExcerpt}</P>
+          <P dangerouslySetInnerHTML={{ __html: html }} />
+          <Link
+            href={{
+              pathname: "/"
+            }}
+          >
+            <a style={{ color: draculaTheme.green }}>Back</a>
+          </Link>
+        </ProjectBody>
+      </ProjectBodyWrapper>
     </div>
   );
 };
