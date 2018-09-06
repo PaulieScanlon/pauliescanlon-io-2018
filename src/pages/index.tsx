@@ -19,7 +19,7 @@ import { User } from "../components/User";
 
 import "../styles/";
 
-import { cms } from "./cms";
+import { cms } from "../cms";
 
 const Index: React.SFC = () => {
   return (

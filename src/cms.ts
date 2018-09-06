@@ -1,4 +1,10 @@
 export const cms = {
+  user: {
+    leading: "paul-scanlon",
+    trailing: "react-ui-developer",
+    cvCta: "view cv",
+    availableMessage: "I'm available!"
+  },
   contact: [
     {
       name: "Email",

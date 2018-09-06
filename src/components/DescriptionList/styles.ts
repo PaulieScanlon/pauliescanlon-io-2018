@@ -15,6 +15,6 @@ export const DD = styled.dd({
   margin: "0px 0px 10px 0px",
   color: draculaTheme.comment,
   a: {
-    color: draculaTheme.comment
+    color: `${draculaTheme.comment}!important`
   }
 });

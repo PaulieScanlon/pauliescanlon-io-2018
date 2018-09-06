@@ -1,86 +1,68 @@
-import styled from "react-emotion";
+import styled, { css } from "react-emotion";
 
 import { font } from "../../styles/typography";
 import { draculaTheme } from "../../styles/theme";
 
 interface IProps {
+  disabled?: boolean;
   backgroundColour?: string;
+  grow?: boolean;
 }
 
-export const Button = styled.button<IProps>(
-  {
-    label: "button",
-    borderRadius: 2,
-    borderStyle: "solid",
-    borderWidth: 1,
+const buttonStyle = () =>
+  css({
+    border: "none",
+    margin: 0,
+    width: "auto",
+    overflow: "visible",
+    background: "transparent",
+    font: "inherit",
+    lineHeight: "normal",
+
     backgroundColor: draculaTheme.foreground,
+    display: "inline-block",
     fontFamily: font.fontFamily,
     fontWeight: font.fontWeight,
     fontSize: font.fontSize,
-    cursor: "pointer",
-    color: draculaTheme.pre,
-    padding: "5px 10px",
+    userSelect: "none",
+    color: `${draculaTheme.pre}!important`,
+    padding: "10px 12px",
     textDecoration: "none",
-    margin: 0,
-    minWidth: 100,
-    transition: "all 0.2s linear 0s",
+    textTransform: "uppercase",
+    textAlign: "center",
+    outline: "none"
+  });
 
-    ":focus": {
-      outline: "none"
-    }
+export const Button = styled.button<IProps>(
+  buttonStyle,
+  {
+    label: "button"
   },
-  ({ backgroundColour }) => ({
-    backgroundColor: backgroundColour
+  ({ backgroundColour, disabled, grow }: any) => ({
+    cursor: disabled ? "progress" : "pointer",
+    backgroundColor: backgroundColour,
+    flexGrow: grow ? 1 : 0
   })
 );
 
-// change to button.tsx to see this working
-// import styled from "react-emotion";
+export const ButtonLink = styled.a<IProps>(
+  buttonStyle,
+  {
+    label: "button-link"
+  },
+  ({ backgroundColour, grow }: any) => ({
+    backgroundColor: backgroundColour,
+    flexGrow: grow ? 1 : 0
+  })
+);
 
-// import { font } from "../../styles/typography";
-// import { draculaTheme } from "../../styles/theme";
-// import { ButtonHTMLAttributes } from "react";
-
-// interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-//   /**
-//    * Optional background colour
-//    *
-//    * @default foreground
-//    **/
-//   backgroundColour?: string;
-// }
-
-// export const EmotionButton = styled.button<IProps>(
-//   {
-//     label: "button",
-//     borderRadius: 2,
-//     borderStyle: "solid",
-//     borderWidth: 1,
-//     backgroundColor: draculaTheme.foreground,
-//     fontFamily: font.fontFamily,
-//     fontWeight: font.fontWeight,
-//     fontSize: font.fontSize,
-//     cursor: "pointer",
-//     color: draculaTheme.pre,
-//     padding: "5px 10px",
-//     textDecoration: "none",
-//     margin: 0,
-//     minWidth: 100,
-//     transition: "all 0.2s linear 0s",
-
-//     ":focus": {
-//       outline: "none"
-//     }
-//   },
-//   ({ backgroundColour }) => ({
-//     backgroundColor: backgroundColour
-//   })
-// );
-
-// export const Button: React.SFC<IProps> = (props: IProps) => (
-//   <EmotionButton {...props} />
-// );
-
-// export const Button: React.SFC<IProps> = (props: IProps) => (
-//   <EmotionButton {...props} />
-// );
+export const ButtonFake = styled.span<IProps>(
+  buttonStyle,
+  {
+    label: "button-fake"
+  },
+  ({ backgroundColour, grow }: any) => ({
+    backgroundColor: backgroundColour,
+    flexGrow: grow ? 1 : 0
+  })
+);

@@ -4,7 +4,7 @@ exports[`<Button /> renders correctly 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
   Symbol(enzyme.__unrendered__): <Button>
-    Hooray
+    Lorem Ipsum
   </Button>,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
@@ -19,11 +19,11 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": "Hooray",
-      "className": "css-1rsanyl-Button-button e93mxpc0",
+      "children": "Lorem Ipsum",
+      "className": "css-10k9dn2-Button-button e93mxpc0",
     },
     "ref": null,
-    "rendered": "Hooray",
+    "rendered": "Lorem Ipsum",
     "type": "button",
   },
   Symbol(enzyme.__nodes__): Array [
@@ -32,11 +32,11 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "host",
       "props": Object {
-        "children": "Hooray",
-        "className": "css-1rsanyl-Button-button e93mxpc0",
+        "children": "Lorem Ipsum",
+        "className": "css-10k9dn2-Button-button e93mxpc0",
       },
       "ref": null,
-      "rendered": "Hooray",
+      "rendered": "Lorem Ipsum",
       "type": "button",
     },
   ],

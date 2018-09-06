@@ -1,5 +1,9 @@
 export interface IUserData {
   bio: string;
+  cvUrl: string;
+  displayCvUrl: string;
+  availability: string;
+  message: string;
 }
 
 export interface IPostData {
