@@ -5,7 +5,25 @@ import { common } from "../../styles/";
 export const GitHubActivityWrapper = styled.div({
   label: "git-hub-activity-wrapper",
   display: "flex",
-  flexDirection: "column"
+  flexDirection: "column",
+  ".default-event": {
+    color: draculaTheme.pink
+  },
+  ".watch-event": {
+    color: draculaTheme.purple
+  },
+  ".push-event": {
+    color: draculaTheme.yellow
+  },
+  ".create-event": {
+    color: draculaTheme.green
+  },
+  ".issue-event": {
+    color: draculaTheme.orange
+  },
+  ".delete-event": {
+    color: draculaTheme.red
+  }
 });
 
 export const RepoLink = styled.a({

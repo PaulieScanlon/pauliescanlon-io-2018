@@ -1,10 +1,10 @@
 import * as React from "react";
+import changeCase from "change-case";
 
 import { IActivityData } from "../../types/data-types";
 
 import { SectionHeader } from "../SectionHeader";
 import { DescriptionList } from "../DescriptionList";
-import { draculaTheme } from "../../styles/theme";
 
 import { GitHubActivityWrapper, RepoLink } from "./styles";
 
@@ -25,7 +25,9 @@ export const GitHubActivity: React.SFC<IProps> = (props: IProps) => {
             {item.date}
             &nbsp;
           </span>
-          <span style={{ color: `${draculaTheme.pink}` }}>{item.type}</span>
+          <span className={`efault-event ${changeCase.paramCase(item.type)}`}>
+            {item.type}
+          </span>
         </div>
       ),
       description: (

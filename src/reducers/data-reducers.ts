@@ -95,7 +95,11 @@ export const pageListHandler = (data: any) => {
 };
 
 export const gitHubActivityHandler = (data: any) => {
-  const segment = data.slice(0, 5);
+  const filtered = data.filter(
+    (item: any) => item.repo.name !== "PaulieScanlon/pauliescanlon-io-2018"
+  );
+
+  const segment = filtered.slice(0, 5);
 
   const activity = segment.map((data: any) => {
     return {

@@ -5,31 +5,31 @@ export const activity = {
     {
       date: "03/09/2018",
       repo: "Lorem Ipsum",
-      type: "Dolor Sit",
+      type: "WatchEvent",
       url: "http://www.example.com"
     },
     {
       date: "02/09/2018",
       repo: "Consectetur Adipiscing",
-      type: "Nulla Viverra",
+      type: "PushEvent",
       url: "http://www.example.com"
     },
     {
       date: "02/09/2018",
       repo: "Et Posuere",
-      type: "Nulla Sodales",
+      type: "CreateEvent",
       url: "http://www.example.com"
     },
     {
       date: "02/09/2018",
       repo: "Praesent sagittis",
-      type: "Interdum Ante",
+      type: "IssueEvent",
       url: "http://www.example.com"
     },
     {
       date: "02/09/2018",
       repo: "Ex Sodales",
-      type: "Ut Libero",
+      type: "DeleteEvent",
       url: "http://www.example.com"
     }
   ]
