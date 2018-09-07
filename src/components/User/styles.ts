@@ -6,6 +6,11 @@ export const UserWrapper = styled.div({
   label: "user-wrapper"
 });
 
+export const Actions = styled.div({
+  label: "actions",
+  paddingTop: common.padding
+});
+
 export const ActionsGroup = styled.div({
   label: "actions-group",
   display: "flex",

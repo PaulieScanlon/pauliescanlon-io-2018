@@ -13,6 +13,7 @@ export const common = {
   darkenAmt: 0.01,
   lightenAmt: 0.05,
   marginBottom: 20,
+  flexBottom: 60,
   hoverTransition: 0.3
 };
 

@@ -8,7 +8,7 @@ import {
   gitHubActivityHandler
 } from "../reducers/data-reducers";
 
-import { MainWrapper, ContainedWidth, Section } from "../styles";
+import { MainWrapper, ContainedWidth, Section, common } from "../styles";
 
 import { Fetcher } from "../components/Fetcher";
 import { FlexItem } from "../components/FlexItem";
@@ -28,7 +28,7 @@ const Index: React.SFC = () => {
     <MainWrapper>
       <ContainedWidth>
         <Section>
-          <FlexItem xs={1} sm={1} md={1}>
+          <FlexItem xs={1} sm={1} md={1} marginBottom={common.flexBottom}>
             <Fetcher
               fetchMethod={{
                 method: "users",
@@ -64,7 +64,7 @@ const Index: React.SFC = () => {
             />
           </FlexItem>
 
-          <FlexItem xs={1} sm={2} md={3}>
+          <FlexItem xs={1} sm={2} md={3} marginBottom={common.flexBottom}>
             <Fetcher
               fetchMethod={{
                 method: "gitHubActivity"
@@ -97,7 +97,7 @@ const Index: React.SFC = () => {
           />
         </Section>
         <Section>
-          <FlexItem xs={1} sm={2} md={2}>
+          <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
             <Fetcher
               fetchMethod={{
                 method: "pageList",
@@ -109,7 +109,7 @@ const Index: React.SFC = () => {
               )}
             />
           </FlexItem>
-          <FlexItem xs={1} sm={2} md={2}>
+          <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
             <Fetcher
               fetchMethod={{
                 method: "pageList",
