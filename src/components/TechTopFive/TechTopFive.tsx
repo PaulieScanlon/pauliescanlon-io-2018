@@ -7,12 +7,15 @@ import { DescriptionList } from "../DescriptionList";
 import { draculaTheme } from "../../styles/theme";
 
 import { TechTopFiveWrapper, BarWrapper, SimpleBar } from "./styles";
+
 interface IProps {
+  leading: string;
+  trailing: string;
   tags: ITagData[];
 }
 
 export const TechTopFive: React.SFC<IProps> = (props: IProps) => {
-  const { tags } = props;
+  const { leading, trailing, tags } = props;
 
   const listData = tags.map(tag => {
     return {
@@ -40,7 +43,7 @@ export const TechTopFive: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <TechTopFiveWrapper>
-      <SectionHeader leading="tech" trailing="top-5-by-usage()" />
+      <SectionHeader leading={leading} trailing={trailing} />
       <DescriptionList data={listData} />
     </TechTopFiveWrapper>
   );

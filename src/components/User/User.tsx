@@ -4,7 +4,7 @@ import { IUserData } from "../../types/data-types";
 
 import { UserWrapper, ActionsGroup, Action, Message } from "./styles";
 import { SectionHeader } from "../SectionHeader";
-import { ButtonFake } from "../Button/";
+import { ButtonFake, ButtonLink } from "../Button/";
 import { P } from "../../styles/typography";
 
 import { cms } from "../../cms";
@@ -38,9 +38,14 @@ export const User = ({ userData }: IProps) => {
 
       <ActionsGroup>
         <Action>
-          <ButtonFake grow backgroundColour={draculaTheme.green}>
+          <ButtonLink
+            href={cvUrl}
+            target="_blank"
+            grow
+            backgroundColour={draculaTheme.green}
+          >
             {cms.user.cvCta}
-          </ButtonFake>
+          </ButtonLink>
         </Action>
         <Message>
           <span>

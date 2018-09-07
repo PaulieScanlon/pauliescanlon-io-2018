@@ -11,11 +11,12 @@ interface IDetails {
 }
 
 interface IProps {
+  leading: string;
   details: IDetails[];
 }
 
 export const ContactDetails: React.SFC<IProps> = (props: IProps) => {
-  const { details } = props;
+  const { leading, details } = props;
 
   const listData = details.map(detail => {
     return {
@@ -30,7 +31,7 @@ export const ContactDetails: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <ContactDetailsWrapper>
-      <SectionHeader leading="contact" trailing="()" />
+      <SectionHeader leading={leading} />
       <DescriptionList data={listData} />
     </ContactDetailsWrapper>
   );

@@ -4,13 +4,13 @@ import { withInfo } from "@storybook/addon-info";
 
 import { ContactDetails } from "./";
 
-import { details } from "./data.mock";
+import { contact } from "./data.mock";
 
 const stories = storiesOf("Contact Details", module);
 
 stories.add(
   "default usage",
   withInfo("ContactDetails displays a list of 5 contact methods")(() => (
-    <ContactDetails details={details} />
+    <ContactDetails leading={contact.leading} details={contact.details} />
   ))
 );

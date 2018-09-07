@@ -4,6 +4,7 @@ import {
   postsHandler,
   usersHandler,
   tagsHandler,
+  pageListHandler,
   gitHubActivityHandler
 } from "../reducers/data-reducers";
 
@@ -16,6 +17,7 @@ import { GitHubActivity } from "../components/GitHubActivity";
 import { ContactDetails } from "../components/ContactDetails";
 import { Portfolio } from "../components/Portfolio";
 import { User } from "../components/User";
+import { PageList } from "../components/PageList";
 
 import "../styles/";
 
@@ -40,7 +42,10 @@ const Index: React.SFC = () => {
 
         <Section>
           <FlexItem xs={1} sm={2} md={3}>
-            <ContactDetails details={cms.contact} />
+            <ContactDetails
+              leading={cms.contact.leading}
+              details={cms.contact.details}
+            />
           </FlexItem>
 
           <FlexItem xs={1} sm={2} md={3}>
@@ -49,7 +54,13 @@ const Index: React.SFC = () => {
                 method: "tags"
               }}
               dataReducer={tagsHandler}
-              renderComponent={data => <TechTopFive {...data} />}
+              renderComponent={data => (
+                <TechTopFive
+                  leading={cms.tech.leading}
+                  trailing={cms.tech.trailing}
+                  {...data}
+                />
+              )}
             />
           </FlexItem>
 
@@ -59,7 +70,13 @@ const Index: React.SFC = () => {
                 method: "gitHubActivity"
               }}
               dataReducer={gitHubActivityHandler}
-              renderComponent={data => <GitHubActivity {...data} />}
+              renderComponent={data => (
+                <GitHubActivity
+                  leading={cms.github.leading}
+                  trailing={cms.github.trailing}
+                  {...data}
+                />
+              )}
             />
           </FlexItem>
         </Section>
@@ -70,8 +87,40 @@ const Index: React.SFC = () => {
               method: "posts"
             }}
             dataReducer={postsHandler}
-            renderComponent={data => <Portfolio {...data} />}
+            renderComponent={data => (
+              <Portfolio
+                leading={cms.portfolio.leading}
+                trailing={cms.portfolio.trailing}
+                {...data}
+              />
+            )}
           />
+        </Section>
+        <Section>
+          <FlexItem xs={1} sm={2} md={2}>
+            <Fetcher
+              fetchMethod={{
+                method: "pageList",
+                query: "companies"
+              }}
+              dataReducer={pageListHandler}
+              renderComponent={data => (
+                <PageList leading={cms.companies.leading} {...data} />
+              )}
+            />
+          </FlexItem>
+          <FlexItem xs={1} sm={2} md={2}>
+            <Fetcher
+              fetchMethod={{
+                method: "pageList",
+                query: "awards"
+              }}
+              dataReducer={pageListHandler}
+              renderComponent={data => (
+                <PageList leading={cms.awards.leading} {...data} />
+              )}
+            />
+          </FlexItem>
         </Section>
       </ContainedWidth>
     </MainWrapper>

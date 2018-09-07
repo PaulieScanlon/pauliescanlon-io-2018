@@ -8,13 +8,16 @@ import { ArrayGrid } from "../ArrayGrid";
 import { Card } from "../Card";
 
 interface IProps {
+  leading: string;
+  trailing: string;
   posts: IPostData[];
 }
 
-export const Portfolio = ({ posts }: IProps) => {
+export const Portfolio = (props: IProps) => {
+  const { leading, trailing, posts } = props;
   return (
     <PortfolioWrapper>
-      <SectionHeader leading="portfolio-items" trailing="commercial()" />
+      <SectionHeader leading={leading} trailing={trailing} />
       <ArrayGrid
         dataArray={posts}
         cols={{

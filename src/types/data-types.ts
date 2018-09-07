@@ -44,6 +44,10 @@ export interface ITagData {
   percent: number;
 }
 
+export interface IPageListData {
+  html: string;
+}
+
 export interface IActivityData {
   date: string;
   type: string;

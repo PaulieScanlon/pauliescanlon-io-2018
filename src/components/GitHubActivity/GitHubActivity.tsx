@@ -9,11 +9,13 @@ import { draculaTheme } from "../../styles/theme";
 import { GitHubActivityWrapper, RepoLink } from "./styles";
 
 interface IProps {
+  leading: string;
+  trailing: string;
   activity: IActivityData[];
 }
 
 export const GitHubActivity: React.SFC<IProps> = (props: IProps) => {
-  const { activity } = props;
+  const { leading, trailing, activity } = props;
 
   const listData = activity.map(item => {
     return {
@@ -36,7 +38,7 @@ export const GitHubActivity: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <GitHubActivityWrapper>
-      <SectionHeader leading="github" trailing="recent-activity()" />
+      <SectionHeader leading={leading} trailing={trailing} />
       <DescriptionList data={listData} />
     </GitHubActivityWrapper>
   );

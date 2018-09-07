@@ -85,6 +85,15 @@ export const tagsHandler = (data: any) => {
   return { tags };
 };
 
+export const pageListHandler = (data: any) => {
+  const obj = data.posts[0];
+  const companies = {
+    html: obj.html
+  };
+
+  return { companies };
+};
+
 export const gitHubActivityHandler = (data: any) => {
   const segment = data.slice(0, 5);
 

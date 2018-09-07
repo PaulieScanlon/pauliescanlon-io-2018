@@ -8,7 +8,14 @@ const stories = storiesOf("SectionHeader", module);
 
 stories.add(
   "default",
-  withInfo("SectionHeader requires both leading and trailing props")(() => (
-    <SectionHeader leading="Lorem-ipsum" trailing="()" />
+  withInfo("SectionHeader requires both leading a prop")(() => (
+    <SectionHeader leading="lorem" />
+  ))
+);
+
+stories.add(
+  "default & trailing",
+  withInfo("accepts a trailing prop")(() => (
+    <SectionHeader leading="lorem" trailing="ipsum" />
   ))
 );

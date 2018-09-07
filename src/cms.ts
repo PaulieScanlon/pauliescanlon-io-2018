@@ -5,26 +5,47 @@ export const cms = {
     cvCta: "view cv",
     availableMessage: "I'm available!"
   },
-  contact: [
-    {
-      name: "Email",
-      info: "pauliescanlon@gmail.com"
-    },
-    {
-      name: "Twitter",
-      info: "https://twitter.com/PaulieScanlon/"
-    },
-    {
-      name: "GitHub",
-      info: "https://github.com/PaulieScanlon/"
-    },
-    {
-      name: "LinkedIn",
-      info: "https://www.linkedin.com/in/pauliescanlon/"
-    },
-    {
-      name: "Instagram",
-      info: "https://www.instagram.com/pauliescanlon/"
-    }
-  ]
+  contact: {
+    leading: "contact",
+    details: [
+      {
+        name: "Email",
+        info: "pauliescanlon@gmail.com"
+      },
+      {
+        name: "Twitter",
+        info: "https://twitter.com/PaulieScanlon/"
+      },
+      {
+        name: "GitHub",
+        info: "https://github.com/PaulieScanlon/"
+      },
+      {
+        name: "LinkedIn",
+        info: "https://www.linkedin.com/in/pauliescanlon/"
+      },
+      {
+        name: "Instagram",
+        info: "https://www.instagram.com/pauliescanlon/"
+      }
+    ]
+  },
+  tech: {
+    leading: "tech",
+    trailing: "tech-top-five"
+  },
+  github: {
+    leading: "github",
+    trailing: "recent-activity"
+  },
+  portfolio: {
+    leading: "portfolio-items",
+    trailing: "commerical"
+  },
+  companies: {
+    leading: "work-history"
+  },
+  awards: {
+    leading: "awards"
+  }
 };

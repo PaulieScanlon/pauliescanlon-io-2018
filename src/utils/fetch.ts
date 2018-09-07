@@ -7,6 +7,7 @@ interface IGhostProps {
     include?: string;
     filter?: string;
     order?: string;
+    formats?: string[];
   };
 }
 
@@ -51,15 +52,16 @@ export const fetchType = {
     });
   },
 
-  // sections: () => {
-  //   return ghostFetch({
-  //     endPoint: 'posts',
-  //     params: {
-  //       filter: 'page:true',
-  //       order: 'title dsc'
-  //     }
-  //   });
-  // }
+  pageList: (query: string) => {
+    return ghostFetch({
+      endPoint: `posts/slug/${query}`,
+      params: {
+        filter: "page:true",
+        order: "title dsc",
+        formats: ["html"] // return html by default
+      }
+    });
+  },
 
   gitHubActivity: () => {
     return gitFetch({

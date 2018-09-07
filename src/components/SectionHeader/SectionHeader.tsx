@@ -17,7 +17,7 @@ interface IProps {
    *
    * @default none
    **/
-  trailing: string;
+  trailing?: string;
 }
 
 export const SectionHeader = ({ leading, trailing }: IProps) => {
@@ -29,10 +29,10 @@ export const SectionHeader = ({ leading, trailing }: IProps) => {
       <H1 fontColour={draculaTheme.pink} display="inline-block">
         {leading}
       </H1>
-
       <H1 fontColour={draculaTheme.cyan} display="inline-block">
         &nbsp;
         {trailing}
+        ()
       </H1>
     </Header>
   );

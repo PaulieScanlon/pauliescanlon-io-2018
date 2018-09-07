@@ -61,7 +61,8 @@ export const ButtonFake = styled.span<IProps>(
   {
     label: "button-fake"
   },
-  ({ backgroundColour, grow }: any) => ({
+  ({ backgroundColour, disabled, grow }: any) => ({
+    cursor: disabled ? "progress" : "pointer",
     backgroundColor: backgroundColour,
     flexGrow: grow ? 1 : 0
   })

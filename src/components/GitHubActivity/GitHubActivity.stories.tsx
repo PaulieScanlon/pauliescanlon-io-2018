@@ -11,6 +11,10 @@ const stories = storiesOf("GitHub Activity", module);
 stories.add(
   "default usage",
   withInfo("GitHub Activity displays a list of 5 recent GitHub events")(() => (
-    <GitHubActivity activity={activity} />
+    <GitHubActivity
+      leading={activity.leading}
+      trailing={activity.trailing}
+      activity={activity.details}
+    />
   ))
 );

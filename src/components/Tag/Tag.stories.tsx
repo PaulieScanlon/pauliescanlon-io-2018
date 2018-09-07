@@ -10,7 +10,7 @@ const stories = storiesOf("Tag", module);
 
 stories.add(
   "default",
-  withInfo("Tag ...")(() => (
+  withInfo("Tag accepts font colour and border colour props")(() => (
     <Tag
       tag="Lorem"
       fontColour={draculaTheme.pink}
