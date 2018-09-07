@@ -40,6 +40,7 @@ ShallowWrapper {
         >
            
           ()
+          ()
         </H1>,
       ],
     },
@@ -79,6 +80,7 @@ ShallowWrapper {
           "children": Array [
             " ",
             "()",
+            "()",
           ],
           "display": "inline-block",
           "fontColour": "#8be9fd",
@@ -86,6 +88,7 @@ ShallowWrapper {
         "ref": null,
         "rendered": Array [
           " ",
+          "()",
           "()",
         ],
         "type": [Function],
@@ -117,6 +120,7 @@ ShallowWrapper {
             fontColour="#8be9fd"
           >
              
+            ()
             ()
           </H1>,
         ],
@@ -157,6 +161,7 @@ ShallowWrapper {
             "children": Array [
               " ",
               "()",
+              "()",
             ],
             "display": "inline-block",
             "fontColour": "#8be9fd",
@@ -164,6 +169,7 @@ ShallowWrapper {
           "ref": null,
           "rendered": Array [
             " ",
+            "()",
             "()",
           ],
           "type": [Function],

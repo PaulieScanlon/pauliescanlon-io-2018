@@ -20,7 +20,7 @@ ShallowWrapper {
     "nodeType": "host",
     "props": Object {
       "children": "Lorem Ipsum",
-      "className": "css-10k9dn2-Button-button e93mxpc0",
+      "className": "css-1ffvllg-Button-buttonStyle-button e93mxpc0",
     },
     "ref": null,
     "rendered": "Lorem Ipsum",
@@ -33,7 +33,7 @@ ShallowWrapper {
       "nodeType": "host",
       "props": Object {
         "children": "Lorem Ipsum",
-        "className": "css-10k9dn2-Button-button e93mxpc0",
+        "className": "css-1ffvllg-Button-buttonStyle-button e93mxpc0",
       },
       "ref": null,
       "rendered": "Lorem Ipsum",
