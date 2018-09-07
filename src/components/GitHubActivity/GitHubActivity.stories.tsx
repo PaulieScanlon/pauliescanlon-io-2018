@@ -6,7 +6,7 @@ import { GitHubActivity } from ".";
 
 import { activity } from "./data.mock";
 
-const stories = storiesOf("GitHub Activity", module);
+const stories = storiesOf("GitHubActivity", module);
 
 stories.add(
   "default usage",

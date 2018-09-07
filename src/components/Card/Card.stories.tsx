@@ -8,4 +8,4 @@ import { data } from "./data.mock";
 
 const stories = storiesOf("Card", module);
 
-stories.add("default usage", withInfo("...")(() => <Card {...data} />));
+stories.add("default usage", withInfo("...")(() => <Card cardData={data} />));
