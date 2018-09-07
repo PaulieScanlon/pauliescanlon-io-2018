@@ -1,4 +1,5 @@
 export const cms = {
+  global: "◊ ",
   user: {
     leading: "paul-scanlon",
     trailing: "react-ui-developer",

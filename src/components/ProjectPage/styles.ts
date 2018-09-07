@@ -9,9 +9,9 @@ interface IProps {
 
 export const FeatureImageWrapper = styled.div({
   label: "feature-image-wrapper",
-  position: "absolute",
+  position: "fixed",
   width: "100%",
-  height: "50vh",
+  height: "100vh",
   overflow: "hidden"
 });
 
@@ -21,7 +21,7 @@ export const FeatureImage = styled.div<IProps>(
     width: "100%",
     height: "100%",
     backgroundSize: "cover",
-    backgroundPosition: "50%",
+    backgroundPosition: "center",
     backgroundRepeat: "no-repeat"
   },
   ({ backgroundImage }) => ({
@@ -31,18 +31,19 @@ export const FeatureImage = styled.div<IProps>(
 
 export const ProjectBodyWrapper = styled.div({
   label: "project-wrapper",
-  position: "absolute",
-  marginTop: 200,
-  left: "50%",
-  transform: "translateX(-50%)",
-  width: "100%"
+  position: "relative",
+  display: "flex",
+  margin: `0 ${common.padding}px`,
+  height: "100%",
+  minHeight: "100vh"
 });
 
 export const ProjectBody = styled.div({
   label: "project-body",
   padding: `${common.padding}px`,
-  backgroundColor: draculaTheme.background,
+  backgroundColor: `${draculaTheme.backgroundAlpha}`,
   boxShadow: common.dropShadow,
   maxWidth: `${px.md}`,
-  margin: "0 auto"
+  margin: "0 auto",
+  alignSelf: "center"
 });

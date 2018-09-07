@@ -7,7 +7,7 @@ import { font } from "./typography/";
 
 export const common = {
   padding: 20,
-  header: 70,
+  header: 50,
   dropShadow:
     "rgba(0, 0, 0, 0.12) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px",
   darkenAmt: 0.01,
@@ -87,7 +87,6 @@ injectGlobal`
 export const MainWrapper = styled.main({
   label: "main-wrapper",
   position: "relative",
-  marginTop: common.header,
   backgroundColor: draculaTheme.background
 });
 
@@ -100,7 +99,8 @@ export const FullWidth = styled.div({
 export const ContainedWidth = styled.div({
   label: "contained-width",
   position: "relative",
-  margin: "0 auto",
+  margin: `${common.header}px auto 0px auto`,
+  // margin: "0 auto",
   padding: `0px ${common.padding}px 0px ${common.padding}px`,
   maxWidth: `${px.md}`,
   minHeight: 300

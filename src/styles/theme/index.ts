@@ -1,5 +1,11 @@
+import tinycolor from "tinycolor2";
+
+const alphaBg = tinycolor("#282a36");
+alphaBg.toRgbString();
+
 export const draculaTheme = {
   background: "#282a36",
+  backgroundAlpha: alphaBg.setAlpha(0.95),
   selection: "#44475a",
   foreground: "#f8f8f2",
   comment: "#6272a4",

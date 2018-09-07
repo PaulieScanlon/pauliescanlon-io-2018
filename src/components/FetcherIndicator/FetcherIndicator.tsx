@@ -4,6 +4,7 @@ import { P } from "../../styles/typography";
 import { draculaTheme } from "../../styles/theme";
 
 import { IndicatorWrapper } from "./styles";
+import { cms } from "../../cms";
 
 interface IProps {
   variant: string;
@@ -21,7 +22,10 @@ export const FetcherIndicator: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <IndicatorWrapper>
-      <P fontColour={draculaTheme.comment}>◊ {getMessage(variant)}</P>
+      <P fontColour={draculaTheme.comment}>
+        {cms.global}
+        {getMessage(variant)}
+      </P>
     </IndicatorWrapper>
   );
 };
