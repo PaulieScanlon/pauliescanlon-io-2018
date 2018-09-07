@@ -25,7 +25,7 @@ export const Portfolio = (props: IProps) => {
           sm: 2,
           md: 3
         }}
-        renderContent={data => <Card {...data} />}
+        renderContent={data => <Card cardData={data} />}
       />
     </PortfolioWrapper>
   );

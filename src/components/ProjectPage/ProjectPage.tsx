@@ -11,13 +11,14 @@ import {
   ProjectBodyWrapper,
   ProjectBody
 } from "./styles";
+import { TagsBlock } from "../TagsBlock";
 
 interface IProps {
   singlePost: ISinglePostData;
 }
 
 export const ProjectPage = ({ singlePost }: IProps) => {
-  const { title, featureImage, customExcerpt, html } = singlePost;
+  const { title, featureImage, customExcerpt, html, tags } = singlePost;
 
   return (
     <div>
@@ -30,6 +31,7 @@ export const ProjectPage = ({ singlePost }: IProps) => {
           <H2>{title}</H2>
           <P>{customExcerpt}</P>
           <P dangerouslySetInnerHTML={{ __html: html }} />
+          <TagsBlock tags={tags} />
           <Link
             href={{
               pathname: "/"

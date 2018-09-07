@@ -5,14 +5,14 @@ import { DescriptionList } from "../DescriptionList";
 
 import { ContactDetailsWrapper, ContactLink } from "./styles";
 
-interface IDetails {
+interface IDetail {
   name: string;
   info: string;
 }
 
 interface IProps {
   leading: string;
-  details: IDetails[];
+  details: IDetail[];
 }
 
 export const ContactDetails: React.SFC<IProps> = (props: IProps) => {
