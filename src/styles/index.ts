@@ -73,7 +73,8 @@ injectGlobal`
       margin-bottom: ${common.marginBottom}px;
     }
     a:link, a:visited, a:hover, a:active {
-      color: ${font.color}
+      color: ${font.color};
+      word-break: break-word;
     };
     p a:link, a:visited, a:hover, a:active {
       color: ${draculaTheme.comment}
