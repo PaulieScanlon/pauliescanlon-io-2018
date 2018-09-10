@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import Head from "next/head";
 import {
   postsHandler,
   usersHandler,
@@ -32,105 +32,133 @@ class Index extends React.Component<any, any> {
 
   render() {
     return (
-      <MainWrapper>
-        <ContainedWidth>
-          <Section>
-            <FlexItem xs={1} sm={1} md={1} marginBottom={common.flexBottom}>
-              <Fetcher
-                fetchMethod={{
-                  method: "users",
-                  query: "1"
-                }}
-                dataReducer={usersHandler}
-                renderComponent={data => <User {...data} />}
-              />
-            </FlexItem>
-          </Section>
-
-          <Section>
-            <FlexItem xs={1} sm={2} md={3}>
-              <ContactDetails
-                leading={cms.contact.leading}
-                details={cms.contact.details}
-              />
-            </FlexItem>
-
-            <FlexItem xs={1} sm={2} md={3}>
-              <Fetcher
-                fetchMethod={{
-                  method: "tags"
-                }}
-                dataReducer={tagsHandler}
-                renderComponent={data => (
-                  <TechTopFive
-                    leading={cms.tech.leading}
-                    trailing={cms.tech.trailing}
-                    {...data}
-                  />
-                )}
-              />
-            </FlexItem>
-
-            <FlexItem xs={1} sm={2} md={3} marginBottom={common.flexBottom}>
-              <Fetcher
-                fetchMethod={{
-                  method: "gitHubActivity"
-                }}
-                dataReducer={gitHubActivityHandler}
-                renderComponent={data => (
-                  <GitHubActivity
-                    leading={cms.github.leading}
-                    trailing={cms.github.trailing}
-                    {...data}
-                  />
-                )}
-              />
-            </FlexItem>
-          </Section>
-
-          <Section>
-            <Fetcher
-              fetchMethod={{
-                method: "posts"
-              }}
-              dataReducer={postsHandler}
-              renderComponent={data => (
-                <Portfolio
-                  leading={cms.portfolio.leading}
-                  trailing={cms.portfolio.trailing}
-                  {...data}
+      <React.Fragment>
+        <Head>
+          <title>PaulieScanlon.io</title>
+          <link
+            rel="icon"
+            type="image/png"
+            href={`${process.env.GHOST_CMS}/content/images/favicon-32x32.png`}
+            sizes="32x32"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href={`${process.env.GHOST_CMS}/content/images/favicon-16x16.png`}
+            sizes="16x16"
+          />
+          <meta property="og:title" content="Paul Scanlon" />
+          <meta
+            property="og:description"
+            content="I'm a React UI developer (contract) based in North London. JavaScript, TypeScript, TDD (Jest/Enzyme) and tiny bit of Node.js"
+          />
+          <meta
+            property="og:image"
+            content={`${
+              process.env.GHOST_CMS
+            }/content/images/pauliescanlon-io_1920x960.jpg`}
+          />
+        </Head>
+        <MainWrapper>
+          <ContainedWidth>
+            <Section>
+              <FlexItem xs={1} sm={1} md={1} marginBottom={common.flexBottom}>
+                <Fetcher
+                  fetchMethod={{
+                    method: "users",
+                    query: "1"
+                  }}
+                  dataReducer={usersHandler}
+                  renderComponent={data => <User {...data} />}
                 />
-              )}
-            />
-          </Section>
-          <Section>
-            <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
+              </FlexItem>
+            </Section>
+
+            <Section>
+              <FlexItem xs={1} sm={2} md={3}>
+                <ContactDetails
+                  leading={cms.contact.leading}
+                  details={cms.contact.details}
+                />
+              </FlexItem>
+
+              <FlexItem xs={1} sm={2} md={3}>
+                <Fetcher
+                  fetchMethod={{
+                    method: "tags"
+                  }}
+                  dataReducer={tagsHandler}
+                  renderComponent={data => (
+                    <TechTopFive
+                      leading={cms.tech.leading}
+                      trailing={cms.tech.trailing}
+                      {...data}
+                    />
+                  )}
+                />
+              </FlexItem>
+
+              <FlexItem xs={1} sm={2} md={3} marginBottom={common.flexBottom}>
+                <Fetcher
+                  fetchMethod={{
+                    method: "gitHubActivity"
+                  }}
+                  dataReducer={gitHubActivityHandler}
+                  renderComponent={data => (
+                    <GitHubActivity
+                      leading={cms.github.leading}
+                      trailing={cms.github.trailing}
+                      {...data}
+                    />
+                  )}
+                />
+              </FlexItem>
+            </Section>
+
+            <Section>
               <Fetcher
                 fetchMethod={{
-                  method: "pageList",
-                  query: "companies"
+                  method: "posts"
                 }}
-                dataReducer={pageListHandler}
+                dataReducer={postsHandler}
                 renderComponent={data => (
-                  <PageList leading={cms.companies.leading} {...data} />
+                  <Portfolio
+                    leading={cms.portfolio.leading}
+                    trailing={cms.portfolio.trailing}
+                    {...data}
+                  />
                 )}
               />
-            </FlexItem>
-            <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
-              <Fetcher
-                fetchMethod={{
-                  method: "pageList",
-                  query: "awards"
-                }}
-                dataReducer={pageListHandler}
-                renderComponent={data => (
-                  <PageList leading={cms.awards.leading} {...data} />
-                )}
-              />
-            </FlexItem>
-          </Section>
-        </ContainedWidth>
-      </MainWrapper>
+            </Section>
+            <Section>
+              <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
+                <Fetcher
+                  fetchMethod={{
+                    method: "pageList",
+                    query: "companies"
+                  }}
+                  dataReducer={pageListHandler}
+                  renderComponent={data => (
+                    <PageList leading={cms.companies.leading} {...data} />
+                  )}
+                />
+              </FlexItem>
+              <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
+                <Fetcher
+                  fetchMethod={{
+                    method: "pageList",
+                    query: "awards"
+                  }}
+                  dataReducer={pageListHandler}
+                  renderComponent={data => (
+                    <PageList leading={cms.awards.leading} {...data} />
+                  )}
+                />
+              </FlexItem>
+            </Section>
+          </ContainedWidth>
+        </MainWrapper>
+      </React.Fragment>
     );
   }
 }

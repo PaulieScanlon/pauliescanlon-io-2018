@@ -17,7 +17,6 @@ const mapTags = (tags: any): string[] => {
 
 export const usersHandler = (data: any) => {
   const obj = data.users[0];
-
   const splitCvUrl = obj.website.split("/");
 
   const userData = {
