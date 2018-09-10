@@ -40,7 +40,7 @@ export const fetchType = {
 
   singlePost: (query: string) => {
     return ghostFetch({
-      endPoint: `posts/${query}`,
+      endPoint: `posts/slug/${query}`,
       params: { include: "tags" }
     });
   },

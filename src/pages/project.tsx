@@ -6,38 +6,41 @@ import { Fetcher } from "../components/Fetcher";
 import { ProjectPage } from "../components/ProjectPage";
 
 import { singlePostHandler } from "../reducers/data-reducers";
+import { logPageView } from "../utils/google-analytics";
 
 interface IState {
-  id: string;
+  slug: string;
 }
 
 class Project extends React.Component<any, IState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      id: ""
+      slug: ""
     };
   }
 
   componentDidMount() {
     const query = window.location;
-    const id = query.search.split("?project=").join("");
+    const slug = query.search.split("?slug=").join("");
     this.setState({
-      id
+      slug
     });
+
+    logPageView(window.location);
   }
 
   render() {
-    const { id } = this.state;
+    const { slug } = this.state;
 
     return (
       <MainWrapper>
         <FullWidth>
-          {id ? (
+          {slug ? (
             <Fetcher
               fetchMethod={{
                 method: "singlePost",
-                query: id
+                query: slug
               }}
               dataReducer={singlePostHandler}
               renderComponent={data => <ProjectPage {...data} />}

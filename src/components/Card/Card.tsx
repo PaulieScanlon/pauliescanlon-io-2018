@@ -15,7 +15,7 @@ interface IProps {
 }
 
 export const Card: React.SFC<IProps> = ({ cardData }: IProps) => {
-  const { customExcerpt, id, title, tags } = cardData;
+  const { customExcerpt, title, tags, slug } = cardData;
 
   return (
     <CardWrapper>
@@ -27,7 +27,7 @@ export const Card: React.SFC<IProps> = ({ cardData }: IProps) => {
         <Link
           href={{
             pathname: "/project",
-            query: { project: `${id}` }
+            query: { slug: `${slug}` }
           }}
         >
           <a style={{ color: draculaTheme.green }}>View</a>
