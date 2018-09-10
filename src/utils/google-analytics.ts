@@ -1,7 +1,7 @@
 import ReactGA from "react-ga";
 
 export const logPageView = (location: any) => {
-  if (!(window as any)["GoogleAnalyticsObject"]) {
+  if ((window as any) && !(window as any)["GoogleAnalyticsObject"]) {
     ReactGA.initialize(`${process.env.GA_KEY}`, {
       debug: false
     });
