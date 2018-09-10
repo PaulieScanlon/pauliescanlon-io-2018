@@ -39,6 +39,18 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"
           />
+          <title>PaulieScanlon.io</title>
+          <meta property="og:title" content="Paul Scanlon" />
+          <meta
+            property="og:description"
+            content="I'm a React UI developer (contract) based in North London. JavaScript, TypeScript, TDD (Jest/Enzyme) and tiny bit of Node.js"
+          />
+          <meta
+            property="og:image"
+            content={`${
+              process.env.GHOST_CMS
+            }/content/images/pauliescanlon-io_1920x960.jpg`}
+          />
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
           <link
             href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"

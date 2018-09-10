@@ -1,6 +1,5 @@
 import * as React from "react";
 import Link from "next/link";
-import Head from "next/head";
 
 import { ISinglePostData } from "../../types/data-types";
 import { H2, P } from "../../styles/typography";
@@ -23,12 +22,6 @@ export const ProjectPage = ({ singlePost }: IProps) => {
 
   return (
     <div>
-      <Head>
-        <title>{title}</title>
-        <meta property="og:title" content={`${title}`} />
-        <meta property="og:description" content={`${customExcerpt}`} />
-        <meta property="og:image" content={`${featureImage}`} />
-      </Head>
       <FeatureImageWrapper>
         <FeatureImage backgroundImage={featureImage} />
       </FeatureImageWrapper>

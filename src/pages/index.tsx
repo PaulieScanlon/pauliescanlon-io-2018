@@ -1,5 +1,5 @@
 import * as React from "react";
-import Head from "next/head";
+
 import {
   postsHandler,
   usersHandler,
@@ -33,20 +33,6 @@ class Index extends React.Component<any, any> {
   render() {
     return (
       <React.Fragment>
-        <Head>
-          <title>PaulieScanlon.io</title>
-          <meta property="og:title" content="Paul Scanlon" />
-          <meta
-            property="og:description"
-            content="I'm a React UI developer (contract) based in North London. JavaScript, TypeScript, TDD (Jest/Enzyme) and tiny bit of Node.js"
-          />
-          <meta
-            property="og:image"
-            content={`${
-              process.env.GHOST_CMS
-            }/content/images/pauliescanlon-io_1920x960.jpg`}
-          />
-        </Head>
         <MainWrapper>
           <ContainedWidth>
             <Section>
