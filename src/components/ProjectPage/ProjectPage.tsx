@@ -25,9 +25,9 @@ export const ProjectPage = ({ singlePost }: IProps) => {
     <div>
       <Head>
         <title>{title}</title>
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={customExcerpt} />
-        <meta property="og:image" content={featureImage} />
+        <meta property="og:title" content={`${title}`} />
+        <meta property="og:description" content={`${customExcerpt}`} />
+        <meta property="og:image" content={`${featureImage}`} />
       </Head>
       <FeatureImageWrapper>
         <FeatureImage backgroundImage={featureImage} />
