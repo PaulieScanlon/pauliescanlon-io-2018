@@ -35,18 +35,6 @@ class Index extends React.Component<any, any> {
       <React.Fragment>
         <Head>
           <title>PaulieScanlon.io</title>
-          <link
-            rel="icon"
-            type="image/png"
-            href={`${process.env.GHOST_CMS}/content/images/favicon-32x32.png`}
-            sizes="32x32"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            href={`${process.env.GHOST_CMS}/content/images/favicon-16x16.png`}
-            sizes="16x16"
-          />
           <meta property="og:title" content="Paul Scanlon" />
           <meta
             property="og:description"
