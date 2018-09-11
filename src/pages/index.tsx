@@ -8,7 +8,7 @@ import {
   gitHubActivityHandler
 } from "../reducers/data-reducers";
 
-import { logPageView } from "../utils/google-analytics";
+import { initGA, logPageView } from "../utils/google-analytics";
 
 import { MainWrapper, ContainedWidth, Section, common } from "../styles";
 
@@ -27,7 +27,10 @@ import { cms } from "../cms";
 
 class Index extends React.Component<any, any> {
   componentDidMount() {
-    logPageView(window.location);
+    if (window && !(window as any).ga) {
+      initGA();
+    }
+    logPageView();
   }
 
   render() {

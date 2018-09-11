@@ -6,7 +6,7 @@ import { Fetcher } from "../components/Fetcher";
 import { ProjectPage } from "../components/ProjectPage";
 
 import { singlePostHandler } from "../reducers/data-reducers";
-import { logPageView } from "../utils/google-analytics";
+import { initGA, logPageView } from "../utils/google-analytics";
 
 interface IState {
   slug: string;
@@ -27,7 +27,10 @@ class Project extends React.Component<any, IState> {
       slug
     });
 
-    logPageView(window.location);
+    if (window && !(window as any).ga) {
+      initGA();
+    }
+    logPageView();
   }
 
   render() {
