@@ -1,4 +1,13 @@
 export const cms = {
+  index: {
+    title: "Paul Scanlon",
+    ogTitle: "Paul Scanlon",
+    ogImage: `${
+      process.env.GHOST_CMS
+    }/content/images/pauliescanlon-io_1920x960.jpg`,
+    ogDescription:
+      "I'm a React UI developer (contract) based in North London. JavaScript, TypeScript, TDD (Jest/Enzyme) and tiny bit of Node.js"
+  },
   global: "◊ ",
   user: {
     leading: "paul-scanlon",

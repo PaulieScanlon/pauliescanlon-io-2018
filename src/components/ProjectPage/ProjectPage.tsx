@@ -12,6 +12,7 @@ import {
   ProjectBody
 } from "./styles";
 import { TagsBlock } from "../TagsBlock";
+import { HeadTag } from "../HeadTag";
 
 interface IProps {
   singlePost: ISinglePostData;
@@ -22,6 +23,12 @@ export const ProjectPage = ({ singlePost }: IProps) => {
 
   return (
     <div>
+      <HeadTag
+        title={title}
+        ogTitle={title}
+        ogImage={featureImage}
+        ogDescription={customExcerpt}
+      />
       <FeatureImageWrapper>
         <FeatureImage backgroundImage={featureImage} />
       </FeatureImageWrapper>
