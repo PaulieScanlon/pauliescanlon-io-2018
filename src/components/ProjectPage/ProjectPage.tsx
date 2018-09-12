@@ -22,13 +22,8 @@ export const ProjectPage = ({ singlePost }: IProps) => {
   const { title, featureImage, customExcerpt, html, tags } = singlePost;
 
   return (
-    <div>
-      <HeadTag
-        title={title}
-        ogTitle={title}
-        ogImage={featureImage}
-        ogDescription={customExcerpt}
-      />
+    <React.Fragment>
+      <HeadTag title={title} />
       <FeatureImageWrapper>
         <FeatureImage backgroundImage={featureImage} />
       </FeatureImageWrapper>
@@ -48,6 +43,6 @@ export const ProjectPage = ({ singlePost }: IProps) => {
           </Link>
         </ProjectBody>
       </ProjectBodyWrapper>
-    </div>
+    </React.Fragment>
   );
 };

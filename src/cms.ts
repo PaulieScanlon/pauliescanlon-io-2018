@@ -5,8 +5,7 @@ export const cms = {
     ogImage: `${
       process.env.GHOST_CMS
     }/content/images/pauliescanlon-io_1920x960.jpg`,
-    ogDescription:
-      "I'm a React UI developer (contract) based in North London. JavaScript, TypeScript, TDD (Jest/Enzyme) and tiny bit of Node.js"
+    ogDescription: "React UI developer | London"
   },
   global: "◊ ",
   user: {
