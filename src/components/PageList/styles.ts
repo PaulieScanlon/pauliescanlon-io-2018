@@ -17,8 +17,9 @@ export const ListWrapper = styled.div({
       },
       small: {
         label: "small",
+        display: "inline-block",
         color: draculaTheme.comment,
-        paddingLeft: common.padding,
+        padding: `0px 0px ${common.padding / 2}px ${common.padding}px`,
         fontSize: 12
       }
     }
