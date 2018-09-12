@@ -79,6 +79,20 @@ injectGlobal`
     p a:link, a:visited, a:hover, a:active {
       color: ${draculaTheme.comment}
     }
+    .vimeo-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      padding-top: 25px;
+      height: 0;
+    }
+
+    .vimeo-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
   `;
 
