@@ -16,10 +16,14 @@ export const HeadTag: React.SFC<IProps> = ({
 }: IProps) => {
   return (
     <Head>
-      <title>{title}</title>
-      <meta property="og:title" content={ogTitle} />
-      <meta property="og:image" content={ogImage} />
-      <meta property="og:description" content={ogDescription} />
+      <title key="title">{title}</title>
+      <meta key="og:title" property="og:title" content={ogTitle} />
+      <meta key="og:image" property="og:image" content={ogImage} />
+      <meta
+        key="og:description"
+        property="og:description"
+        content={ogDescription}
+      />
     </Head>
   );
 };
