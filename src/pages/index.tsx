@@ -1,5 +1,4 @@
 import * as React from "react";
-import { pageview } from "../utils/google-analytics";
 
 import {
   postsHandler,
@@ -11,7 +10,7 @@ import {
 
 import { MainWrapper, ContainedWidth, Section, common } from "../styles";
 
-// import { Page } from "../components/Page";
+import { Page } from "../components/Page";
 import { Fetcher } from "../components/Fetcher";
 import { FlexItem } from "../components/FlexItem";
 import { TechTopFive } from "../components/TechTopFive";
@@ -26,12 +25,9 @@ import "../styles/";
 import { cms } from "../cms";
 
 class Index extends React.Component<any, any> {
-  onCompoentDidMount() {
-    pageview();
-  }
   render() {
     return (
-      <React.Fragment>
+      <Page>
         <MainWrapper>
           <ContainedWidth>
             <Section>
@@ -131,7 +127,7 @@ class Index extends React.Component<any, any> {
             </Section>
           </ContainedWidth>
         </MainWrapper>
-      </React.Fragment>
+      </Page>
     );
   }
 }

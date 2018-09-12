@@ -1,8 +1,8 @@
 import * as React from "react";
-import { pageview } from "../utils/google-analytics";
 
 import { MainWrapper, FullWidth } from "../styles";
 
+import { Page } from "../components/Page";
 import { Fetcher } from "../components/Fetcher";
 import { ProjectPage } from "../components/ProjectPage";
 
@@ -26,28 +26,28 @@ class Project extends React.Component<any, IState> {
     this.setState({
       slug
     });
-
-    pageview();
   }
 
   render() {
     const { slug } = this.state;
 
     return (
-      <MainWrapper>
-        <FullWidth>
-          {slug ? (
-            <Fetcher
-              fetchMethod={{
-                method: "singlePost",
-                query: slug
-              }}
-              dataReducer={singlePostHandler}
-              renderComponent={data => <ProjectPage {...data} />}
-            />
-          ) : null}
-        </FullWidth>
-      </MainWrapper>
+      <Page>
+        <MainWrapper>
+          <FullWidth>
+            {slug ? (
+              <Fetcher
+                fetchMethod={{
+                  method: "singlePost",
+                  query: slug
+                }}
+                dataReducer={singlePostHandler}
+                renderComponent={data => <ProjectPage {...data} />}
+              />
+            ) : null}
+          </FullWidth>
+        </MainWrapper>
+      </Page>
     );
   }
 }
