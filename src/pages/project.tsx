@@ -1,4 +1,5 @@
 import * as React from "react";
+import { pageview } from "../utils/google-analytics";
 
 import { MainWrapper, FullWidth } from "../styles";
 
@@ -6,7 +7,6 @@ import { Fetcher } from "../components/Fetcher";
 import { ProjectPage } from "../components/ProjectPage";
 
 import { singlePostHandler } from "../reducers/data-reducers";
-import { initGA, logPageView } from "../utils/google-analytics";
 
 interface IState {
   slug: string;
@@ -27,10 +27,7 @@ class Project extends React.Component<any, IState> {
       slug
     });
 
-    if (window && !(window as any).ga) {
-      initGA();
-    }
-    logPageView();
+    pageview();
   }
 
   render() {

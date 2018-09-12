@@ -1,4 +1,5 @@
 import * as React from "react";
+import { pageview } from "../utils/google-analytics";
 
 import {
   postsHandler,
@@ -8,10 +9,9 @@ import {
   gitHubActivityHandler
 } from "../reducers/data-reducers";
 
-import { initGA, logPageView } from "../utils/google-analytics";
-
 import { MainWrapper, ContainedWidth, Section, common } from "../styles";
 
+// import { Page } from "../components/Page";
 import { Fetcher } from "../components/Fetcher";
 import { FlexItem } from "../components/FlexItem";
 import { TechTopFive } from "../components/TechTopFive";
@@ -26,13 +26,9 @@ import "../styles/";
 import { cms } from "../cms";
 
 class Index extends React.Component<any, any> {
-  componentDidMount() {
-    if (window && !(window as any).ga) {
-      initGA();
-    }
-    logPageView();
+  onCompoentDidMount() {
+    pageview();
   }
-
   render() {
     return (
       <React.Fragment>

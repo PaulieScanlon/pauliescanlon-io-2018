@@ -1,9 +1,6 @@
 import Document, { Head, Main, NextScript } from "next/document";
 import { extractCritical } from "emotion-server";
 
-// switch to emotion:
-// https://github.com/zeit/next.js/blob/master/examples/with-emotion/pages/_document.js
-
 export default class MyDocument extends Document {
   static async getInitialProps({ renderPage }: any) {
     const page = renderPage();
@@ -23,6 +20,23 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${
+              process.env.GA_KEY
+            }`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.GA_KEY}');
+          `
+            }}
+          />
+
           <link
             rel="icon"
             type="image/png"
