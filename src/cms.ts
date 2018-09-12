@@ -47,6 +47,9 @@ export const cms = {
     leading: "github",
     trailing: "recent-activity"
   },
+  about: {
+    leading: "about-me"
+  },
   portfolio: {
     leading: "portfolio-items",
     trailing: "commerical"

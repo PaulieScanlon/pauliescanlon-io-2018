@@ -1,17 +1,17 @@
 import * as React from "react";
 import { SectionHeader } from "../SectionHeader";
 
-import { IPageListData } from "../../types/data-types";
+import { IPageData } from "../../types/data-types";
 
 import { ListWrapper } from "./styles";
 
 interface IProps {
   leading: string;
-  companies: IPageListData;
+  pageData: IPageData;
 }
 
-export const PageList: React.SFC<IProps> = ({ leading, companies }: IProps) => {
-  const { html } = companies;
+export const PageList: React.SFC<IProps> = ({ leading, pageData }: IProps) => {
+  const { html } = pageData;
 
   return (
     <ListWrapper>

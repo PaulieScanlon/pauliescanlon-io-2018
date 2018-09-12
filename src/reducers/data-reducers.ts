@@ -84,13 +84,13 @@ export const tagsHandler = (data: any) => {
   return { tags };
 };
 
-export const pageListHandler = (data: any) => {
+export const pageHandler = (data: any) => {
   const obj = data.posts[0];
-  const companies = {
+  const pageData = {
     html: obj.html
   };
 
-  return { companies };
+  return { pageData };
 };
 
 export const gitHubActivityHandler = (data: any) => {

@@ -34,7 +34,7 @@ export interface ITagData {
   percent: number;
 }
 
-export interface IPageListData {
+export interface IPageData {
   html: string;
 }
 

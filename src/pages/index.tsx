@@ -4,7 +4,7 @@ import {
   postsHandler,
   usersHandler,
   tagsHandler,
-  pageListHandler,
+  pageHandler,
   gitHubActivityHandler
 } from "../reducers/data-reducers";
 
@@ -19,6 +19,7 @@ import { ContactDetails } from "../components/ContactDetails";
 import { Portfolio } from "../components/Portfolio";
 import { User } from "../components/User";
 import { PageList } from "../components/PageList";
+import { PageDetail } from "../components/PageDetail";
 
 import "../styles/";
 
@@ -94,6 +95,21 @@ class Index extends React.Component<any, any> {
               </Section>
 
               <Section>
+                <FlexItem xs={1} sm={1} md={1} marginBottom={common.flexBottom}>
+                  <Fetcher
+                    fetchMethod={{
+                      method: "page",
+                      query: "about"
+                    }}
+                    dataReducer={pageHandler}
+                    renderComponent={data => (
+                      <PageDetail leading={cms.about.leading} {...data} />
+                    )}
+                  />
+                </FlexItem>
+              </Section>
+
+              <Section>
                 <Fetcher
                   fetchMethod={{
                     method: "posts"
@@ -108,14 +124,15 @@ class Index extends React.Component<any, any> {
                   )}
                 />
               </Section>
+
               <Section>
                 <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
                   <Fetcher
                     fetchMethod={{
-                      method: "pageList",
+                      method: "page",
                       query: "companies"
                     }}
-                    dataReducer={pageListHandler}
+                    dataReducer={pageHandler}
                     renderComponent={data => (
                       <PageList leading={cms.companies.leading} {...data} />
                     )}
@@ -124,10 +141,10 @@ class Index extends React.Component<any, any> {
                 <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
                   <Fetcher
                     fetchMethod={{
-                      method: "pageList",
+                      method: "page",
                       query: "awards"
                     }}
-                    dataReducer={pageListHandler}
+                    dataReducer={pageHandler}
                     renderComponent={data => (
                       <PageList leading={cms.awards.leading} {...data} />
                     )}

@@ -14,6 +14,12 @@ export const ListWrapper = styled.div({
         paddingRight: `${common.padding / 2}px`,
         content: `"•"`,
         color: draculaTheme.cyan
+      },
+      small: {
+        label: "small",
+        color: draculaTheme.comment,
+        paddingLeft: common.padding,
+        fontSize: 12
       }
     }
   }

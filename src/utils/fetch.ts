@@ -52,7 +52,7 @@ export const fetchType = {
     });
   },
 
-  pageList: (query: string) => {
+  page: (query: string) => {
     return ghostFetch({
       endPoint: `posts/slug/${query}`,
       params: {
