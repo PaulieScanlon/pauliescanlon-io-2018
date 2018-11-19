@@ -57,11 +57,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
             rel="stylesheet"
           />
-          <script
-            src={`${
-              process.env.GHOST_CMS
-            }/public/ghost-sdk.min.js?v=d1b11a97e4`}
-          />
+          <script src="http://138.68.162.135/public/ghost-sdk.min.js?v=2dc4fefcb7" />
           <script
             dangerouslySetInnerHTML={{
               __html: `ghost.init({
