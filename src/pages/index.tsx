@@ -1,25 +1,26 @@
 import * as React from "react";
 
-import {
-  postsHandler,
-  usersHandler,
-  tagsHandler,
-  pageHandler,
-  gitHubActivityHandler
-} from "../reducers/data-reducers";
+// import {
+//   postsHandler,
+//   usersHandler,
+//   tagsHandler,
+//   pageHandler,
+//   gitHubActivityHandler
+// } from "../reducers/data-reducers";
 
 import { MainWrapper, ContainedWidth, Section, common } from "../styles";
 
 import { Page } from "../components/Page";
-import { Fetcher } from "../components/Fetcher";
+// import { Fetcher } from "../components/Fetcher";
 import { FlexItem } from "../components/FlexItem";
-import { TechTopFive } from "../components/TechTopFive";
-import { GitHubActivity } from "../components/GitHubActivity";
+// import { TechTopFive } from "../components/TechTopFive";
+// import { GitHubActivity } from "../components/GitHubActivity";
 import { ContactDetails } from "../components/ContactDetails";
-import { Portfolio } from "../components/Portfolio";
-import { User } from "../components/User";
-import { PageList } from "../components/PageList";
-import { PageDetail } from "../components/PageDetail";
+// import { Portfolio } from "../components/Portfolio";
+// import { User } from "../components/User";
+// import { PageList } from "../components/PageList";
+// import { PageDetail } from "../components/PageDetail";
+import { SectionHeader } from "../components/SectionHeader";
 
 import "../styles/";
 
@@ -42,14 +43,18 @@ class Index extends React.Component<any, any> {
             <ContainedWidth>
               <Section>
                 <FlexItem xs={1} sm={1} md={1} marginBottom={common.flexBottom}>
-                  <Fetcher
+                  <SectionHeader
+                    leading={cms.user.leading}
+                    trailing={cms.user.trailing}
+                  />
+                  {/* <Fetcher
                     fetchMethod={{
                       method: "users",
                       query: "1"
                     }}
                     dataReducer={usersHandler}
                     renderComponent={data => <User {...data} />}
-                  />
+                  /> */}
                 </FlexItem>
               </Section>
 
@@ -62,7 +67,7 @@ class Index extends React.Component<any, any> {
                 </FlexItem>
 
                 <FlexItem xs={1} sm={2} md={3}>
-                  <Fetcher
+                  {/* <Fetcher
                     fetchMethod={{
                       method: "tags"
                     }}
@@ -74,11 +79,11 @@ class Index extends React.Component<any, any> {
                         {...data}
                       />
                     )}
-                  />
+                  /> */}
                 </FlexItem>
 
                 <FlexItem xs={1} sm={2} md={3} marginBottom={common.flexBottom}>
-                  <Fetcher
+                  {/* <Fetcher
                     fetchMethod={{
                       method: "gitHubActivity"
                     }}
@@ -90,13 +95,13 @@ class Index extends React.Component<any, any> {
                         {...data}
                       />
                     )}
-                  />
+                  /> */}
                 </FlexItem>
               </Section>
 
               <Section>
                 <FlexItem xs={1} sm={1} md={1} marginBottom={common.flexBottom}>
-                  <Fetcher
+                  {/* <Fetcher
                     fetchMethod={{
                       method: "page",
                       query: "about"
@@ -105,12 +110,12 @@ class Index extends React.Component<any, any> {
                     renderComponent={data => (
                       <PageDetail leading={cms.about.leading} {...data} />
                     )}
-                  />
+                  /> */}
                 </FlexItem>
               </Section>
 
               <Section>
-                <Fetcher
+                {/* <Fetcher
                   fetchMethod={{
                     method: "posts"
                   }}
@@ -122,12 +127,12 @@ class Index extends React.Component<any, any> {
                       {...data}
                     />
                   )}
-                />
+                /> */}
               </Section>
 
               <Section>
                 <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
-                  <Fetcher
+                  {/* <Fetcher
                     fetchMethod={{
                       method: "page",
                       query: "companies"
@@ -136,10 +141,10 @@ class Index extends React.Component<any, any> {
                     renderComponent={data => (
                       <PageList leading={cms.companies.leading} {...data} />
                     )}
-                  />
+                  /> */}
                 </FlexItem>
                 <FlexItem xs={1} sm={2} md={2} marginBottom={common.flexBottom}>
-                  <Fetcher
+                  {/* <Fetcher
                     fetchMethod={{
                       method: "page",
                       query: "awards"
@@ -148,7 +153,7 @@ class Index extends React.Component<any, any> {
                     renderComponent={data => (
                       <PageList leading={cms.awards.leading} {...data} />
                     )}
-                  />
+                  /> */}
                 </FlexItem>
               </Section>
             </ContainedWidth>
