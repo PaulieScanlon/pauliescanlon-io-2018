@@ -17,12 +17,10 @@ const mapTags = (tags: any): string[] => {
 
 export const usersHandler = (data: any) => {
   const obj = data.users[0];
-  const splitCvUrl = obj.website.split("/");
 
   const userData = {
     bio: obj.bio,
     cvUrl: obj.website,
-    displayCvUrl: splitCvUrl[splitCvUrl.length - 1],
     availability: obj.slug,
     message: obj.name
   } as IUserData;

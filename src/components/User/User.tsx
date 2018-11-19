@@ -15,20 +15,18 @@ interface IProps {
 }
 
 export const User = ({ userData }: IProps) => {
-  const { bio, cvUrl, displayCvUrl, availability, message } = userData;
+  const { bio, cvUrl, availability, message } = userData;
 
   let statusStyles = {
     disabled: false,
     backgroundColour: draculaTheme.green
   };
-  let statusMessage = cms.user.availableMessage;
 
   if (availability === "booked") {
-    (statusMessage = message),
-      (statusStyles = {
-        disabled: true,
-        backgroundColour: draculaTheme.red
-      });
+    statusStyles = {
+      disabled: true,
+      backgroundColour: draculaTheme.red
+    };
   }
 
   return (
@@ -50,7 +48,7 @@ export const User = ({ userData }: IProps) => {
           <Message>
             <span>
               <a href={cvUrl} target="_blank">
-                {displayCvUrl}
+                {cms.user.cvLinkText}
               </a>
             </span>
           </Message>
@@ -63,7 +61,7 @@ export const User = ({ userData }: IProps) => {
             </ButtonFake>
           </Action>
           <Message>
-            <span>{statusMessage}</span>
+            <span>{message}</span>
           </Message>
         </ActionsGroup>
       </Actions>

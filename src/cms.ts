@@ -12,7 +12,7 @@ export const cms = {
     leading: "paul-scanlon",
     trailing: "react-ui-developer",
     cvCta: "view cv",
-    availableMessage: "I'm available!"
+    cvLinkText: "paulscanlon.pdf"
   },
   contact: {
     leading: "contact",
