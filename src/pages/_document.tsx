@@ -57,7 +57,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
             rel="stylesheet"
           />
-          <script
+          {/* <script
             src={`${
               process.env.GHOST_CMS
             }/public/ghost-sdk.min.js?v=d1b11a97e4`}
@@ -69,7 +69,7 @@ export default class MyDocument extends Document {
                   clientSecret: "7e66121d4050"
               });`
             }}
-          />
+          /> */}
         </Head>
         <body>
           <Main />
