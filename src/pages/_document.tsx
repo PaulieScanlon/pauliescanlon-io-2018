@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
           `
             }}
           />
-          {/* <link
+          <link
             rel="icon"
             type="image/png"
             href={`${process.env.GHOST_CMS}/content/images/favicon-32x32.png`}
@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
             type="image/png"
             href={`${process.env.GHOST_CMS}/content/images/favicon-16x16.png`}
             sizes="16x16"
-          /> */}
+          />
           <meta
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"
@@ -57,7 +57,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
             rel="stylesheet"
           />
-          {/* <script
+          <script
             src={`${
               process.env.GHOST_CMS
             }/public/ghost-sdk.min.js?v=d1b11a97e4`}
@@ -69,7 +69,7 @@ export default class MyDocument extends Document {
                   clientSecret: "7e66121d4050"
               });`
             }}
-          /> */}
+          />
         </Head>
         <body>
           <Main />
