@@ -7,6 +7,8 @@ import {
   ITagData
 } from "../types/data-types";
 
+import { convertDate } from "../utils/convertDate";
+
 const mapTags = (tags: any): string[] => {
   const tagNames = tags.map((tag: any) => {
     return tag.name;
@@ -34,13 +36,15 @@ export const postsHandler = (data: any) => {
       featured: data.featured,
       html: data.html,
       id: data.id,
-      publishedAt: data.published_at,
+      publishedAt: convertDate(data.published_at),
       slug: data.slug,
       tags: mapTags(data.tags),
       title: data.title,
       url: `${process.env.GHOST_CMS}${data.url}`
     })
   );
+
+  console.log(posts);
 
   return { posts };
 };

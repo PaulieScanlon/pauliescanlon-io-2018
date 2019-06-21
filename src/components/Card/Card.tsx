@@ -5,7 +5,7 @@ import { IPostData } from "../../types/data-types";
 
 import { CardWrapper, CardText } from "./styles";
 
-import { H2, P } from "../../styles/typography";
+import { H2, P, Small } from "../../styles/typography";
 import { TagsBlock } from "../TagsBlock";
 
 import { draculaTheme } from "../../styles/theme";
@@ -15,11 +15,12 @@ interface IProps {
 }
 
 export const Card: React.SFC<IProps> = ({ cardData }: IProps) => {
-  const { customExcerpt, title, tags, slug } = cardData;
+  const { customExcerpt, title, tags, slug, publishedAt } = cardData;
 
   return (
     <CardWrapper>
       <CardText>
+        <Small fontColour={draculaTheme.cyan}>{publishedAt}</Small>
         <H2>{title}</H2>
         <P>{customExcerpt}</P>
         <TagsBlock tags={tags} />

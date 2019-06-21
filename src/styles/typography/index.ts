@@ -66,3 +66,15 @@ export const H2 = styled.h2<IProps>(
     display: display
   })
 );
+
+export const Small = styled.small<IProps>(
+  {
+    ...(font as any),
+    label: "small",
+    marginBottom: "4px;",
+    fontSize: "12px"
+  },
+  ({ fontColour }) => ({
+    color: fontColour
+  })
+);
