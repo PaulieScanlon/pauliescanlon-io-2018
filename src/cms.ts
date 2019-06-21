@@ -32,10 +32,6 @@ export const cms = {
       {
         name: "LinkedIn",
         info: "https://www.linkedin.com/in/pauliescanlon/"
-      },
-      {
-        name: "Instagram",
-        info: "https://www.instagram.com/pauliescanlon/"
       }
     ]
   },
