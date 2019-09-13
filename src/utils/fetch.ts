@@ -66,7 +66,7 @@ export const fetchType = {
   gitHubActivity: () => {
     return gitFetch({
       endPoint: "activity",
-      method: "listPublicEventsForUser",
+      method: "getEventsForUserPublic",
       params: {
         username: "pauliescanlon",
         per_page: 30,
