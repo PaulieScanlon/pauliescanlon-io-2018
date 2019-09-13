@@ -8,23 +8,13 @@ export default class MyDocument extends Document {
     return { ...page, ...styles };
   }
 
-  constructor(props: any) {
-    super(props);
-    const { __NEXT_DATA__, ids } = props;
-    if (ids) {
-      __NEXT_DATA__.ids = this.props.ids;
-    }
-  }
-
   render() {
     return (
       <html>
         <Head>
           <script
             async
-            src={`https://www.googletagmanager.com/gtag/js?id=${
-              process.env.GA_KEY
-            }`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_KEY}`}
           />
           <script
             dangerouslySetInnerHTML={{
@@ -52,7 +42,7 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"
           />
-          <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
+
           <link
             href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
             rel="stylesheet"

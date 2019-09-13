@@ -43,9 +43,6 @@ export const postsHandler = (data: any) => {
       url: `${process.env.GHOST_CMS}${data.url}`
     })
   );
-
-  console.log(posts);
-
   return { posts };
 };
 

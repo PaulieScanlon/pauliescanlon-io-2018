@@ -10,7 +10,7 @@ export const getColourRange = (steps: number, colour: string[] | string) => {
     const range = tinygradient(colour);
     const variantsRGB = range.rgb(steps);
 
-    const variantsHex = variantsRGB.map((colourRGB: string) =>
+    const variantsHex = variantsRGB.map((colourRGB: any) =>
       tinycolor(colourRGB).toHexString()
     );
     return variantsHex;
