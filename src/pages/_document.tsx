@@ -2,7 +2,7 @@ import Document, { Head, Main, NextScript } from "next/document";
 import { extractCritical } from "emotion-server";
 
 export default class MyDocument extends Document {
-  static async getInitialProps({ renderPage }: any) {
+  static getInitialProps({ renderPage }: any) {
     const page = renderPage();
     const styles = extractCritical(page.html);
     return { ...page, ...styles };
@@ -42,7 +42,7 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"
           />
-
+          <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
           <link
             href="https://fonts.googleapis.com/css?family=Inconsolata:400,700"
             rel="stylesheet"

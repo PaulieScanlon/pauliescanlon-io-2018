@@ -16,7 +16,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./typings"],
-    "lib": ["dom", "es2015", "es2016"]
+    "lib": ["dom", "es2015", "es2016"],
+    "types": ["node", "react-emotion"]
   },
   "exclude": [
     "node_modules",
