@@ -2,9 +2,7 @@ export const cms = {
   index: {
     title: "Paul Scanlon",
     ogTitle: "Paul Scanlon",
-    ogImage: `${
-      process.env.GHOST_CMS
-    }/content/images/pauliescanlon-io_1920x960.jpg`,
+    ogImage: `${process.env.GHOST_CMS}/content/images/pauliescanlon-io_1920x960.jpg`,
     ogDescription: "React UI developer | London"
   },
   global: "◊ ",
@@ -12,7 +10,7 @@ export const cms = {
     leading: "paul-scanlon",
     trailing: "react-ui-developer",
     cvCta: "view cv",
-    cvLinkText: "paulscanlon.pdf"
+    cvLinkText: "paulscanlon.doc"
   },
   contact: {
     leading: "contact",
