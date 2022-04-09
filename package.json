@@ -22,7 +22,7 @@
     "emotion": "^9.2.6",
     "emotion-server": "^9.2.6",
     "emotion-theming": "^9.2.6",
-    "moment": "^2.22.2",
+    "moment": "^2.29.2",
     "next": "^6.1.1",
     "react": "^16.4.1",
     "react-dom": "^16.0.0",
